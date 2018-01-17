@@ -20,5 +20,5 @@ script:
 - ./gradlew build connectedCheck
 - sonar-scanner -Dsonar.login=$SONAR_TOKEN
 
- notifications:
-    slack: soen390cryingcorner:i7nWiZto2fkXXOn9j9J9PNCM
+notifications:
+    slack: soen390cryingcorner:8N7qTrseWQDgh7PPw3T2mjKY
