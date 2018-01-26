@@ -18,3 +18,4 @@ proguard_logs/
 
 # Thumbnails
 thumbs.db
+/bin/

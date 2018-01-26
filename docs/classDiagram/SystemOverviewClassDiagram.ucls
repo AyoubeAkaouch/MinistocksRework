@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="nitezh.ministock" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1094" width="1805" x="-93" y="-44"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="nitezh.ministock.WidgetProvider" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/WidgetProvider.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="66" y="98"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="nitezh.ministock.DialogTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/DialogTools.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="397" y="140"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="nitezh.ministock.UserData" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/UserData.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="863" y="226"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="nitezh.ministock.Storage" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/Storage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="198" x="1119" y="682"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="nitezh.ministock.CustomAlarmManager" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/CustomAlarmManager.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1204" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="nitezh.ministock.StockSuggestions" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/StockSuggestions.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1470" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="nitezh.ministock.DialogTools.InputAlertCallable" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/DialogTools.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="150" x="205" y="327"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="nitezh.ministock.SymbolProvider" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/SymbolProvider.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="485" y="651"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="nitezh.ministock.PreferenceStorage" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/PreferenceStorage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="315" width="222" x="1119" y="327"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="nitezh.ministock.BackupAgent" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/BackupAgent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="878" y="561"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="12" language="java" name="nitezh.ministock.activities" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="352" width="1619" x="-88" y="1067"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="13" language="java" name="nitezh.ministock.activities.MinistocksActivity" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/MinistocksActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="14" y="1208"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="nitezh.ministock.activities.SymbolSearchableActivity" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/SymbolSearchableActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="247" y="1207"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="nitezh.ministock.activities.PortfolioActivity" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/PortfolioActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="602" y="1251"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="nitezh.ministock.activities.PreferencesActivity" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/PreferencesActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1011" y="1512"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="17" language="java" name="nitezh.ministock.activities.configure" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/configure" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="395" width="819" x="-38" y="1444"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="18" language="java" name="nitezh.ministock.activities.configure.ConfigureActivity2x4" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/configure/ConfigureActivity2x4.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="78" y="1753"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="nitezh.ministock.activities.configure.ConfigureActivity1x4" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/configure/ConfigureActivity1x4.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="278" y="1753"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="nitezh.ministock.activities.configure.ConfigureActivity2x2" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/configure/ConfigureActivity2x2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="478" y="1753"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="nitezh.ministock.activities.configure.ConfigureActivityBase" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/configure/ConfigureActivityBase.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="395" y="1587"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="nitezh.ministock.activities.configure.ConfigureActivity1x2" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/configure/ConfigureActivity1x2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="678" y="1753"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="23" language="java" name="nitezh.ministock.activities.widget" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1697" width="1782" x="560" y="1974"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="24" language="java" name="nitezh.ministock.activities.widget.WidgetProvider2x4" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProvider2x4.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="973" y="2727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="nitezh.ministock.activities.widget.WidgetProvider2x2" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProvider2x2.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1160" y="2727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="nitezh.ministock.activities.widget.WidgetProviderBase.GetDataTask" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProviderBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1400" y="2790"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="nitezh.ministock.activities.widget.WidgetProvider1x4" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProvider1x4.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1660" y="2727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="nitezh.ministock.activities.widget.WidgetProviderBase" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProviderBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1750" y="2174"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="29" language="java" name="nitezh.ministock.activities.widget.WidgetProviderBase.UpdateType" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProviderBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1364" y="3541"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="30" language="java" name="nitezh.ministock.activities.widget.WidgetProvider1x2" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProvider1x2.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1847" y="2727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="nitezh.ministock.activities.widget.WidgetColors" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetColors.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="729" y="2129"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="nitezh.ministock.activities.widget.WidgetView" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="996" y="3242"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="33" language="java" name="nitezh.ministock.activities.widget.WidgetProviderBase.ViewType" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetProviderBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2085" y="2817"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="34" language="java" name="nitezh.ministock.activities.widget.WidgetRow" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/activities/widget/WidgetRow.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1175" y="2336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="35" language="java" name="nitezh.ministock.dataaccess" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/dataaccess" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="779" width="970" x="-552" y="2183"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="36" language="java" name="nitezh.ministock.dataaccess.YahooStockQuoteRepository2" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/dataaccess/YahooStockQuoteRepository2.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="322" x="-534" y="2327"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="nitezh.ministock.dataaccess.YahooStockQuoteRepository" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/dataaccess/YahooStockQuoteRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-41" y="2379"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="nitezh.ministock.dataaccess.GoogleStockQuoteRepository" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/dataaccess/GoogleStockQuoteRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="48" y="2828"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="nitezh.ministock.dataaccess.FxChangeRepository" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/dataaccess/FxChangeRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-332" y="2771"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="nitezh.ministock.dataaccess.IexStockQuoteRepository" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/dataaccess/IexStockQuoteRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="227" y="2623"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="41" language="java" name="nitezh.ministock.domain" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1736" width="1956" x="-1332" y="3962"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="42" language="java" name="nitezh.ministock.domain.WidgetStock" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/WidgetStock.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="675" width="219" x="-1282" y="4031"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="nitezh.ministock.domain.PortfolioStock" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/PortfolioStock.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="387" width="314" x="-1282" y="4908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="nitezh.ministock.domain.StockQuoteRepository" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/StockQuoteRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="261" width="446" x="-465" y="4031"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="nitezh.ministock.domain.PortfolioStockRepository" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/PortfolioStockRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="621" width="518" x="-1023" y="4031"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="46" language="java" name="nitezh.ministock.domain.PortfolioStockRepository.PortfolioField" 
+    project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/PortfolioStockRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="184" x="-928" y="4908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <interface id="47" language="java" name="nitezh.ministock.domain.WidgetRepository" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/WidgetRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="215" x="-294" y="4908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="48" language="java" name="nitezh.ministock.domain.StockQuote" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/StockQuote.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="387" width="370" x="-704" y="4908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="49" language="java" name="nitezh.ministock.domain.Widget" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/Widget.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="729" width="270" x="276" y="4908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="50" language="java" name="nitezh.ministock.domain.AndroidWidget" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/AndroidWidget.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="837" width="270" x="276" y="4031"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="nitezh.ministock.domain.AndroidWidgetRepository" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/domain/AndroidWidgetRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="215" x="21" y="4031"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="52" language="java" name="nitezh.ministock.utils" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="714" width="1352" x="896" y="4059"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="53" language="java" name="nitezh.ministock.utils.NumberTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/NumberTools.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1242" y="4333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="nitezh.ministock.utils.VersionTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/VersionTools.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1448" y="4234"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="nitezh.ministock.utils.DateTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/DateTools.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1848" y="4279"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="nitezh.ministock.utils.Cache" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/Cache.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1630" y="4261"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="nitezh.ministock.utils.CurrencyTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/CurrencyTools.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2088" y="4261"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="nitezh.ministock.utils.UrlDataTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/UrlDataTools.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2101" y="4437"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="nitezh.ministock.utils.InputTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/InputTools.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2094" y="4602"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="nitezh.ministock.utils.ReflectionTools" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/ReflectionTools.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1862" y="4666"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="nitezh.ministock.utils.StorageCache" project="SOEN390CryingCorner" 
+    file="/SOEN390CryingCorner/src/main/java/nitezh/ministock/utils/StorageCache.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1626" y="4598"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="62">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="63" name="fxChangeRepository"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="65">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="47"/>  
+  </realization>  
+  <association id="66">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="67" name="portfolioStocksInfo"/>      
+      <multiplicity id="68" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="69">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="72">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <association id="73">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="74" name="updateMode"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="76">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <association id="77">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="78" name="stocksQuotes"/>      
+      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="81" name="fxChangeRepository"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="83">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <association id="85">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="86" name="appStorage"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="89" name="fxChangeRepository"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="92" name="portfolioStocks"/>      
+      <multiplicity id="93" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="94">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="46"/>  
+  </nesting>  
+  <association id="95">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="96" name="updateType"/>      
+      <multiplicity id="97" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="99" name="mCachedQuotes"/>      
+      <multiplicity id="100" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="102" name="widget"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="105" name="widget"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="108" name="widgetRepository"/>      
+      <multiplicity id="109" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="110">    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="111" name="storage"/>      
+      <multiplicity id="112" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="113">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <association id="114">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="115" name="widgetRepository"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="118" name="storage"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="121" name="googleRepository"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="123">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="33"/>  
+  </nesting>  
+  <association id="124">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="125" name="appCache"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="127">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <association id="128">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="129" name="appStorage"/>      
+      <multiplicity id="130" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="131">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="132" name="quotes"/>      
+      <multiplicity id="133" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="134">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="49"/>  
+  </realization>  
+  <generalization id="135">    
+    <end type="SOURCE" refId="61"/>    
+    <end type="TARGET" refId="56"/>  
+  </generalization>  
+  <association id="136">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="137" name="quotes"/>      
+      <multiplicity id="138" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="140" name="iexRepository"/>      
+      <multiplicity id="141" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="142">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="143" name="mAppStorage"/>      
+      <multiplicity id="144" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="145">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="146" name="mPortfolioStocks"/>      
+      <multiplicity id="147" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="148">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <realization id="149">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="150">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="151" name="appStorage"/>      
+      <multiplicity id="152" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="154" name="portfolioRepository"/>      
+      <multiplicity id="155" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="156">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <nesting id="157">    
+    <bendpoint x="1556" y="2687"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="29"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
