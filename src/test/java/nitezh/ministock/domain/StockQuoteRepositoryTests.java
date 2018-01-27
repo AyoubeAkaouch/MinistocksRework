@@ -66,7 +66,7 @@ public class StockQuoteRepositoryTests {
     @Test
     public void getLiveQuotes() {
         // Skipif
-        Assume.assumeTrue(System.getenv("TRAVIS_CI") == null);
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
 
         // Arrange
         List<String> symbols = Arrays.asList("AAPL", "GOOG", "^DJI", "^IXIC");
@@ -99,7 +99,7 @@ public class StockQuoteRepositoryTests {
     @Test
     public void getQuotes() {
         // Skipif
-        Assume.assumeTrue(System.getenv("TRAVIS_CI") == null);
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
 
         // Arrange
         List<String> symbols = Arrays.asList("AAPL", "GOOG", "^DJI", "^IXIC");
