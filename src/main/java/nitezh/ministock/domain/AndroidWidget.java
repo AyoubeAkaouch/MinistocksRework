@@ -228,8 +228,8 @@ class AndroidWidget implements Widget {
     }
 
     @Override
-    public boolean getTextStyle() {
-        return this.storage.getString("text_style", "normal").equals("bold");
+    public String getTextStyle() {
+        return this.storage.getString("text_style", "normal");
     }
 
     @Override
