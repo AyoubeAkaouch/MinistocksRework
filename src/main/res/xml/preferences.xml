@@ -81,6 +81,44 @@
             android:summary="Advanced widget settings"
             android:title="Settings">
             <PreferenceScreen
+                android:key="colour_options"
+                android:summary="Advanced Colour Options"
+                android:title="Colours">
+                <PreferenceScreen
+                    android:key="stock_name"
+                    android:summary="Edit color of stock name"
+                    android:title="Stock Name"/>
+                <PreferenceScreen
+                    android:key="stock_price"
+                    android:summary="Edit color of stock price"
+                    android:title="Stock Price"/>
+                <ListPreference
+                    android:defaultValue="light"
+                    android:entries="@array/updated_colour_entries"
+                    android:entryValues="@array/updated_colour_entryvalues"
+                    android:key="updated_colour"
+                    android:title="Footer colour" />
+                <PreferenceCategory
+                    android:title = "Daily Change %">
+                    <PreferenceScreen
+                        android:key="high_alert"
+                        android:summary="Choose color when stock price reaches Max value"
+                        android:title="High Alert"/>
+                    <PreferenceScreen
+                        android:key="low_alert"
+                        android:summary="Choose color when stock price reaches lowest value"
+                        android:title="Low Alert"/>
+                    <PreferenceScreen
+                        android:key="increase_alert"
+                        android:summary="Choose color when stock price increases value"
+                        android:title="Increase"/>
+                    <PreferenceScreen
+                        android:key="decrease_alert"
+                        android:summary="Choose color when stock price decreases"
+                        android:title="Decrease"/>
+                </PreferenceCategory>
+            </PreferenceScreen>
+            <PreferenceScreen
                 android:key="widget_views"
                 android:summary="Choose which widget views to use"
                 android:title="Widget views">
@@ -161,12 +199,6 @@
                     android:entryValues="@array/text_style_entryvalues"
                     android:key="text_style"
                     android:title="Widget text style" />
-                <ListPreference
-                    android:defaultValue="light"
-                    android:entries="@array/updated_colour_entries"
-                    android:entryValues="@array/updated_colour_entryvalues"
-                    android:key="updated_colour"
-                    android:title="Footer colour" />
                 <ListPreference
                     android:defaultValue="visible"
                     android:entries="@array/updated_display_entries"
