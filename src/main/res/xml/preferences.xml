@@ -23,6 +23,7 @@
   -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="MainPreferences"
     android:summary="Preferences"
     android:title="Preferences">
@@ -84,38 +85,52 @@
                 android:key="colour_options"
                 android:summary="Advanced Colour Options"
                 android:title="Colours">
-                <PreferenceScreen
+                <com.jaredrummler.android.colorpicker.ColorPreference
+                    android:defaultValue="0xFF3F51B5"
                     android:key="stock_name"
                     android:summary="Edit color of stock name"
                     android:title="Stock Name"/>
-                <PreferenceScreen
+
+                <com.jaredrummler.android.colorpicker.ColorPreference
+                    android:defaultValue="0xFF3F51B5"
                     android:key="stock_price"
                     android:summary="Edit color of stock price"
                     android:title="Stock Price"/>
+
                 <ListPreference
                     android:defaultValue="light"
                     android:entries="@array/updated_colour_entries"
                     android:entryValues="@array/updated_colour_entryvalues"
                     android:key="updated_colour"
                     android:title="Footer colour" />
+
                 <PreferenceCategory
                     android:title = "Daily Change %">
-                    <PreferenceScreen
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFF3F51B5"
                         android:key="high_alert"
                         android:summary="Choose color when stock price reaches Max value"
                         android:title="High Alert"/>
-                    <PreferenceScreen
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFF3F51B5"
                         android:key="low_alert"
                         android:summary="Choose color when stock price reaches lowest value"
                         android:title="Low Alert"/>
-                    <PreferenceScreen
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFF3F51B5"
                         android:key="increase_alert"
                         android:summary="Choose color when stock price increases value"
                         android:title="Increase"/>
-                    <PreferenceScreen
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFF3F51B5"
                         android:key="decrease_alert"
                         android:summary="Choose color when stock price decreases"
                         android:title="Decrease"/>
+
                 </PreferenceCategory>
             </PreferenceScreen>
             <PreferenceScreen
