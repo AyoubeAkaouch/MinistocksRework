@@ -179,6 +179,13 @@
                     android:summaryOff="Use a slightly larger font"
                     android:summaryOn="Use a slightly larger font"
                     android:title="Use large font" />
+                <ListPreference
+                    android:defaultValue="medium"
+                    android:entries="@array/font_size_array"
+                    android:entryValues="@array/font_size_array_entryvalues"
+                    android:key="font_size_custom"
+                    android:title="Customize the font size"
+                    android:summary="Choose a different font size"/>
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:key="colours_on_prices"

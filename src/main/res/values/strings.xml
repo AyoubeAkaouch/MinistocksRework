@@ -68,6 +68,18 @@
         <item>bold</item>
     </string-array>
 
+    <string-array name="font_size_array">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="font_size_array_entryvalues">
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+    </string-array>
+
     <string-array name="update_interval_entries">
         <item>5 minutes</item>
         <item>15 minutes</item>
