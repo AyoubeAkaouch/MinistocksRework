@@ -86,45 +86,53 @@ class WidgetView {
 
     private RemoteViews getBlankRemoteViews(Widget widget, String packageName) {
         String backgroundStyle = widget.getBackgroundStyle();
-        boolean useLargeFont = widget.useLargeFont();
+        String fontSize = widget.getFontSize();
 
         RemoteViews views;
         if (widget.getSize() == 1) {
-            if (useLargeFont) {
+            if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_1x4_large);
-            } else {
+            } else if (fontSize.equals("medium")) {
                 views = new RemoteViews(packageName, R.layout.widget_1x4);
+            } else {
+                views = new RemoteViews(packageName, R.layout.widget_1x4_small);
             }
         } else if (widget.getSize() == 2) {
-            if (useLargeFont) {
+            if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_2x2_large);
+            } else if (fontSize.equals("small")){
+                views = new RemoteViews(packageName, R.layout.widget_2x2_small);
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_2x2);
             }
         } else if (widget.getSize() == 3) {
-            if (useLargeFont) {
+            if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_2x4_large);
+            } else if (fontSize.equals("small")){
+                views = new RemoteViews(packageName, R.layout.widget_2x4_small);
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_2x4);
             }
         } else {
-            if (useLargeFont) {
+            if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_1x2_large);
+            } else if (fontSize.equals("small")){
+                views = new RemoteViews(packageName, R.layout.widget_1x2_small);
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_1x2);
             }
         }
         views.setImageViewResource(R.id.widget_bg,
-                getImageViewSrcId(backgroundStyle, useLargeFont));
+                getImageViewSrcId(backgroundStyle, fontSize));
         this.hideUnusedRows(views, widget.getSymbolCount());
         return views;
     }
 
-    private int getImageViewSrcId(String backgroundStyle, Boolean useLargeFont) {
+    private int getImageViewSrcId(String backgroundStyle, String fontSize) {
         Integer imageViewSrcId;
         switch (backgroundStyle) {
             case "transparent":
-                if (useLargeFont) {
+                if (fontSize.equals("large")) {
                     imageViewSrcId = R.drawable.ministock_bg_transparent68_large;
                 } else {
                     imageViewSrcId = R.drawable.ministock_bg_transparent68;
@@ -134,7 +142,7 @@ class WidgetView {
                 imageViewSrcId = R.drawable.blank;
                 break;
             default:
-                if (useLargeFont) {
+                if (fontSize.equals("large")) {
                     imageViewSrcId = R.drawable.ministock_bg_large;
                 } else {
                     imageViewSrcId = R.drawable.ministock_bg;

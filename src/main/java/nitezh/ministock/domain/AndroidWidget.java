@@ -233,6 +233,11 @@ class AndroidWidget implements Widget {
     }
 
     @Override
+    public String getFontSize(){
+        return this.storage.getString("font_size_custom", "medium");
+    }
+
+    @Override
     public boolean getColorsOnPrices() {
         return this.storage.getBoolean("colours_on_prices", false);
     }
