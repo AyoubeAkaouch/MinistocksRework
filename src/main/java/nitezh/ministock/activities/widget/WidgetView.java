@@ -32,6 +32,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -147,23 +148,21 @@ class WidgetView {
     // Global formatter so we can perform global text formatting in one place
     private SpannableString applyFormatting(String s) {
         SpannableString span = new SpannableString(s);
-           String value =this.widget.getTextStyle();
+           //String value =this.widget.getTextStyle();
+           boolean bold = this.widget.useBold();
+           boolean italic = this.widget.useItalic();
+           boolean underlined = this.widget.useUnderlined();
 
-           switch (value){
-               case "normal":
-                   span.setSpan(new StyleSpan(Typeface.NORMAL), 0, s.length(), 0);
-                   break;
-               case "italic":
-                   span.setSpan(new StyleSpan(Typeface.ITALIC), 0, s.length(), 0);
-                   break;
-               case "bold":
-                   span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
-                   break;
-               case "bold and Italic":
-                   span.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, s.length(), 0);
-                   break;
-
+           if(bold){
+               span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
            }
+           if(italic){
+               span.setSpan(new StyleSpan(Typeface.ITALIC), 0, s.length(), 0);
+           }
+           if (underlined){
+               span.setSpan(new UnderlineSpan(), 0, s.length(), 0);
+           }
+
         return span;
     }
 

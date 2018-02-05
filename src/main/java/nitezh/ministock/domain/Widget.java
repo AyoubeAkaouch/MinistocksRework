@@ -46,6 +46,12 @@ public interface Widget {
 
     boolean useLargeFont();
 
+    boolean useBold();
+
+    boolean useUnderlined();
+
+    boolean useItalic();
+
     boolean getHideSuffix();
 
     String getTextStyle();
