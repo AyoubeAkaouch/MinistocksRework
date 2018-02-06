@@ -82,57 +82,6 @@
             android:summary="Advanced widget settings"
             android:title="Settings">
             <PreferenceScreen
-                android:key="colour_options"
-                android:summary="Advanced Colour Options"
-                android:title="Colours">
-                <com.jaredrummler.android.colorpicker.ColorPreference
-                    android:defaultValue="0xFFFFFFFF"
-                    android:key="stock_name_colour"
-                    android:summary="Edit color of stock name"
-                    android:title="Stock Name"/>
-
-                <com.jaredrummler.android.colorpicker.ColorPreference
-                    android:defaultValue="0xFFFFFFFF"
-                    android:key="stock_price_colour"
-                    android:summary="Edit color of stock price"
-                    android:title="Stock Price"/>
-
-                <com.jaredrummler.android.colorpicker.ColorPreference
-                    android:defaultValue="0xff888888"
-                    android:key="updated_footer_colour"
-                    android:summary="Edit color of widget footer"
-                    android:title="Footer colour" />
-
-                <PreferenceCategory
-                    android:title = "Daily Change %">
-
-                    <com.jaredrummler.android.colorpicker.ColorPreference
-                        android:defaultValue="0xFF3F51B5"
-                        android:key="high_alert"
-                        android:summary="Choose color when stock price reaches Max value"
-                        android:title="High Alert"/>
-
-                    <com.jaredrummler.android.colorpicker.ColorPreference
-                        android:defaultValue="0xFF3F51B5"
-                        android:key="low_alert"
-                        android:summary="Choose color when stock price reaches lowest value"
-                        android:title="Low Alert"/>
-
-                    <com.jaredrummler.android.colorpicker.ColorPreference
-                        android:defaultValue="0xFF3F51B5"
-                        android:key="increase_alert"
-                        android:summary="Choose color when stock price increases value"
-                        android:title="Increase"/>
-
-                    <com.jaredrummler.android.colorpicker.ColorPreference
-                        android:defaultValue="0xFF3F51B5"
-                        android:key="decrease_alert"
-                        android:summary="Choose color when stock price decreases"
-                        android:title="Decrease"/>
-
-                </PreferenceCategory>
-            </PreferenceScreen>
-            <PreferenceScreen
                 android:key="widget_views"
                 android:summary="Choose which widget views to use"
                 android:title="Widget views">
@@ -201,6 +150,57 @@
                 android:key="appearance"
                 android:summary="Customise widget appearance"
                 android:title="Appearance">
+                <PreferenceScreen
+                    android:key="colour_options"
+                    android:summary="Advanced Colour Options"
+                    android:title="Colours">
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFFFFFFFF"
+                        android:key="stock_name_colour"
+                        android:summary="Edit color of stock name"
+                        android:title="Stock Name"/>
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFFFFFFFF"
+                        android:key="stock_price_colour"
+                        android:summary="Edit color of stock price"
+                        android:title="Stock Price"/>
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xff888888"
+                        android:key="updated_footer_colour"
+                        android:summary="Edit color of widget footer"
+                        android:title="Footer colour" />
+
+                    <PreferenceCategory
+                        android:title = "Daily Change %">
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFF3F51B5"
+                            android:key="high_alert"
+                            android:summary="Choose color when stock price reaches Max value"
+                            android:title="High Alert"/>
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFF3F51B5"
+                            android:key="low_alert"
+                            android:summary="Choose color when stock price reaches lowest value"
+                            android:title="Low Alert"/>
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFF3F51B5"
+                            android:key="increase_alert"
+                            android:summary="Choose color when stock price increases value"
+                            android:title="Increase"/>
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFF3F51B5"
+                            android:key="decrease_alert"
+                            android:summary="Choose color when stock price decreases"
+                            android:title="Decrease"/>
+
+                    </PreferenceCategory>
+                </PreferenceScreen>
                 <ListPreference
                     android:defaultValue="transparent"
                     android:entries="@array/background_entries"
