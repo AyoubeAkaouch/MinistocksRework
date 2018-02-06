@@ -259,12 +259,12 @@ class AndroidWidget implements Widget {
 
     @Override
     public int getPriceIncreaseColor(){
-        return this.storage.getInt("increase_alert", 0xFF3F51B5);
+        return this.storage.getInt("increase_alert_colour", 0xFFCCFF66);
     }
 
     @Override
     public int getPriceDecreaseColor(){
-        return this.storage.getInt("decrease_alert",0xFF3F51B5);
+        return this.storage.getInt("decrease_alert_colour",0xFFff6666);
     }
 
     @Override

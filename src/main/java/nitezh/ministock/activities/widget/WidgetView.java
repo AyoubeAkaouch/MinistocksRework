@@ -376,7 +376,7 @@ class WidgetView {
         if (parsedValue < 0) {
             colour = this.widget.getPriceDecreaseColor();
         } else if (parsedValue == 0) {
-            colour = WidgetColors.SAME;
+            colour = this.widget.getStockNameColor();
         } else {
             colour = this.widget.getPriceIncreaseColor();
         }

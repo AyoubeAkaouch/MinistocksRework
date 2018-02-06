@@ -27,9 +27,9 @@ package nitezh.ministock.activities.widget;
 import android.graphics.Color;
 
 class WidgetColors {
-    static final int GAIN = Color.parseColor("#CCFF66");
-    static final int LOSS = Color.parseColor("#FF6666");
-    static final int SAME = Color.WHITE;
+    //static final int GAIN = Color.parseColor("#CCFF66");
+    //static final int LOSS = Color.parseColor("#FF6666");
+    //static final int SAME = Color.WHITE;
     static final int HIGH_ALERT = Color.parseColor("#FFEE33");
     static final int LOW_ALERT = Color.parseColor("#FF66FF");
     static final int VOLUME = Color.LTGRAY;
