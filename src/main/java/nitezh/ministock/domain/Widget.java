@@ -54,7 +54,7 @@ public interface Widget {
 
     String getFooterVisibility();
 
-    String getFooterColor();
+    int getFooterColor();
 
     boolean showShortTime();
 

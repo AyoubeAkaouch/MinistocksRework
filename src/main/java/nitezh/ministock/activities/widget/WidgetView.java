@@ -32,6 +32,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -517,14 +518,7 @@ class WidgetView {
     }
 
     private int getFooterColor() {
-        String colorType = this.widget.getFooterColor();
-        int color = Color.parseColor("#555555");
-        if (colorType.equals("light")) {
-            color = Color.GRAY;
-        } else if (colorType.equals("yellow")) {
-            color = Color.parseColor("#cccc77");
-        }
-
+        int color = this.widget.getFooterColor();
         return color;
     }
 
