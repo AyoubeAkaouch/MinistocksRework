@@ -374,11 +374,11 @@ class WidgetView {
         double parsedValue = NumberTools.tryParseDouble(value, 0d);
         int colour;
         if (parsedValue < 0) {
-            colour = WidgetColors.LOSS;
+            colour = this.widget.getPriceDecreaseColor();
         } else if (parsedValue == 0) {
             colour = WidgetColors.SAME;
         } else {
-            colour = WidgetColors.GAIN;
+            colour = this.widget.getPriceIncreaseColor();
         }
         return colour;
     }
