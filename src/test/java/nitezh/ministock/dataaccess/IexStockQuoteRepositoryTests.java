@@ -56,7 +56,7 @@ public class IexStockQuoteRepositoryTests {
     @Test
     public void retrieveQuotesAsJson() {
         // Skipif
-        Assume.assumeTrue(System.getenv("TRAVIS_CI") == null);
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
 
         // Arrange
         List<String> symbols = Arrays.asList("AAPL", "GOOG");
@@ -86,7 +86,7 @@ public class IexStockQuoteRepositoryTests {
     @Test
     public void getQuotes() {
         // Skipif
-        Assume.assumeTrue(System.getenv("TRAVIS_CI") == null);
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
 
         // Arrange
         List<String> symbols = Arrays.asList("AAPL", "GOOG");
