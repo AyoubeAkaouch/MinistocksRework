@@ -48,7 +48,7 @@ class WidgetRow {
         this.symbol = "";
         this.symbolDisplayColor = this.widget.getStockNameColor();
         this.price = "";
-        this.priceColor = Color.WHITE;
+        this.priceColor = this.widget.getStockPriceColor();
         this.volume = "";
         this.volumeColor = Color.WHITE;
         this.stockInfo = "";

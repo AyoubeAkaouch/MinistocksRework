@@ -58,6 +58,8 @@ public interface Widget {
 
     int getStockNameColor();
 
+    int getStockPriceColor();
+
     boolean showShortTime();
 
     boolean hasDailyChangeView();
