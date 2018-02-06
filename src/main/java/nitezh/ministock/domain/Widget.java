@@ -64,6 +64,10 @@ public interface Widget {
 
     int getPriceDecreaseColor();
 
+    int getHighAlertColor();
+
+    int getLowAlertColor();
+
     boolean showShortTime();
 
     boolean hasDailyChangeView();

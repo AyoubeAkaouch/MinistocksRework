@@ -268,6 +268,16 @@ class AndroidWidget implements Widget {
     }
 
     @Override
+    public int getHighAlertColor(){
+        return this.storage.getInt("high_alert_colour", 0xFFFFEE33);
+    }
+
+    @Override
+    public int getLowAlertColor(){
+        return this.storage.getInt("low_alert_colour", 0xFFFF66FF);
+    }
+
+    @Override
     public boolean showShortTime() {
         return this.storage.getBoolean("short_time", false);
     }

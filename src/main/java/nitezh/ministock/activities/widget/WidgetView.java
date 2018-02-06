@@ -326,10 +326,10 @@ class WidgetView {
 
     private void SetPriceColumnColourIfLimitTriggered(WidgetRow widgetRow, WidgetStock widgetStock, Boolean plView) {
         if (widgetStock.getLimitHighTriggered() && !plView) {
-            widgetRow.setPriceColor(WidgetColors.HIGH_ALERT);
+            widgetRow.setPriceColor(this.widget.getHighAlertColor());
         }
         if (widgetStock.getLimitLowTriggered() && !plView) {
-            widgetRow.setPriceColor(WidgetColors.LOW_ALERT);
+            widgetRow.setPriceColor(this.widget.getLowAlertColor());
         }
     }
 
