@@ -56,6 +56,8 @@ public interface Widget {
 
     int getFooterColor();
 
+    int getStockNameColor();
+
     boolean showShortTime();
 
     boolean hasDailyChangeView();

@@ -244,7 +244,12 @@ class AndroidWidget implements Widget {
 
     @Override
     public int getFooterColor() {
-        return this.storage.getInt("updated_footer_colour", 0000);
+        return this.storage.getInt("updated_footer_colour", 0xFF888888 );
+    }
+
+    @Override
+    public int getStockNameColor() {
+        return this.storage.getInt("stock_name_colour", 0xFFFFFFFF );
     }
 
     @Override
