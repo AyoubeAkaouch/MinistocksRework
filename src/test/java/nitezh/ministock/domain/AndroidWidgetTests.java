@@ -87,15 +87,6 @@ public class AndroidWidgetTests {
 
     }
  
-    @Test
-    public void testShouldUnderlined(){
-        Storage storage = widget.getStorage();
-        storage.putBoolean("show_underlined",true);
-        storage.apply();
-
-        assertEquals(true,widget.useUnderlined());
-
-    }
 
       @Test
        public void testShouldItalic(){
