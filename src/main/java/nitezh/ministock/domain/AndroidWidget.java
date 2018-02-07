@@ -227,11 +227,11 @@ class AndroidWidget implements Widget {
         return this.storage.getBoolean("hide_suffix", false);
     }
 
-   @Override
+   /*@Override
     public String getTextStyle() {
         return this.storage.getString("text_style", "normal");
     }
-
+*/
     @Override
     public boolean useBold(){
         return this.storage.getBoolean("show_bold",false);

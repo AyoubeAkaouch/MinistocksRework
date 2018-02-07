@@ -54,7 +54,7 @@ public interface Widget {
 
     boolean getHideSuffix();
 
-    String getTextStyle();
+    /*String getTextStyle();*/
 
     boolean getColorsOnPrices();
 
