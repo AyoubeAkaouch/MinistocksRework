@@ -57,6 +57,18 @@ public class AndroidWidgetTests {
     }
 
     @Test
+    public void testAllDefaultColorsHaveExpectedValue(){
+        //Making sure that these values will always be the ones the apps start with.
+        assertEquals(widget.getFooterColor(), 0xFF888888 );
+        assertEquals(widget.getStockNameColor(),0xFFFFFFFF);
+        assertEquals(widget.getStockPriceColor(),0xFFFFFFFF);
+        assertEquals(widget.getPriceIncreaseColor(),0xFFCCFF66);
+        assertEquals(widget.getPriceDecreaseColor(), 0xFFff6666);
+        assertEquals(widget.getHighAlertColor(), 0xFFFFEE33);
+        assertEquals(widget.getLowAlertColor(),0xFFFF66FF);
+    }
+
+    @Test
     public void testShouldUpdateOnRightTouchReturnsTrueIfSet() {
         // Arrange
         Storage storage = widget.getStorage();
