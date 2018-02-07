@@ -32,6 +32,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -151,6 +152,18 @@ class WidgetView {
             span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
         } else {
             span.setSpan(new StyleSpan(Typeface.NORMAL), 0, s.length(), 0);
+        }
+        String value =this.widget.getFont();
+        switch(value){
+            case "Monospace":
+                span.setSpan(new TypefaceSpan("monospace"), 0,s.length(),0);
+                break;
+            case "Serif":
+                span.setSpan(new TypefaceSpan("serif"), 0,s.length(),0);
+                break;
+            case "Sans-serif":
+                span.setSpan(new TypefaceSpan("sans-serif"), 0,s.length(),0);
+                break;
         }
         return span;
     }
