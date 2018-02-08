@@ -66,4 +66,23 @@ public class AndroidWidgetTests {
         // Act and Assert
         assertEquals(true, widget.shouldUpdateOnRightTouch());
     }
+
+    @Test
+    public void testShouldSerif(){
+        Storage storage = widget.getStorage();
+        storage.putString("font","Serif");
+        storage.apply();
+        assertEquals("Serif",widget.getFont());
+    }
+
+
+    @Test
+    public void testShouldMonospace(){
+        Storage storage = widget.getStorage();
+        storage.putString("font","Monospace");
+        storage.apply();
+        assertEquals("Monospace",widget.getFont());
+    }
 }
+
+
