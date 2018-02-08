@@ -75,13 +75,20 @@ public class AndroidWidgetTests {
         assertEquals("Serif",widget.getFont());
     }
 
-
     @Test
     public void testShouldMonospace(){
         Storage storage = widget.getStorage();
         storage.putString("font","Monospace");
         storage.apply();
         assertEquals("Monospace",widget.getFont());
+    }
+
+    @Test
+    public void testShouldSansserif(){
+        Storage storage = widget.getStorage();
+        storage.putString("font","Sans-serif");
+        storage.apply();
+        assertEquals("Sans-serif",widget.getFont());
     }
 }
 
