@@ -48,8 +48,11 @@ import nitezh.ministock.DialogTools;
 import nitezh.ministock.R;
 import nitezh.ministock.UserData;
 import nitezh.ministock.activities.widget.WidgetProviderBase;
+import nitezh.ministock.domain.WidgetStock;
 import nitezh.ministock.utils.DateTools;
 import nitezh.ministock.utils.VersionTools;
+import nitezh.ministock.Storage;
+
 
 import static android.content.SharedPreferences.Editor;
 import static android.content.SharedPreferences.OnSharedPreferenceChangeListener;
