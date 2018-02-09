@@ -255,11 +255,11 @@
 
             <TextView
                 android:id="@+id/text5"
-                style="@style/StockTime" />
+                style="@style/StockTime_small" />
 
             <TextView
                 android:id="@+id/text6"
-                style="@style/StockView" />
+                style="@style/StockView_small" />
 
         </LinearLayout>
     </LinearLayout>
