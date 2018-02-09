@@ -173,7 +173,7 @@
                     android:entryValues="@array/updated_display_entryvalues"
                     android:key="updated_display"
                     android:title="Footer display" />
-               
+
                 <ListPreference
                     android:defaultValue="medium"
                     android:entries="@array/font_size_array"
