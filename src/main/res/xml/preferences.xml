@@ -173,12 +173,7 @@
                     android:entryValues="@array/updated_display_entryvalues"
                     android:key="updated_display"
                     android:title="Footer display" />
-                <CheckBoxPreference
-                    android:defaultValue="false"
-                    android:key="large_font"
-                    android:summaryOff="Use a slightly larger font"
-                    android:summaryOn="Use a slightly larger font"
-                    android:title="Use large font" />
+               
                 <ListPreference
                     android:defaultValue="medium"
                     android:entries="@array/font_size_array"
