@@ -153,8 +153,8 @@ class WidgetView {
         } else {
             span.setSpan(new StyleSpan(Typeface.NORMAL), 0, s.length(), 0);
         }
-        String value =this.widget.getFont();
-        switch(value){
+        String FontTypeValue =this.widget.getFont();
+        switch(FontTypeValue){
             case "Monospace":
                 span.setSpan(new TypefaceSpan("monospace"), 0,s.length(),0);
                 break;
