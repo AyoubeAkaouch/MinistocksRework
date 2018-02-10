@@ -200,13 +200,6 @@
                             android:title="Decrease"/>
 
                     </PreferenceCategory>
-                    <PreferenceCategory android:title = "Reset">
-
-                        <Preference android:title="Reset to Defaults"
-                            android:key="reset_color"
-                            android:summary="Reset everything to default color"/>
-
-                    </PreferenceCategory>
                 </PreferenceScreen>
                 <ListPreference
                     android:defaultValue="transparent"
