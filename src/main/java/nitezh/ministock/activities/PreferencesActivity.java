@@ -678,18 +678,6 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
                 return true;
             }
         });
-
-
-        Preference button = findPreference("reset_color");
-        button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference){
-
-                //call setFooter, setStockName etc..
-
-                return true;
-            }
-        });
     }
 
     private void updateSummaries(SharedPreferences sharedPreferences, String key) {
