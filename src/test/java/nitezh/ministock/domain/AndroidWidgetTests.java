@@ -44,7 +44,7 @@ public class AndroidWidgetTests {
     public void setUp() {
 
         int WIDGET_ID = 1;
-        int WIDGET_SIZE = 0;
+        int WIDGET_SIZE = 0; //1x2 widget used
 
         widget = new AndroidWidgetRepository(RuntimeEnvironment.application)
                 .addWidget(WIDGET_ID, WIDGET_SIZE);
@@ -66,4 +66,32 @@ public class AndroidWidgetTests {
         // Act and Assert
         assertEquals(true, widget.shouldUpdateOnRightTouch());
     }
+    
+    @Test
+    public void testMediumFontSize(){
+        Storage storage = widget.getStorage();
+        storage.putString("font_size_custom", "medium");
+        storage.apply();
+
+        assertEquals("medium", widget.getFontSize());
+    }
+
+    @Test
+    public void testLargeFontSize(){
+        Storage storage = widget.getStorage();
+        storage.putString("font_size_custom", "large");
+        storage.apply();
+
+        assertEquals("large", widget.getFontSize());
+    }
+
+    @Test
+    public void testSmallFontSize(){
+        Storage storage = widget.getStorage();
+        storage.putString("font_size_custom", "small");
+        storage.apply();
+
+        assertEquals("small", widget.getFontSize());
+    }
+
 }
