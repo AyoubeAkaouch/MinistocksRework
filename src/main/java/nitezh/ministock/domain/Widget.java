@@ -46,9 +46,15 @@ public interface Widget {
 
     boolean useLargeFont();
 
+    boolean useBold();
+
+    boolean useUnderlined();
+
+    boolean useItalic();
+
     boolean getHideSuffix();
 
-    boolean getTextStyle();
+    /*String getTextStyle();*/
 
     boolean getColorsOnPrices();
 

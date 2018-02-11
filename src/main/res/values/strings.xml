@@ -73,10 +73,16 @@
     <string-array name="text_style_entries">
         <item>Normal</item>
         <item>Bold</item>
+        <item>Italic</item>
+        <item>Bold and Italic</item>
+
     </string-array>
     <string-array name="text_style_entryvalues">
         <item>normal</item>
         <item>bold</item>
+        <item>italic</item>
+        <item>bold and Italic</item>
+
     </string-array>
 
     <string-array name="update_interval_entries">

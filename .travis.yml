@@ -10,15 +10,14 @@ android:
 jdk:
 - oraclejdk8
 
-addons:
-  sonarqube: true
+
 
 before_install:
 - chmod +x gradlew
 
 script:
 - ./gradlew build connectedCheck
-- sonar-scanner -Dsonar.login=$SONAR_TOKEN
+
 
 notifications:
     slack: soen390cryingcorner:8N7qTrseWQDgh7PPw3T2mjKY
