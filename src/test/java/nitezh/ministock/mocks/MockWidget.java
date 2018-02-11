@@ -117,8 +117,28 @@ public class MockWidget implements Widget {
     }
 
     @Override
-    public String getFooterColor() {
-        return null;
+    public int getFooterColor() {
+        return 0;
+    }
+
+    @Override
+    public int getStockNameColor() { return 0; }
+
+    @Override
+    public int getStockPriceColor() { return 0; }
+
+    @Override
+    public int getPriceIncreaseColor(){ return 0; }
+
+    @Override
+    public int getPriceDecreaseColor(){ return 0; }
+
+    @Override
+    public int getHighAlertColor(){ return 0; }
+
+    @Override
+    public int getLowAlertColor(){
+        return 0;
     }
 
     @Override

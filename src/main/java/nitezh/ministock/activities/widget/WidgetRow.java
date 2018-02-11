@@ -32,7 +32,7 @@ class WidgetRow {
     private final Widget widget;
 
     private String symbol;
-    private final int symbolDisplayColor;
+    private int symbolDisplayColor;
     private String price;
     private int priceColor;
     private String volume;
@@ -46,9 +46,9 @@ class WidgetRow {
         this.widget = widget;
 
         this.symbol = "";
-        this.symbolDisplayColor = Color.WHITE;
+        this.symbolDisplayColor = this.widget.getStockNameColor();
         this.price = "";
-        this.priceColor = Color.WHITE;
+        this.priceColor = this.widget.getStockPriceColor();
         this.volume = "";
         this.volumeColor = Color.WHITE;
         this.stockInfo = "";

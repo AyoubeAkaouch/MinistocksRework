@@ -350,10 +350,10 @@ class WidgetView {
 
     private void SetPriceColumnColourIfLimitTriggered(WidgetRow widgetRow, WidgetStock widgetStock, Boolean plView) {
         if (widgetStock.getLimitHighTriggered() && !plView) {
-            widgetRow.setPriceColor(WidgetColors.HIGH_ALERT);
+            widgetRow.setPriceColor(this.widget.getHighAlertColor());
         }
         if (widgetStock.getLimitLowTriggered() && !plView) {
-            widgetRow.setPriceColor(WidgetColors.LOW_ALERT);
+            widgetRow.setPriceColor(this.widget.getLowAlertColor());
         }
     }
 
@@ -398,11 +398,11 @@ class WidgetView {
         double parsedValue = NumberTools.tryParseDouble(value, 0d);
         int colour;
         if (parsedValue < 0) {
-            colour = WidgetColors.LOSS;
+            colour = this.widget.getPriceDecreaseColor();
         } else if (parsedValue == 0) {
-            colour = WidgetColors.SAME;
+            colour = this.widget.getStockNameColor();
         } else {
-            colour = WidgetColors.GAIN;
+            colour = this.widget.getPriceIncreaseColor();
         }
         return colour;
     }
@@ -542,14 +542,7 @@ class WidgetView {
     }
 
     private int getFooterColor() {
-        String colorType = this.widget.getFooterColor();
-        int color = Color.parseColor("#555555");
-        if (colorType.equals("light")) {
-            color = Color.GRAY;
-        } else if (colorType.equals("yellow")) {
-            color = Color.parseColor("#cccc77");
-        }
-
+        int color = this.widget.getFooterColor();
         return color;
     }
 

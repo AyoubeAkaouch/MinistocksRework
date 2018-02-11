@@ -24,6 +24,8 @@
 
 package nitezh.ministock.domain;
 
+import android.util.Log;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +35,7 @@ import static org.junit.Assert.assertEquals;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
+import nitezh.ministock.activities.widget.WidgetProviderBase;
 import nitezh.ministock.Storage;
 
 @RunWith(RobolectricTestRunner.class)
@@ -54,6 +57,40 @@ public class AndroidWidgetTests {
     public void testShouldUpdateOnRightTouchReturnsFalseByDefault() {
         // Act and Assert
         assertEquals(false, widget.shouldUpdateOnRightTouch());
+    }
+
+    @Test
+    public void testAllDefaultColorsHaveExpectedValue(){
+        //Making sure that these values will always be the ones the apps start with.
+        assertEquals(widget.getFooterColor(), 0xFF888888 );
+        assertEquals(widget.getStockNameColor(),0xFFFFFFFF);
+        assertEquals(widget.getStockPriceColor(),0xFFFFFFFF);
+        assertEquals(widget.getPriceIncreaseColor(),0xFFCCFF66);
+        assertEquals(widget.getPriceDecreaseColor(), 0xFFff6666);
+        assertEquals(widget.getHighAlertColor(), 0xFFFFEE33);
+        assertEquals(widget.getLowAlertColor(),0xFFFF66FF);
+    }
+
+    @Test
+    public void testColorIsChangedToSetColor(){
+
+        Storage storage = widget.getStorage();
+        storage.putInt("stock_name_colour",0x00000000);
+        storage.putInt("stock_price_colour",0x00000000);
+        storage.putInt("updated_footer_colour", 0x00000000);
+        storage.putInt("increase_alert_colour", 0x00000000);
+        storage.putInt("decrease_alert_colour", 0x00000000);
+        storage.putInt("high_alert_colour", 0x00000000);
+        storage.putInt("low_alert_colour", 0x00000000);
+        storage.apply();
+        
+        assertEquals(widget.getFooterColor(), 0x00000000 );
+        assertEquals(widget.getStockNameColor(),0x00000000);
+        assertEquals(widget.getStockPriceColor(),0x00000000);
+        assertEquals(widget.getPriceIncreaseColor(),0x00000000);
+        assertEquals(widget.getPriceDecreaseColor(), 0x00000000);
+        assertEquals(widget.getHighAlertColor(), 0x00000000);
+        assertEquals(widget.getLowAlertColor(),0x00000000);
     }
 
     @Test

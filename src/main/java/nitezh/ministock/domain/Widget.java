@@ -60,7 +60,19 @@ public interface Widget {
 
     String getFooterVisibility();
 
-    String getFooterColor();
+    int getFooterColor();
+
+    int getStockNameColor();
+
+    int getStockPriceColor();
+
+    int getPriceIncreaseColor();
+
+    int getPriceDecreaseColor();
+
+    int getHighAlertColor();
+
+    int getLowAlertColor();
 
     boolean showShortTime();
 

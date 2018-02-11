@@ -258,8 +258,38 @@ class AndroidWidget implements Widget {
     }
 
     @Override
-    public String getFooterColor() {
-        return this.storage.getString("updated_colour", "light");
+    public int getFooterColor() {
+        return this.storage.getInt("updated_footer_colour", 0xFF888888 );
+    }
+
+    @Override
+    public int getStockNameColor() {
+        return this.storage.getInt("stock_name_colour", 0xFFFFFFFF );
+    }
+
+    @Override
+    public int getStockPriceColor() {
+        return this.storage.getInt("stock_price_colour", 0xFFFFFFFF );
+    }
+
+    @Override
+    public int getPriceIncreaseColor(){
+        return this.storage.getInt("increase_alert_colour", 0xFFCCFF66);
+    }
+
+    @Override
+    public int getPriceDecreaseColor(){
+        return this.storage.getInt("decrease_alert_colour",0xFFff6666);
+    }
+
+    @Override
+    public int getHighAlertColor(){
+        return this.storage.getInt("high_alert_colour", 0xFFFFEE33);
+    }
+
+    @Override
+    public int getLowAlertColor(){
+        return this.storage.getInt("low_alert_colour", 0xFFFF66FF);
     }
 
     @Override
