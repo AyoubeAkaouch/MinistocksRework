@@ -702,7 +702,8 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             }
 
             // Initialise the ListPreference summaries
-            else if (key.startsWith("background") || key.startsWith("updated_colour") || key.startsWith("updated_display") || key.startsWith("text_style") || key.startsWith("font")) {
+
+            else if (key.startsWith("background") || key.startsWith("updated_colour") || key.startsWith("updated_display") || key.startsWith("text_style") || key.startsWith("font") || key.startsWith("font_size_custom")) {
                 String value = sharedPreferences.getString(key, "");
                 preference.setSummary("Selected: " + value.substring(0, 1).toUpperCase() + value.substring(1));
             }

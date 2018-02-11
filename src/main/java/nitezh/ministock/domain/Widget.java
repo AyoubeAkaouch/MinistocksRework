@@ -56,6 +56,8 @@ public interface Widget {
 
     /*String getTextStyle();*/
 
+    String getFontSize();
+
     boolean getColorsOnPrices();
 
     String getFooterVisibility();

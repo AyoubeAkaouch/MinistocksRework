@@ -37,7 +37,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">11sp</item>
     </style>
 
     <style name="StockView">
@@ -45,14 +45,14 @@
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">right</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">11sp</item>
     </style>
 
     <style name="StockTime_large">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="StockView_large">
@@ -60,15 +60,27 @@
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">right</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">13sp</item>
     </style>
-    
+    <style name="StockTime_small">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+    <style name="StockView_small">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">9sp</item>
+    </style>
     <!-- styles for portrait view (stocks) -->
     <style name="StockDatum">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">#ffffff</item>
     </style>
 
@@ -102,12 +114,12 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">#ffffff</item>
     </style>
 
     <style name="StockSymbol_large" parent="StockDatum_large">
-        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_width">9dp</item>
         <item name="android:lines">1</item>
     </style>
 
@@ -127,6 +139,40 @@
     </style>
 
     <style name="StockWideChange_large" parent="StockDatum_large">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <!-- styles for portrait view (small stocks) -->
+    <style name="StockDatum_small">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="StockSymbol_small" parent="StockDatum_small">
+        <item name="android:layout_width">5dp</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="StockName_small" parent="StockDatum_small">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="StockPrice_small" parent="StockDatum_small">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="StockChange_small" parent="StockDatum_small">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="StockWideChange_small" parent="StockDatum_small">
         <item name="android:layout_width">9dp</item>
         <item name="android:gravity">right</item>
     </style>

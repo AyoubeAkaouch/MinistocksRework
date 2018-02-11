@@ -117,6 +117,9 @@ public class MockWidget implements Widget {
     }
 
     @Override
+    public String getFontSize(){ return null; }
+     
+    @Override
     public int getFooterColor() {
         return 0;
     }
