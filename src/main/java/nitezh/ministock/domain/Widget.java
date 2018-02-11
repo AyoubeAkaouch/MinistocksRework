@@ -99,4 +99,6 @@ public interface Widget {
     boolean alwaysUseShortName();
 
     boolean shouldUpdateOnRightTouch();
+
+    String getFont();
 }

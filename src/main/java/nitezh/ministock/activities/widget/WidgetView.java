@@ -32,7 +32,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
-import android.util.Log;
+import android.text.style.TypefaceSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -149,7 +149,20 @@ class WidgetView {
     // Global formatter so we can perform global text formatting in one place
     private SpannableString applyFormatting(String s) {
         SpannableString span = new SpannableString(s);
-           //String value =this.widget.getTextStyle();
+  //Code to change update the widgets text style
+        String FontTypeValue =this.widget.getFont();
+        switch(FontTypeValue){
+            case "Monospace":
+                span.setSpan(new TypefaceSpan("monospace"), 0,s.length(),0);
+                break;
+            case "Serif":
+                span.setSpan(new TypefaceSpan("serif"), 0,s.length(),0);
+                break;
+            case "Sans-serif":
+                span.setSpan(new TypefaceSpan("sans-serif"), 0,s.length(),0);
+                break;
+        }
+        // Code to change the widgets font weight 
            boolean bold = this.widget.useBold();
            boolean italic = this.widget.useItalic();
            boolean underlined = this.widget.useUnderlined();

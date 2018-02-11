@@ -241,4 +241,8 @@ public class MockWidget implements Widget {
     @Override
     public void setSize(int size) {
     }
-}
+
+    @Override
+    public String getFont() {return null;}
+    }
+

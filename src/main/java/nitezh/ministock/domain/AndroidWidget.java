@@ -359,4 +359,9 @@ class AndroidWidget implements Widget {
     public boolean shouldUpdateOnRightTouch() {
         return this.storage.getBoolean("update_from_widget", false);
     }
+
+    @Override
+    public String getFont(){
+        return this.storage.getString("font", "Sans-serif");
+    }
 }
