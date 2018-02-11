@@ -68,6 +68,30 @@ public class AndroidWidgetTests {
     }
 
     @Test
+    public void testShouldSerif(){
+        Storage storage = widget.getStorage();
+        storage.putString("font","Serif");
+        storage.apply();
+        assertEquals("Serif",widget.getFont());
+    }
+
+    @Test
+    public void testShouldMonospace(){
+        Storage storage = widget.getStorage();
+        storage.putString("font","Monospace");
+        storage.apply();
+        assertEquals("Monospace",widget.getFont());
+    }
+
+    @Test
+    public void testShouldSansserif(){
+        Storage storage = widget.getStorage();
+        storage.putString("font","Sans-serif");
+        storage.apply();
+        assertEquals("Sans-serif",widget.getFont());
+    }
+
+  @Test
     public void testCheckIfBoldWasSetToFalse(){
         Storage storage = widget.getStorage();
         storage.getBoolean("show_bold",false);
@@ -106,6 +130,6 @@ public class AndroidWidgetTests {
 
     }
 
-
-
 }
+
+

@@ -150,6 +150,12 @@
                 android:summary="Customise widget appearance"
                 android:title="Appearance">
                 <ListPreference
+                    android:defaultValue="Monospace"
+                    android:entries="@array/font_entries"
+                    android:entryValues="@array/font_entryvalues"
+                    android:key="font"
+                    android:title="Text Font"/>
+                <ListPreference
                     android:defaultValue="transparent"
                     android:entries="@array/background_entries"
                     android:entryValues="@array/background_entryvalues"
