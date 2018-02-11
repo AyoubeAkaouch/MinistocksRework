@@ -92,10 +92,19 @@ public class MockWidget implements Widget {
         return false;
     }
 
-    @Override
+    /*@Override
     public boolean getTextStyle() {
         return false;
-    }
+    }*/
+
+    @Override
+    public boolean useBold(){ return false;}
+
+    @Override
+    public boolean useUnderlined(){ return false; }
+
+    @Override
+    public boolean useItalic(){return false;}
 
     @Override
     public boolean getColorsOnPrices() {
@@ -108,12 +117,33 @@ public class MockWidget implements Widget {
     }
 
     @Override
-    public String getFontSize(){ return null; }
-
 
     @Override
-    public String getFooterColor() {
-        return null;
+    public String getFontSize(){ return null; }
+     
+    @Override
+    public int getFooterColor() {
+        return 0;
+    }
+
+    @Override
+    public int getStockNameColor() { return 0; }
+
+    @Override
+    public int getStockPriceColor() { return 0; }
+
+    @Override
+    public int getPriceIncreaseColor(){ return 0; }
+
+    @Override
+    public int getPriceDecreaseColor(){ return 0; }
+
+    @Override
+    public int getHighAlertColor(){ return 0; }
+
+    @Override
+    public int getLowAlertColor(){
+        return 0;
     }
 
     @Override
@@ -216,4 +246,8 @@ public class MockWidget implements Widget {
     @Override
     public void setSize(int size) {
     }
-}
+
+    @Override
+    public String getFont() {return null;}
+    }
+

@@ -26,6 +26,17 @@
     <string name="app_name">Ministocks</string>
     <string name="prefs_name">nitezh.ministock_preferences</string>
 
+    <string-array name="font_entries">
+        <item>Monospace</item>
+        <item>Serif</item>
+        <item>Sans-serif</item>
+    </string-array>
+    <string-array name="font_entryvalues">
+        <item>Monospace</item>
+        <item>Serif</item>
+        <item>Sans-serif</item>
+    </string-array>
+
     <string-array name="background_entries">
         <item>Solid</item>
         <item>Transparent</item>
@@ -62,10 +73,16 @@
     <string-array name="text_style_entries">
         <item>Normal</item>
         <item>Bold</item>
+        <item>Italic</item>
+        <item>Bold and Italic</item>
+
     </string-array>
     <string-array name="text_style_entryvalues">
         <item>normal</item>
         <item>bold</item>
+        <item>italic</item>
+        <item>bold and Italic</item>
+
     </string-array>
 
     <string-array name="font_size_array">

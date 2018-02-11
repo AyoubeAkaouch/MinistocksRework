@@ -227,9 +227,24 @@ class AndroidWidget implements Widget {
         return this.storage.getBoolean("hide_suffix", false);
     }
 
+   /*@Override
+    public String getTextStyle() {
+        return this.storage.getString("text_style", "normal");
+    }
+*/
     @Override
-    public boolean getTextStyle() {
-        return this.storage.getString("text_style", "normal").equals("bold");
+    public boolean useBold(){
+        return this.storage.getBoolean("show_bold",false);
+    }
+
+    @Override
+    public boolean useUnderlined(){
+        return this.storage.getBoolean("show_underlined",false);
+    }
+
+    @Override
+    public boolean useItalic(){
+        return this.storage.getBoolean("show_italic",false);
     }
 
     @Override
@@ -248,8 +263,38 @@ class AndroidWidget implements Widget {
     }
 
     @Override
-    public String getFooterColor() {
-        return this.storage.getString("updated_colour", "light");
+    public int getFooterColor() {
+        return this.storage.getInt("updated_footer_colour", 0xFF888888 );
+    }
+
+    @Override
+    public int getStockNameColor() {
+        return this.storage.getInt("stock_name_colour", 0xFFFFFFFF );
+    }
+
+    @Override
+    public int getStockPriceColor() {
+        return this.storage.getInt("stock_price_colour", 0xFFFFFFFF );
+    }
+
+    @Override
+    public int getPriceIncreaseColor(){
+        return this.storage.getInt("increase_alert_colour", 0xFFCCFF66);
+    }
+
+    @Override
+    public int getPriceDecreaseColor(){
+        return this.storage.getInt("decrease_alert_colour",0xFFff6666);
+    }
+
+    @Override
+    public int getHighAlertColor(){
+        return this.storage.getInt("high_alert_colour", 0xFFFFEE33);
+    }
+
+    @Override
+    public int getLowAlertColor(){
+        return this.storage.getInt("low_alert_colour", 0xFFFF66FF);
     }
 
     @Override
@@ -318,5 +363,10 @@ class AndroidWidget implements Widget {
 
     public boolean shouldUpdateOnRightTouch() {
         return this.storage.getBoolean("update_from_widget", false);
+    }
+
+    @Override
+    public String getFont(){
+        return this.storage.getString("font", "Sans-serif");
     }
 }

@@ -23,6 +23,7 @@
   -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="MainPreferences"
     android:summary="Preferences"
     android:title="Preferences">
@@ -149,24 +150,75 @@
                 android:key="appearance"
                 android:summary="Customise widget appearance"
                 android:title="Appearance">
+                <PreferenceScreen
+                    android:key="colour_options"
+                    android:summary="Advanced Colour Options"
+                    android:title="Colours">
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFFFFFFFF"
+                        android:key="stock_name_colour"
+                        android:summary="Edit color of stock name"
+                        android:title="Stock Name"/>
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xFFFFFFFF"
+                        android:key="stock_price_colour"
+                        android:summary="Edit color of stock price"
+                        android:title="Stock Price"/>
+
+                    <com.jaredrummler.android.colorpicker.ColorPreference
+                        android:defaultValue="0xff888888"
+                        android:key="updated_footer_colour"
+                        android:summary="Edit color of widget footer"
+                        android:title="Footer colour" />
+
+                    <PreferenceCategory
+                        android:title = "Daily Change %">
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFFFFEE33"
+                            android:key="high_alert_colour"
+                            android:summary="Choose color when stock price reaches Max value"
+                            android:title="High Alert"/>
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFFFF66FF"
+                            android:key="low_alert_colour"
+                            android:summary="Choose color when stock price reaches lowest value"
+                            android:title="Low Alert"/>
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFFCCFF66"
+                            android:key="increase_alert_colour"
+                            android:summary="Choose color when stock price increases value"
+                            android:title="Increase"/>
+
+                        <com.jaredrummler.android.colorpicker.ColorPreference
+                            android:defaultValue="0xFFff6666"
+                            android:key="decrease_alert_colour"
+                            android:summary="Choose color when stock price decreases"
+                            android:title="Decrease"/>
+
+                    </PreferenceCategory>
+                </PreferenceScreen>
+                <ListPreference
+                    android:defaultValue="Monospace"
+                    android:entries="@array/font_entries"
+                    android:entryValues="@array/font_entryvalues"
+                    android:key="font"
+                    android:title="Text Font"/>
                 <ListPreference
                     android:defaultValue="transparent"
                     android:entries="@array/background_entries"
                     android:entryValues="@array/background_entryvalues"
                     android:key="background"
                     android:title="Widget background" />
-                <ListPreference
+                <!--<ListPreference
                     android:defaultValue="normal"
                     android:entries="@array/text_style_entries"
                     android:entryValues="@array/text_style_entryvalues"
                     android:key="text_style"
-                    android:title="Widget text style" />
-                <ListPreference
-                    android:defaultValue="light"
-                    android:entries="@array/updated_colour_entries"
-                    android:entryValues="@array/updated_colour_entryvalues"
-                    android:key="updated_colour"
-                    android:title="Footer colour" />
+                    android:title="Widget text style" />-->
                 <ListPreference
                     android:defaultValue="visible"
                     android:entries="@array/updated_display_entries"
@@ -174,13 +226,36 @@
                     android:key="updated_display"
                     android:title="Footer display" />
 
-                <ListPreference
+              <ListPreference
                     android:defaultValue="medium"
                     android:entries="@array/font_size_array"
                     android:entryValues="@array/font_size_array_entryvalues"
                     android:key="font_size_custom"
                     android:title="Customize the font size"
                     android:summary="Choose a different font size"/>
+                <PreferenceScreen
+                    android:summary="Check as many choices as you like"
+                    android:title="Widget text style">
+                     <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="show_bold"
+                        android:title="Bold" />
+                    <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="show_italic"
+                        android:title="Italic" />
+                    <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="show_underlined"
+                        android:title="Underlined" />
+                   </PreferenceScreen>
+
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="large_font"
+                    android:summaryOff="Use a slightly larger font"
+                    android:summaryOn="Use a slightly larger font"
+                    android:title="Use large font" />
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:key="colours_on_prices"

@@ -34,7 +34,8 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat">
 
         <activity
             android:name=".activities.MinistocksActivity"

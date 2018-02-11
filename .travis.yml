@@ -3,22 +3,21 @@ language: android
 android:
   components:
   - tools
-  - build-tools-25.0.2
-  - android-25
+  - build-tools-26.0.1
+  - android-26
   - sys-img-armeabi-v7a-android-25
 
 jdk:
 - oraclejdk8
 
-addons:
-  sonarqube: true
+
 
 before_install:
 - chmod +x gradlew
 
 script:
 - ./gradlew build connectedCheck
-- sonar-scanner -Dsonar.login=$SONAR_TOKEN
+
 
 notifications:
     slack: soen390cryingcorner:8N7qTrseWQDgh7PPw3T2mjKY

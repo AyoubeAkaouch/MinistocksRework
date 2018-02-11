@@ -46,9 +46,15 @@ public interface Widget {
 
     boolean useLargeFont();
 
+    boolean useBold();
+
+    boolean useUnderlined();
+
+    boolean useItalic();
+
     boolean getHideSuffix();
 
-    boolean getTextStyle();
+    /*String getTextStyle();*/
 
     String getFontSize();
 
@@ -56,7 +62,19 @@ public interface Widget {
 
     String getFooterVisibility();
 
-    String getFooterColor();
+    int getFooterColor();
+
+    int getStockNameColor();
+
+    int getStockPriceColor();
+
+    int getPriceIncreaseColor();
+
+    int getPriceDecreaseColor();
+
+    int getHighAlertColor();
+
+    int getLowAlertColor();
 
     boolean showShortTime();
 
@@ -83,4 +101,6 @@ public interface Widget {
     boolean alwaysUseShortName();
 
     boolean shouldUpdateOnRightTouch();
+
+    String getFont();
 }

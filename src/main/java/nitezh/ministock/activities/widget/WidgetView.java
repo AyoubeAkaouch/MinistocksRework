@@ -32,6 +32,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.text.style.TypefaceSpan;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -155,11 +157,34 @@ class WidgetView {
     // Global formatter so we can perform global text formatting in one place
     private SpannableString applyFormatting(String s) {
         SpannableString span = new SpannableString(s);
-        if (this.widget.getTextStyle()) {
-            span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
-        } else {
-            span.setSpan(new StyleSpan(Typeface.NORMAL), 0, s.length(), 0);
+  //Code to change update the widgets text style
+        String FontTypeValue =this.widget.getFont();
+        switch(FontTypeValue){
+            case "Monospace":
+                span.setSpan(new TypefaceSpan("monospace"), 0,s.length(),0);
+                break;
+            case "Serif":
+                span.setSpan(new TypefaceSpan("serif"), 0,s.length(),0);
+                break;
+            case "Sans-serif":
+                span.setSpan(new TypefaceSpan("sans-serif"), 0,s.length(),0);
+                break;
         }
+        // Code to change the widgets font weight 
+           boolean bold = this.widget.useBold();
+           boolean italic = this.widget.useItalic();
+           boolean underlined = this.widget.useUnderlined();
+
+           if(bold){
+               span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
+           }
+           if(italic){
+               span.setSpan(new StyleSpan(Typeface.ITALIC), 0, s.length(), 0);
+           }
+           if (underlined){
+               span.setSpan(new UnderlineSpan(), 0, s.length(), 0);
+           }
+
         return span;
     }
 
@@ -333,10 +358,10 @@ class WidgetView {
 
     private void SetPriceColumnColourIfLimitTriggered(WidgetRow widgetRow, WidgetStock widgetStock, Boolean plView) {
         if (widgetStock.getLimitHighTriggered() && !plView) {
-            widgetRow.setPriceColor(WidgetColors.HIGH_ALERT);
+            widgetRow.setPriceColor(this.widget.getHighAlertColor());
         }
         if (widgetStock.getLimitLowTriggered() && !plView) {
-            widgetRow.setPriceColor(WidgetColors.LOW_ALERT);
+            widgetRow.setPriceColor(this.widget.getLowAlertColor());
         }
     }
 
@@ -381,11 +406,11 @@ class WidgetView {
         double parsedValue = NumberTools.tryParseDouble(value, 0d);
         int colour;
         if (parsedValue < 0) {
-            colour = WidgetColors.LOSS;
+            colour = this.widget.getPriceDecreaseColor();
         } else if (parsedValue == 0) {
-            colour = WidgetColors.SAME;
+            colour = this.widget.getStockNameColor();
         } else {
-            colour = WidgetColors.GAIN;
+            colour = this.widget.getPriceIncreaseColor();
         }
         return colour;
     }
@@ -525,14 +550,7 @@ class WidgetView {
     }
 
     private int getFooterColor() {
-        String colorType = this.widget.getFooterColor();
-        int color = Color.parseColor("#555555");
-        if (colorType.equals("light")) {
-            color = Color.GRAY;
-        } else if (colorType.equals("yellow")) {
-            color = Color.parseColor("#cccc77");
-        }
-
+        int color = this.widget.getFooterColor();
         return color;
     }
 
