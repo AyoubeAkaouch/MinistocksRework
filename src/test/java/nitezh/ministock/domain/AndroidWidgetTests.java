@@ -130,6 +130,7 @@ public class AndroidWidgetTests {
         storage.apply();
 
         assertEquals("small", widget.getFontSize());
+    }
 
     @Test
     public void testShouldSerif(){

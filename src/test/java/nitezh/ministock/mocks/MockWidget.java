@@ -117,8 +117,6 @@ public class MockWidget implements Widget {
     }
 
     @Override
-
-    @Override
     public String getFontSize(){ return null; }
      
     @Override
