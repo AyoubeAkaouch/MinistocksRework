@@ -103,4 +103,46 @@ public class AndroidWidgetTests {
         // Act and Assert
         assertEquals(true, widget.shouldUpdateOnRightTouch());
     }
+
+    @Test
+    public void testCheckIfBoldWasSetToFalse(){
+        Storage storage = widget.getStorage();
+        storage.getBoolean("show_bold",false);
+        storage.apply();
+
+        assertEquals(false,widget.useBold());
+    }
+
+
+    @Test
+    public void testCheckIfBoldWasSetToTrue(){
+        Storage storage = widget.getStorage();
+        storage.putBoolean("show_bold",true);
+        storage.apply();
+
+        assertEquals(true,widget.useBold());
+
+    }
+   @Test
+    public void testShouldUnderlined(){
+        Storage storage = widget.getStorage();
+        storage.putBoolean("show_underlined",true);
+        storage.apply();
+
+        assertEquals(true,widget.useUnderlined());
+
+    }
+
+      @Test
+       public void testShouldItalic(){
+        Storage storage = widget.getStorage();
+        storage.putBoolean("show_italic",true);
+        storage.apply();
+
+        assertEquals(true,widget.useItalic());
+
+    }
+
+
+
 }

@@ -92,10 +92,19 @@ public class MockWidget implements Widget {
         return false;
     }
 
-    @Override
+    /*@Override
     public boolean getTextStyle() {
         return false;
-    }
+    }*/
+
+    @Override
+    public boolean useBold(){ return false;}
+
+    @Override
+    public boolean useUnderlined(){ return false; }
+
+    @Override
+    public boolean useItalic(){return false;}
 
     @Override
     public boolean getColorsOnPrices() {

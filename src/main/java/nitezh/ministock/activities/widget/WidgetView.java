@@ -33,6 +33,7 @@ import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -148,11 +149,21 @@ class WidgetView {
     // Global formatter so we can perform global text formatting in one place
     private SpannableString applyFormatting(String s) {
         SpannableString span = new SpannableString(s);
-        if (this.widget.getTextStyle()) {
-            span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
-        } else {
-            span.setSpan(new StyleSpan(Typeface.NORMAL), 0, s.length(), 0);
-        }
+           //String value =this.widget.getTextStyle();
+           boolean bold = this.widget.useBold();
+           boolean italic = this.widget.useItalic();
+           boolean underlined = this.widget.useUnderlined();
+
+           if(bold){
+               span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
+           }
+           if(italic){
+               span.setSpan(new StyleSpan(Typeface.ITALIC), 0, s.length(), 0);
+           }
+           if (underlined){
+               span.setSpan(new UnderlineSpan(), 0, s.length(), 0);
+           }
+
         return span;
     }
 

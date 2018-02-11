@@ -207,18 +207,36 @@
                     android:entryValues="@array/background_entryvalues"
                     android:key="background"
                     android:title="Widget background" />
-                <ListPreference
+                <!--<ListPreference
                     android:defaultValue="normal"
                     android:entries="@array/text_style_entries"
                     android:entryValues="@array/text_style_entryvalues"
                     android:key="text_style"
-                    android:title="Widget text style" />
+                    android:title="Widget text style" />-->
                 <ListPreference
                     android:defaultValue="visible"
                     android:entries="@array/updated_display_entries"
                     android:entryValues="@array/updated_display_entryvalues"
                     android:key="updated_display"
                     android:title="Footer display" />
+
+                <PreferenceScreen
+                    android:summary="Check as many choices as you like"
+                    android:title="Widget text style">
+                     <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="show_bold"
+                        android:title="Bold" />
+                    <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="show_italic"
+                        android:title="Italic" />
+                    <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="show_underlined"
+                        android:title="Underlined" />
+                   </PreferenceScreen>
+
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:key="large_font"
