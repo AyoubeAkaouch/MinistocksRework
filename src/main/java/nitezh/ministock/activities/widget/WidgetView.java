@@ -150,11 +150,6 @@ class WidgetView {
     private SpannableString applyFormatting(String s) {
         SpannableString span = new SpannableString(s);
   //Code to change update the widgets text style
-        if (this.widget.getTextStyle()) {
-            span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
-        } else {
-            span.setSpan(new StyleSpan(Typeface.NORMAL), 0, s.length(), 0);
-        }
         String FontTypeValue =this.widget.getFont();
         switch(FontTypeValue){
             case "Monospace":
