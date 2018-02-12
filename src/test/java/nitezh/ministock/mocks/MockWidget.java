@@ -82,10 +82,7 @@ public class MockWidget implements Widget {
         return null;
     }
 
-    @Override
-    public boolean useLargeFont() {
-        return false;
-    }
+
 
     @Override
     public boolean getHideSuffix() {

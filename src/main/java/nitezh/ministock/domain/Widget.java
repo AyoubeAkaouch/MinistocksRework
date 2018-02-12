@@ -44,7 +44,7 @@ public interface Widget {
 
     String getBackgroundStyle();
 
-    boolean useLargeFont();
+
 
     boolean useBold();
 

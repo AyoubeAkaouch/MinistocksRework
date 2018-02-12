@@ -46,10 +46,7 @@ public class MockStorage implements Storage {
         return "";
     }
 
-    @Override
-    public boolean getBoolean(String large_font, boolean defaultVal) {
-        return false;
-    }
+
 
     @Override
     public void putInt(String key, int value) {
