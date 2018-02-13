@@ -250,12 +250,7 @@
                         android:title="Underlined" />
                    </PreferenceScreen>
 
-                <CheckBoxPreference
-                    android:defaultValue="false"
-                    android:key="large_font"
-                    android:summaryOff="Use a slightly larger font"
-                    android:summaryOn="Use a slightly larger font"
-                    android:title="Use large font" />
+
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:key="colours_on_prices"

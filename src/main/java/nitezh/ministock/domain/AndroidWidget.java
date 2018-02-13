@@ -217,10 +217,7 @@ class AndroidWidget implements Widget {
         return this.storage.getString("background", "transparent");
     }
 
-    @Override
-    public boolean useLargeFont() {
-        return this.storage.getBoolean("large_font", false);
-    }
+
 
     @Override
     public boolean getHideSuffix() {
