@@ -535,6 +535,9 @@ class WidgetView {
                 break;
 
             default:
+                if (widget.getSize() == 4)
+                    remoteViews.setViewVisibility(R.id.text_footer,View.GONE);
+                else
                 remoteViews.setViewVisibility(R.id.text_footer, View.VISIBLE);
 
                 // Set time stamp
