@@ -116,6 +116,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activities.configure.ConfigureActivity4x4"
+            android:theme="@android:style/Theme.Dialog">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activities.SymbolSearchableActivity"
             android:configChanges="orientation"
             android:excludeFromRecents="true"
@@ -208,6 +216,21 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_2x4" />
+        </receiver>
+        <receiver
+            android:name=".activities.widget.WidgetProvider4x4"
+            android:label="Ministocks (tall/tall)">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="nitezh.ministocks.ALARM_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_4x4" />
         </receiver>
     </application>
 </manifest>
