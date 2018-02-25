@@ -27,4 +27,7 @@
     android:initialLayout="@layout/widget_2x2"
     android:minHeight="146dp"
     android:minWidth="146dp"
+    android:resizeMode="vertical|horizontal"
+    android:minResizeWidth="146.0dp"
+    android:minResizeHeight="72.0dp"
     android:updatePeriodMillis="7200000" />
