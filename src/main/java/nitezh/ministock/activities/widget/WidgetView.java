@@ -115,7 +115,7 @@ class WidgetView {
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_2x4);
             }
-        } else {
+        } else if (widget.getSize() == 0){
             if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_1x2_large);
             } else if (fontSize.equals("small")){
@@ -123,6 +123,9 @@ class WidgetView {
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_1x2);
             }
+
+        }else{
+            views = new RemoteViews(packageName, R.layout.widget_4x4_graph);
         }
         views.setImageViewResource(R.id.widget_bg,
                 getImageViewSrcId(backgroundStyle, fontSize));

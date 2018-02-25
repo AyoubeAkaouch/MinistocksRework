@@ -208,6 +208,8 @@ class AndroidWidget implements Widget {
             count = 4;
         } else if (size == 2 || size == 3) {
             count = 10;
+        } else if (size == 4){
+            count = 1;
         }
         return count;
     }
