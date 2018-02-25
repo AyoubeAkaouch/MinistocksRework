@@ -152,6 +152,7 @@ class AndroidWidget implements Widget {
     public void setSize(int size) {
         this.size = size;
         this.storage.putInt("widgetSize", size);
+        this.save();
     }
 
     @Override
