@@ -196,83 +196,8 @@ public class WidgetProviderBase extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         new CustomAlarmManager(context).reinitialize();
+
         updateWidgetsFromCache(context);
-
-        WidgetRepository repository = new AndroidWidgetRepository(context);
-
-        for (int widgetId : appWidgetIds) {
-            Widget widget = repository.getWidget(widgetId);
-            System.out.println("(From onUpdate) Widget size is: "+ widget.getSize());
-            if (widget.getSize() == 4){
-                XYPlot plot = new XYPlot(context, "Widget Example");
-                final int h = (int) context.getResources().getDimension(R.dimen.sample_widget_height);
-                final int w = (int) context.getResources().getDimension(R.dimen.sample_widget_width);
-
-                plot.getGraph().setMargins(0, 0, 0 , 0);
-                plot.getGraph().setPadding(0, 0, 0, 0);
-
-                plot.getGraph().position(0, HorizontalPositioning.ABSOLUTE_FROM_LEFT, 0,
-                        VerticalPositioning.ABSOLUTE_FROM_TOP, Anchor.LEFT_TOP);
-
-                plot.getGraph().setSize(Size.FILL);
-
-                plot.getLayoutManager().moveToTop(plot.getTitle());
-
-                plot.getGraph().setLineLabelEdges(XYGraphWidget.Edge.LEFT, XYGraphWidget.Edge.BOTTOM);
-                plot.getGraph().getLineLabelInsets().setLeft(PixelUtils.dpToPix(16));
-                plot.getGraph().getLineLabelInsets().setBottom(PixelUtils.dpToPix(4));
-                plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.LEFT).getPaint().setColor(Color.RED);
-                plot.getGraph().getGridInsets().setTop(PixelUtils.dpToPix(12));
-                plot.getGraph().getGridInsets().setRight(PixelUtils.dpToPix(12));
-                plot.getGraph().getGridInsets().setLeft(PixelUtils.dpToPix(36));
-                plot.getGraph().getGridInsets().setBottom(PixelUtils.dpToPix(16));
-
-                plot.measure(w, h);
-                plot.layout(0, 0, w, h);
-
-                Number[] series1Numbers = {1, 4, 2, 8, 4, 16, 8, 32, 16, 64};
-                Number[] series2Numbers = {5, 2, 10, 5, 20, 10, 40, 20, 80, 40};
-
-                // Turn the above arrays into XYSeries':
-                XYSeries series1 = new SimpleXYSeries(
-                        Arrays.asList(series1Numbers),          // SimpleXYSeries takes a List so turn our array into a List
-                        SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
-                        "Series1");                             // Set the display title of the series
-
-                // same as above
-                XYSeries series2 = new SimpleXYSeries(Arrays.asList(series2Numbers),
-                        SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series2");
-
-                // Create a formatter to use for drawing a series using LineAndPointRenderer:
-                LineAndPointFormatter series1Format = new LineAndPointFormatter(
-                        Color.rgb(0, 200, 0),                   // line color
-                        Color.rgb(0, 100, 0),                   // point color
-                        null, null);                            // fill color (none)
-
-                // add a new series' to the xyplot:
-                plot.addSeries(series1, series1Format);
-
-                // same as above:
-                plot.addSeries(series2,
-                        new LineAndPointFormatter(
-                                Color.rgb(0, 0, 200), Color.rgb(0, 0, 100), null, null));
-
-
-                // reduce the number of range labels
-                plot.setLinesPerRangeLabel(3);
-                plot.setLinesPerDomainLabel(2);
-
-                // hide the legend:
-                plot.getLegend().setVisible(false);
-
-                RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_4x4_graph);
-
-                Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-                plot.draw(new Canvas(bitmap));
-                rv.setImageViewBitmap(R.id.imgView, bitmap);
-                appWidgetManager.updateAppWidget(widgetId, rv);
-            }
-        }
 
     }
 
@@ -289,8 +214,6 @@ public class WidgetProviderBase extends AppWidgetProvider {
 
         WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
         for (int appWidgetId : appWidgetIds) {
-            Widget widget = widgetRepository.getWidget(appWidgetId);
-            System.out.println("(From onDeleted) Widget size is: "+widget.getSize());
             widgetRepository.delWidget(appWidgetId);
         }
         if (widgetRepository.isEmpty()) {
@@ -333,9 +256,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
 
             WidgetRepository repository = new AndroidWidgetRepository(context);
 
-            // for (int widgetId : appWidgetIds) {
             Widget widget = repository.getWidget(appWidgetId);
-            System.out.println("(From GetDataTask.build()) Widget size is: "+ widget.getSize());
             if (widget.getSize() == 4){
                 XYPlot plot = new XYPlot(context, "Widget Example");
                 final int h = (int) context.getResources().getDimension(R.dimen.sample_widget_height);
@@ -421,7 +342,6 @@ public class WidgetProviderBase extends AppWidgetProvider {
             this.quotes = quoteRepository.getQuotes(
                     widgetRepository.getWidget(this.appWidgetId).getSymbols(),
                     updateType == UpdateType.VIEW_UPDATE);
-            System.out.println("this.quotes from doInBackground boi: "+ this.quotes);
             this.timeStamp = quoteRepository.getTimeStamp();
 
             return null;
