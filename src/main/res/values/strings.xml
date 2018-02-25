@@ -123,7 +123,6 @@
     <string name="_1x2_large_landscape_widget_background">1x2 large landscape widget background</string>
     <string name="_2x4_large_widget_background">2x4 large widget background</string>
     <string name="_2x4_widget_background">2x4 widget background</string>
-    <string name="_4x4_widget_background">4x4 widget background</string>
     <string name="_2x2_large_widget_background">2x2 large widget background</string>
     <string name="_1x2_landscape_widget_background">1x2 landscape widget background</string>
     <string name="portfolio_item_date_label">Date (yyyy-mm-dd)</string>
