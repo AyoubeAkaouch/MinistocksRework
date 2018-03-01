@@ -97,7 +97,7 @@ public class GraphTools {
         }catch (IOException ignored){
 
         }
-        Number[] series1Numbers = {10, 30, 2, 8, 54, 96, 208, 232, 6, 64};
+
         //    Number[] series2Numbers = {5, 2, 10, 5, 20, 10, 40, 20, 80, 40};
 
         // Turn the above arrays into XYSeries':
@@ -125,19 +125,7 @@ public class GraphTools {
                                 Color.rgb(0, 0, 200), Color.rgb(0, 0, 100), null, null));*/
         final Date[] stockDates = calendars.toArray(new Date[calendars.size()]);
         System.out.println("stockDates size is "+ stockDates.length);
-        /*final Date[] years = {
-                new GregorianCalendar(2001, Calendar.JANUARY, 10).getTime(),
-                new GregorianCalendar(2001, Calendar.FEBRUARY, 12).getTime(),
-                new GregorianCalendar(2002, Calendar.MARCH, 5).getTime(),
-                new GregorianCalendar(2002, Calendar.APRIL, 6).getTime(),
-                new GregorianCalendar(2003, Calendar.MAY, 3).getTime(),
-                new GregorianCalendar(2003, Calendar.JUNE, 21).getTime(),
-                new GregorianCalendar(2004, Calendar.JULY, 30).getTime(),
-                new GregorianCalendar(2004, Calendar.AUGUST, 25).getTime(),
-                new GregorianCalendar(2005, Calendar.SEPTEMBER, 22).getTime(),
-                new GregorianCalendar(2005, Calendar.OCTOBER, 31).getTime()
-        };
-*/
+
         plot.setDomainStep(StepMode.SUBDIVIDE, stockDates.length);
         plot.setRotationX(-90);
         plot.setRotationY(45);
@@ -147,8 +135,7 @@ public class GraphTools {
                     // create a simple date format that draws on the year portion of our timestamp.
                     // see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
                     // for a full description of SimpleDateFormat.
-                    //  private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM yyyy");
-                    //   private final SimpleDateFormat dateFormat = new SimpleDateFormat("d/M");
+
                     private final SimpleDateFormat dateFormat = new SimpleDateFormat("y/MM");
 
                     @Override
@@ -160,7 +147,7 @@ public class GraphTools {
                         // double back to int:
 
                         int yearIndex = (int) Math.round(((Number) obj).doubleValue());
-                        System.out.println("Double index "+((Number) obj).doubleValue()+" and yearindex is "+yearIndex);
+                       
                         return dateFormat.format(stockDates[yearIndex], toAppendTo, pos);
                     }
 

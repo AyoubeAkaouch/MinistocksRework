@@ -268,98 +268,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
 
             WidgetRepository repository = new AndroidWidgetRepository(context);
 
-            Widget widget = repository.getWidget(appWidgetId);
-            if (widget.getSize() == 4){
-                /*XYPlot plot = new XYPlot(context, "Widget Example");
-                final int h = (int) context.getResources().getDimension(R.dimen.sample_widget_height);
-                final int w = (int) context.getResources().getDimension(R.dimen.sample_widget_width);
-                plot.getGraph().setMargins(0, 0, 0 , 0);
-                plot.getGraph().setPadding(0, 0, 0, 0);
-                plot.getGraph().position(0, HorizontalPositioning.ABSOLUTE_FROM_LEFT, 0,
-                        VerticalPositioning.ABSOLUTE_FROM_TOP, Anchor.LEFT_TOP);
-            //    plot.getGraph().setSize(Size.FILL);
-                plot.getLayoutManager().moveToTop(plot.getTitle());
-                plot.getGraph().setLineLabelEdges(XYGraphWidget.Edge.LEFT, XYGraphWidget.Edge.BOTTOM);
-                plot.getGraph().getLineLabelInsets().setLeft(PixelUtils.dpToPix(16));
-                plot.getGraph().getLineLabelInsets().setBottom(PixelUtils.dpToPix(0));
-                plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.LEFT).getPaint().setColor(Color.RED);
-                plot.getGraph().getGridInsets().setTop(PixelUtils.dpToPix(12));
-                plot.getGraph().getGridInsets().setRight(PixelUtils.dpToPix(12));
-                plot.getGraph().getGridInsets().setLeft(PixelUtils.dpToPix(36));
-                plot.getGraph().getGridInsets().setBottom(PixelUtils.dpToPix(16));
-                plot.measure(w, h);
-                plot.layout(0, 0, w, h);
-                Number[] series1Numbers = {10, 30, 2, 8, 54, 96, 208, 232, 6, 64};
-            //    Number[] series2Numbers = {5, 2, 10, 5, 20, 10, 40, 20, 80, 40};
-                // Turn the above arrays into XYSeries':
-                XYSeries series1 = new SimpleXYSeries(
-                        Arrays.asList(series1Numbers),          // SimpleXYSeries takes a List so turn our array into a List
-                        SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
-                        "Series1");                             // Set the display title of the series
-                // same as above
-                *//*XYSeries series2 = new SimpleXYSeries(Arrays.asList(series2Numbers),
-                        SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series2");*//*
-                // Create a formatter to use for drawing a series using LineAndPointRenderer:
-                LineAndPointFormatter series1Format = new LineAndPointFormatter(
-                        Color.rgb(0, 200, 0),                   // line color
-                        Color.rgb(0, 100, 0),                   // point color
-                        null, null);                            // fill color (none)
-                // add a new series' to the xyplot:
-                plot.addSeries(series1, series1Format);
-                // same as above:
-                *//*plot.addSeries(series2,
-                        new LineAndPointFormatter(
-                                Color.rgb(0, 0, 200), Color.rgb(0, 0, 100), null, null));*//*
-                final Date[] years = {
-                        new GregorianCalendar(2001, Calendar.JANUARY, 10).getTime(),
-                        new GregorianCalendar(2001, Calendar.FEBRUARY, 12).getTime(),
-                        new GregorianCalendar(2002, Calendar.MARCH, 5).getTime(),
-                        new GregorianCalendar(2002, Calendar.APRIL, 6).getTime(),
-                        new GregorianCalendar(2003, Calendar.MAY, 3).getTime(),
-                        new GregorianCalendar(2003, Calendar.JUNE, 21).getTime(),
-                        new GregorianCalendar(2004, Calendar.JULY, 30).getTime(),
-                        new GregorianCalendar(2004, Calendar.AUGUST, 25).getTime(),
-                        new GregorianCalendar(2005, Calendar.SEPTEMBER, 22).getTime(),
-                        new GregorianCalendar(2005, Calendar.OCTOBER, 31).getTime()
-                };
-                plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).
-                        setFormat(new Format() {
-                            // create a simple date format that draws on the year portion of our timestamp.
-                            // see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
-                            // for a full description of SimpleDateFormat.
-                          //  private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM yyyy");
-                         //   private final SimpleDateFormat dateFormat = new SimpleDateFormat("d/M");
-                            private final SimpleDateFormat dateFormat = new SimpleDateFormat("d/M");
-                            @Override
-                            public StringBuffer format(Object obj,
-                                                       @NonNull StringBuffer toAppendTo,
-                                                       @NonNull FieldPosition pos) {
-                                // this rounding is necessary to avoid precision loss when converting from
-                                // double back to int:
-                                int yearIndex = (int) Math.round(((Number) obj).doubleValue());
-                                return dateFormat.format(years[yearIndex], toAppendTo, pos);
-                            }
-                            @Override
-                            public Object parseObject(String source, @NonNull ParsePosition pos) {
-                                return null;
-                            }
-                        });
-                // reduce the number of range labels
-                plot.setLinesPerRangeLabel(1);
-                plot.setLinesPerDomainLabel(1);
-                plot.setDomainLabel("Hello everybody");
-            //    plot.setDomainStep(StepMode.SUBDIVIDE, years.length);
-                // hide the legend:
-                plot.getLegend().setVisible(false);
-                RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_4x4_graph);
-                Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-                plot.draw(new Canvas(bitmap));
-                rv.setImageViewBitmap(R.id.imgView, bitmap);
-                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-                appWidgetManager.updateAppWidget(appWidgetId, rv);*/
-                String symbol = widget.getSymbols().get(0);
-                //    GraphTools.drawGraph(context, symbol, appWidgetId);
-            }
+
 
             return this;
         }
@@ -377,27 +286,21 @@ public class WidgetProviderBase extends AppWidgetProvider {
                     updateType == UpdateType.VIEW_UPDATE);
             this.timeStamp = quoteRepository.getTimeStamp();
 
-            //-------my dumb code starts here---------------------------
 
             Widget widget = widgetRepository.getWidget(this.appWidgetId);
             if (widget.getSize() == 4) {
                 List<String> symbols = widget.getSymbols();
                 String symbol = symbols.get(0);
                 GraphTools.drawGraph(context, symbol, appWidgetId);
-                //    System.out.println("this.quotes output in doInBackground: "+ this.quotes.get("^DJI"));
-                if (symbol.isEmpty())
-                    System.out.println("Get rekt son");
-                else
-                    System.out.println("symbol output in doInBackground: " + symbol);
             }
-            //------------end here--------------------------------------
-            return null;
-        }
 
-        @Override
-        protected void onPostExecute(Void result) {
-            applyUpdate(this.context, this.appWidgetId, this.updateType, this.quotes,
-                    this.timeStamp);
+                return null;
+
+        }
+            @Override
+            protected void onPostExecute (Void result){
+                applyUpdate(this.context, this.appWidgetId, this.updateType, this.quotes,
+                        this.timeStamp);
+            }
         }
     }
-}
