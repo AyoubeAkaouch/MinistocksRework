@@ -54,7 +54,7 @@ public class GraphTools {
         final int w = (int) context.getResources().getDimension(R.dimen.sample_widget_width);
 
         plot.getGraph().setMargins(0, 0, 20 , 30);
-        plot.getGraph().setPadding(45, 0, 0, 45);
+        plot.getGraph().setPadding(50, 0, 0, 60);
 
 
 
@@ -119,8 +119,8 @@ public class GraphTools {
         
 
         plot.setDomainStep(StepMode.SUBDIVIDE, stockDates.length);
-        plot.setRotationX(-90);
-        plot.setRotationY(45);
+        plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).getPaint().setTextSize(30);
+        plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.LEFT).getPaint().setTextSize(35);
         plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).
                 setFormat(new Format() {
 
