@@ -56,14 +56,11 @@ public class GraphTools {
         plot.getGraph().setMargins(0, 0, 20 , 30);
         plot.getGraph().setPadding(50, 0, 0, 50);
 
-/*
-        plot.getGraph().position(0, HorizontalPositioning.ABSOLUTE_FROM_LEFT, 0,
-                VerticalPositioning.ABSOLUTE_FROM_TOP, Anchor.LEFT_TOP);
-*/
+
 
         plot.getGraph().position(0, HorizontalPositioning.ABSOLUTE_FROM_CENTER, 0,
                 VerticalPositioning.ABSOLUTE_FROM_CENTER, Anchor.CENTER);
-        //   plot.getGraph().setSize(Size.FILL);
+        
         plot.getGraph().setSize(new Size(PixelUtils.dpToPix(50), SizeMode.FILL,
                 PixelUtils.dpToPix(50), SizeMode.FILL));
 
@@ -98,7 +95,7 @@ public class GraphTools {
 
         }
 
-        //    Number[] series2Numbers = {5, 2, 10, 5, 20, 10, 40, 20, 80, 40};
+        
 
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(
@@ -106,9 +103,7 @@ public class GraphTools {
                 SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
                 "Series1");                             // Set the display title of the series
 
-        // same as above
-                /*XYSeries series2 = new SimpleXYSeries(Arrays.asList(series2Numbers),
-                        SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series2");*/
+        
 
         // Create a formatter to use for drawing a series using LineAndPointRenderer:
         LineAndPointFormatter series1Format = new LineAndPointFormatter(
@@ -119,10 +114,7 @@ public class GraphTools {
         // add a new series' to the xyplot:
         plot.addSeries(series1, series1Format);
 
-        // same as above:
-                /*plot.addSeries(series2,
-                        new LineAndPointFormatter(
-                                Color.rgb(0, 0, 200), Color.rgb(0, 0, 100), null, null));*/
+        
         final Date[] stockDates = calendars.toArray(new Date[calendars.size()]);
         
 
