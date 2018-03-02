@@ -124,7 +124,7 @@ public class GraphTools {
                         new LineAndPointFormatter(
                                 Color.rgb(0, 0, 200), Color.rgb(0, 0, 100), null, null));*/
         final Date[] stockDates = calendars.toArray(new Date[calendars.size()]);
-        System.out.println("stockDates size is "+ stockDates.length);
+        
 
         plot.setDomainStep(StepMode.SUBDIVIDE, stockDates.length);
         plot.setRotationX(-90);
