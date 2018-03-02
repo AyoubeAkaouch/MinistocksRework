@@ -54,7 +54,7 @@ public class GraphTools {
         final int w = (int) context.getResources().getDimension(R.dimen.sample_widget_width);
 
         plot.getGraph().setMargins(0, 0, 20 , 30);
-        plot.getGraph().setPadding(50, 0, 0, 50);
+        plot.getGraph().setPadding(45, 0, 0, 45);
 
 
 
