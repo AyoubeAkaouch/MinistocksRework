@@ -179,7 +179,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
         return (int)(Math.ceil(size + 30d)/70d);
     }
     @Override
-    public void onAppWidgetOptionsChanged (Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions){
+    public void onAppWidgetOptionsChanged (Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
         AndroidWidgetRepository widgets = new AndroidWidgetRepository(context);
         Widget widget = widgets.getWidget(appWidgetId);
         Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
@@ -187,15 +187,22 @@ public class WidgetProviderBase extends AppWidgetProvider {
         int minWidth = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
         int minHeight = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT);
 
-        minWidth=getCellsForSize(minWidth);
-        minHeight=getCellsForSize(minHeight);
+        minWidth = getCellsForSize(minWidth);
+        minHeight = getCellsForSize(minHeight);
 
-        if(minHeight>1){
+
+        if(minHeight>1 && minHeight<3){
             if (minWidth>3){
                 widget.setSize(3);
             }
             else {
                 widget.setSize(2);
+            }
+        }else if (minHeight >= 3) {
+            if (minWidth > 3) {
+                widget.setSize(5);
+            } else {
+                widget.setSize(6);
             }
         }
         else {

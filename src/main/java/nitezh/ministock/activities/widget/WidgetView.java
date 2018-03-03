@@ -34,6 +34,7 @@ import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -76,6 +77,7 @@ class WidgetView {
         this.quotes = quotes;
         this.quotesTimeStamp = quotesTimeStamp;
         this.updateMode = updateMode;
+        Log.d("X", "WidgetView: CONSTRUCTOR");
         this.symbols = widget.getSymbols();
 
         this.portfolioStocks = new PortfolioStockRepository(
@@ -115,13 +117,21 @@ class WidgetView {
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_2x4);
             }
-        } else {
+        } else if(widget.getSize()==0){
             if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_1x2_large);
             } else if (fontSize.equals("small")){
                 views = new RemoteViews(packageName, R.layout.widget_1x2_small);
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_1x2);
+            }
+        }else {
+            if (fontSize.equals("large")) {
+                views = new RemoteViews(packageName, R.layout.widget_3x4_large);
+            } else if (fontSize.equals("small")) {
+                views = new RemoteViews(packageName, R.layout.widget_3x4_small);
+            } else {
+                views = new RemoteViews(packageName, R.layout.widget_3x4);
             }
         }
         views.setImageViewResource(R.id.widget_bg,
@@ -425,7 +435,7 @@ class WidgetView {
     }
 
     private void hideUnusedRows(RemoteViews views, int count) {
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 16; i++) {
             int viewId = ReflectionTools.getField("line" + i);
             if (viewId > 0) {
                 views.setViewVisibility(ReflectionTools.getField("line" + i), View.GONE);
@@ -478,6 +488,7 @@ class WidgetView {
         this.clear();
 
         int lineNo = 0;
+
         for (String symbol : this.symbols) {
             if (symbol.equals("")) {
                 continue;

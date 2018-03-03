@@ -402,7 +402,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             }
         });
         // Hook up the symbol search for the stock preferences
-        for (int i = 1; i < 11; i++) {
+        for (int i = 1; i < 16; i++) {
             String key = "Stock" + i;
             findPreference(key).setOnPreferenceClickListener(new OnPreferenceClickListener() {
                 @Override
