@@ -158,7 +158,7 @@ class AndroidWidget implements Widget {
 
     @Override
     public boolean isNarrow() {
-        return (size == 0 || size == 2);
+        return (size == 0 || size == 2 || size == 6 );
     }
 
     private int _getSize() {

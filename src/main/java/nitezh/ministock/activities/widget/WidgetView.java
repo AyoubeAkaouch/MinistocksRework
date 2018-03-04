@@ -77,7 +77,6 @@ class WidgetView {
         this.quotes = quotes;
         this.quotesTimeStamp = quotesTimeStamp;
         this.updateMode = updateMode;
-        Log.d("X", "WidgetView: CONSTRUCTOR");
         this.symbols = widget.getSymbols();
 
         this.portfolioStocks = new PortfolioStockRepository(
@@ -125,13 +124,21 @@ class WidgetView {
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_1x2);
             }
-        }else {
+        }else if (widget.getSize()==5) {
             if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_3x4_large);
             } else if (fontSize.equals("small")) {
                 views = new RemoteViews(packageName, R.layout.widget_3x4_small);
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_3x4);
+            }
+        } else {
+            if (fontSize.equals("large")) {
+                views = new RemoteViews(packageName, R.layout.widget_3x2_large);
+            } else if (fontSize.equals("small")) {
+                views = new RemoteViews(packageName, R.layout.widget_3x2_small);
+            } else {
+                views = new RemoteViews(packageName, R.layout.widget_3x2);
             }
         }
         views.setImageViewResource(R.id.widget_bg,
