@@ -124,6 +124,8 @@ class WidgetView {
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_1x2);
             }
+        }else if(widget.getSize()==4){
+            views = new RemoteViews(packageName, R.layout.widget_4x4_graph);
         }else if (widget.getSize()==5) {
             if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_3x4_large);

@@ -28,18 +28,47 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.widget.RemoteViews;
 
+import com.androidplot.ui.Anchor;
+import com.androidplot.ui.HorizontalPositioning;
+import com.androidplot.ui.Size;
+import com.androidplot.ui.VerticalPositioning;
+import com.androidplot.util.PixelUtils;
+import com.androidplot.xy.LineAndPointFormatter;
+import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.XYGraphWidget;
+import com.androidplot.xy.XYPlot;
+import com.androidplot.xy.XYSeries;
+import com.androidplot.xy.StepMode;
+
+
+
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.RejectedExecutionException;
 
 import nitezh.ministock.CustomAlarmManager;
 import nitezh.ministock.PreferenceStorage;
+import nitezh.ministock.R;
 import nitezh.ministock.Storage;
 import nitezh.ministock.domain.Widget;
 import nitezh.ministock.utils.StorageCache;
+import nitezh.ministock.utils.GraphTools;
 import nitezh.ministock.UserData;
 import nitezh.ministock.activities.PreferencesActivity;
 import nitezh.ministock.domain.AndroidWidgetRepository;
@@ -222,7 +251,9 @@ public class WidgetProviderBase extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         new CustomAlarmManager(context).reinitialize();
+
         updateWidgetsFromCache(context);
+
     }
 
     @Override
@@ -278,6 +309,10 @@ public class WidgetProviderBase extends AppWidgetProvider {
             this.appWidgetId = appWidgetId;
             this.updateType = updateType;
 
+            WidgetRepository repository = new AndroidWidgetRepository(context);
+
+
+
             return this;
         }
 
@@ -294,13 +329,21 @@ public class WidgetProviderBase extends AppWidgetProvider {
                     updateType == UpdateType.VIEW_UPDATE);
             this.timeStamp = quoteRepository.getTimeStamp();
 
-            return null;
-        }
 
-        @Override
-        protected void onPostExecute(Void result) {
-            applyUpdate(this.context, this.appWidgetId, this.updateType, this.quotes,
-                    this.timeStamp);
+            Widget widget = widgetRepository.getWidget(this.appWidgetId);
+            if (widget.getSize() == 4) {
+                List<String> symbols = widget.getSymbols();
+                String symbol = symbols.get(0);
+                GraphTools.drawGraph(context, symbol, appWidgetId);
+            }
+
+                return null;
+
+        }
+            @Override
+            protected void onPostExecute (Void result){
+                applyUpdate(this.context, this.appWidgetId, this.updateType, this.quotes,
+                        this.timeStamp);
+            }
         }
     }
-}

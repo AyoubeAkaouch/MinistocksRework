@@ -36,6 +36,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.widget.TimePicker;
 
@@ -128,6 +129,21 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         }
     }
 
+    private void removePrefScreen(PreferenceCategory category, String name) {
+        try {
+            category.removePreference(findPreference(name));
+        } catch (Exception ignored) {
+        }
+    }
+
+    private void removePrefScreen(String categoryName, String name) {
+        PreferenceCategory category = (PreferenceCategory) findPreference(categoryName);
+        try {
+            category.removePreference(findPreference(name));
+        } catch (Exception ignored) {
+        }
+    }
+
     private void showRecentChanges() {
         // Return if the change log has already been viewed
         if (getAppPreferences().getString("change_log_viewed", "").equals(VersionTools.BUILD)) {
@@ -166,10 +182,23 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         int widgetSize = sharedPreferences.getInt("widgetSize", 0);
 
         // Remove extra stocks
-        if (widgetSize == 0 || widgetSize == 1) {
+        if (widgetSize == 0 || widgetSize == 1 || widgetSize == 4) {
             PreferenceScreen stock_setup = (PreferenceScreen) findPreference("stock_setup");
             for (int i = 5; i < 11; i++)
                 removePref(stock_setup, "Stock" + i);
+
+        //Remove extra stocks for 4x4 widget and unnecessary preferences
+        if (widgetSize == 4) {
+
+            PreferenceCategory widgetSettings = (PreferenceCategory) findPreference("widget_settings");
+            removePrefScreen(widgetSettings, "advanced");
+            removePrefScreen(widgetSettings, "portfolio");
+            removePrefScreen(widgetSettings, "update_now");
+
+            for (int i = 2; i < 5; i++)
+                removePref(stock_setup, "Stock" + i);
+        }
+
         }
         // Remove extra widget views
         if (widgetSize == 1 || widgetSize == 3) {
