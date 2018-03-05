@@ -76,6 +76,26 @@
                 android:key="Stock10"
                 android:summary="Set symbol"
                 android:title="Stock 10" />
+            <Preference
+                android:key="Stock11"
+                android:summary="Set symbol"
+                android:title="Stock 11" />
+            <Preference
+                android:key="Stock12"
+                android:summary="Set symbol"
+                android:title="Stock 12" />
+            <Preference
+                android:key="Stock13"
+                android:summary="Set symbol"
+                android:title="Stock 13" />
+            <Preference
+                android:key="Stock14"
+                android:summary="Set symbol"
+                android:title="Stock 14" />
+            <Preference
+                android:key="Stock15"
+                android:summary="Set symbol"
+                android:title="Stock 15" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="advanced"

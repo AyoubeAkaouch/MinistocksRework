@@ -28,6 +28,7 @@ package nitezh.ministock.domain;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -152,11 +153,12 @@ class AndroidWidget implements Widget {
     public void setSize(int size) {
         this.size = size;
         this.storage.putInt("widgetSize", size);
+        this.save();
     }
 
     @Override
     public boolean isNarrow() {
-        return (size == 0 || size == 2);
+        return (size == 0 || size == 2 || size == 6 );
     }
 
     private int _getSize() {
@@ -208,6 +210,8 @@ class AndroidWidget implements Widget {
             count = 4;
         } else if (size == 2 || size == 3) {
             count = 10;
+        }else if(size == 5 || size == 6){
+            count= 15;
         }
         return count;
     }

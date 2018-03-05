@@ -54,6 +54,23 @@ public class AndroidWidgetTests {
     }
 
     @Test
+    public void testNumberOfRowsWhenSizeChange() {
+        //No need to setSize for first assertEquals, it is already set to 0 by default
+        assertEquals(4,widget.getSymbolCount());
+        widget.setSize(1);
+        assertEquals(4,widget.getSymbolCount());
+        widget.setSize(2);
+        assertEquals(10,widget.getSymbolCount());
+        widget.setSize(3);
+        //We skip 4 because it is already used as the graph widget and does not matter here
+        assertEquals(10,widget.getSymbolCount());
+        widget.setSize(5);
+        assertEquals(15,widget.getSymbolCount());
+        widget.setSize(6);
+        assertEquals(15,widget.getSymbolCount());
+    }
+
+    @Test
     public void testShouldUpdateOnRightTouchReturnsFalseByDefault() {
         // Act and Assert
         assertEquals(false, widget.shouldUpdateOnRightTouch());

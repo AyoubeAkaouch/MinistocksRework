@@ -125,6 +125,10 @@
     <string name="_2x4_widget_background">2x4 widget background</string>
     <string name="_2x2_large_widget_background">2x2 large widget background</string>
     <string name="_1x2_landscape_widget_background">1x2 landscape widget background</string>
+    <string name="_3x4_widget_background">3x4 widget background</string>
+    <string name="_3x4_large_widget_background">3x4 widget background</string>
+    <string name="_3x2_widget_background">3x2 widget background</string>
+    <string name="_3x2_large_widget_background">3x2 widget background</string>
     <string name="portfolio_item_date_label">Date (yyyy-mm-dd)</string>
     <string name="portfolio_item_date_hint">optional</string>
     <string name="portfolio_item_quantity_label">Quantity</string>
