@@ -69,6 +69,31 @@ public class GraphWidgetTests {
         //display and assert the current stock is equal to the changed one
         System.out.println("Current stock is now: "+widget.getStock(0));
         assertEquals(widget.getStock(0),"GOOGL");
+
+
+
+
+    }
+
+    @Test
+    public  void TestIfWidgetSizeChanged(){
+
+        Storage storage = widget.getStorage();
+
+        //display the current size
+        System.out.println("current widget size is " +widget.getSize());
+
+        //change the current size
+        storage.putInt("widgetSize", 4);
+        storage.apply();
+
+        //display and assert the current size is equal to the changed one
+        System.out.println("Current widget size is: " +widget.getSize());
+        assertEquals(widget.getSize(), 4);
+
+
+
+
     }
 
     @Test
