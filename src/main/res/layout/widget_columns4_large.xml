@@ -329,6 +329,137 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/line11"
+            style="@style/StockLine"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text111"
+                style="@style/StockName_large" />
+
+            <TextView
+                android:id="@+id/text112"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text113"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text114"
+                style="@style/StockWideChange_large" />
+
+            <TextView
+                android:id="@+id/text115"
+                style="@style/StockWideChange_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line12"
+            style="@style/StockLine"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text121"
+                style="@style/StockName_large" />
+
+            <TextView
+                android:id="@+id/text122"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text123"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text124"
+                style="@style/StockWideChange_large" />
+
+            <TextView
+                android:id="@+id/text125"
+                style="@style/StockWideChange_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line13"
+            style="@style/StockLine"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text131"
+                style="@style/StockName_large" />
+
+            <TextView
+                android:id="@+id/text132"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text133"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text134"
+                style="@style/StockWideChange_large" />
+
+            <TextView
+                android:id="@+id/text135"
+                style="@style/StockWideChange_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line14"
+            style="@style/StockLine"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text141"
+                style="@style/StockName_large" />
+
+            <TextView
+                android:id="@+id/text142"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text143"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text144"
+                style="@style/StockWideChange_large" />
+
+            <TextView
+                android:id="@+id/text145"
+                style="@style/StockWideChange_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line15"
+            style="@style/StockLine"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text151"
+                style="@style/StockName_large" />
+
+            <TextView
+                android:id="@+id/text152"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text153"
+                style="@style/StockPrice_large" />
+
+            <TextView
+                android:id="@+id/text154"
+                style="@style/StockWideChange_large" />
+
+            <TextView
+                android:id="@+id/text155"
+                style="@style/StockWideChange_large" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/text_footer"
             style="@style/StockLine"
             android:orientation="horizontal">

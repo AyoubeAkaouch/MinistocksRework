@@ -124,7 +124,7 @@ public class AndroidWidgetRepository implements WidgetRepository {
         for (int appWidgetId : this.getIds()) {
             widgetPreferences = this.getWidget(appWidgetId).getStorage();
             if (widgetPreferences != null) {
-                for (int i = 1; i < 11; i++) {
+                for (int i = 1; i < 16; i++) {
                     String stockSymbol = widgetPreferences.getString("Stock" + i, "");
                     if (!stockSymbol.equals("")) widgetStockSymbols.add(stockSymbol);
                 }
