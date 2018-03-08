@@ -9,3 +9,11 @@ Download
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="50"/></a>
 <a href="https://play.google.com/store/apps/details?id=nitezh.ministock" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="50"/></a>
+
+Code Review Guidelines
+----------------------
+
+- Merge Requests and Pull Requests require 2 reviewers before merging.
+- CI builds for Merge Requests and Pull Requests should always be passing, except for special cases.
+- The coding style for this repository is camelCase.
+- Any UI changes require mock-ups.
