@@ -371,7 +371,7 @@ class AndroidWidget implements Widget {
     }
 
     public boolean updateOnWifi() {
-        return this.storage.getBoolean("update_only_on_wifi", false);
+        return this.storage.getBoolean("update_only_on_wifi", true);
     }
 
     public boolean isUsingWifi() {
