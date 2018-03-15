@@ -31,6 +31,36 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:visibility">gone</item>
     </style>
+    <!--ari-->
+    <!-- styles for portrait view (header) -->
+    <style name="Header_column1">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="Header_column2">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="Header_column3">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+
+
+
+
 
     <!-- styles for portrait view (footer) -->
     <style name="StockTime">
