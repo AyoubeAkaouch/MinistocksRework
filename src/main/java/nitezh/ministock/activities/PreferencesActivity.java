@@ -184,7 +184,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         // Remove extra stocks
         if (widgetSize == 0 || widgetSize == 1 || widgetSize == 4) {
             PreferenceScreen stock_setup = (PreferenceScreen) findPreference("stock_setup");
-            for (int i = 5; i < 11; i++)
+            for (int i = 5; i < 16; i++)
                 removePref(stock_setup, "Stock" + i);
 
         //Remove extra stocks for 4x4 widget and unnecessary preferences
@@ -732,7 +732,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
 
             // Initialise the ListPreference summaries
 
-            else if (key.startsWith("background") || key.startsWith("updated_colour") || key.startsWith("updated_display") || key.startsWith("text_style") || key.startsWith("font") || key.startsWith("font_size_custom")) {
+            else if (key.startsWith("background") || key.startsWith("updated_header")|| key.startsWith("updated_colour") || key.startsWith("updated_display") || key.startsWith("text_style") || key.startsWith("font") || key.startsWith("font_size_custom")) {
                 String value = sharedPreferences.getString(key, "");
                 preference.setSummary("Selected: " + value.substring(0, 1).toUpperCase() + value.substring(1));
             }
