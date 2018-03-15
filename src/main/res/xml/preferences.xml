@@ -241,6 +241,12 @@
                     android:title="Widget text style" />-->
                 <ListPreference
                     android:defaultValue="visible"
+                    android:entries="@array/updated_header_entries"
+                    android:entryValues="@array/updated_header_entryvalues"
+                    android:key="updated_header"
+                    android:title="Header display" />
+                <ListPreference
+                    android:defaultValue="visible"
                     android:entries="@array/updated_display_entries"
                     android:entryValues="@array/updated_display_entryvalues"
                     android:key="updated_display"
