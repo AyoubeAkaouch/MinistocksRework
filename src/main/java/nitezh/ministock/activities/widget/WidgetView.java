@@ -560,6 +560,12 @@ class WidgetView {
                 remoteViews.setTextViewText(R.id.text9, applyFormatting(this.getHeaderColumn3()));
                 remoteViews.setTextColor(R.id.text9, HeaderColor);
 
+                remoteViews.setTextViewText(R.id.text98, applyFormatting(this.getHeaderColumn4()));
+                remoteViews.setTextColor(R.id.text98, HeaderColor);
+
+                remoteViews.setTextViewText(R.id.text99, applyFormatting(this.getHeaderColumn5()));
+                remoteViews.setTextColor(R.id.text99, HeaderColor);
+
                 break;
             case "invisible":
                 remoteViews.setViewVisibility(R.id.text_header, View.GONE);
@@ -617,6 +623,12 @@ class WidgetView {
     }
     private String getHeaderColumn3(){
        return "DailyChange";
+    }
+    private String getHeaderColumn4(){
+        return "    Volume  DC%";
+    }
+    private String getHeaderColumn5(){
+        return "               Price";
     }
 
 
