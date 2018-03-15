@@ -28,36 +28,54 @@ package nitezh.ministock.domain;
  THE SOFTWARE.
  */
 
+
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;package nitezh.ministock.domain;
-
-import android.util.Log;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import static org.junit.Assert.assertEquals;
 
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 
-import nitezh.ministock.PreferenceStorage;
-import nitezh.ministock.activities.widget.WidgetProviderBase;
-import nitezh.ministock.Storage;
+
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+
+
+
+import org.junit.Test;
+
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+
+import org.robolectric.shadows.ShadowApplication;
+
+
+import java.util.List;
+
 
 @RunWith(RobolectricTestRunner.class)
 public class BroadcastReceiverTests {
 
-    Widget widget;
+
+    Intent intent = new Intent("android.intent.action.USER_PRESENT");
+
+    ShadowApplication shadowApplication = ShadowApplication.getInstance();
+
 
     @Test
-    public void testPreferencesPreventUpdate(){
+    public void hasReceiversForUnlockIntent() {
 
+        assertTrue(shadowApplication.hasReceiverForIntent(intent));
+    }
 
+    @Test
+    public void oneReceiverForUnlockIntent() {
 
+        List<BroadcastReceiver> receiversForIntent = shadowApplication.getReceiversForIntent(intent);
+
+        assertEquals("Expected one broadcast receiver", 1, receiversForIntent.size());
 
     }
 
-
 }
+
+
