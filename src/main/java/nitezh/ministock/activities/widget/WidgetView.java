@@ -544,6 +544,33 @@ class WidgetView {
             }
         }
 
+         //set Header display
+
+        switch(this.widget.getHeaderVisibility()){
+            case "visible":
+                remoteViews.setViewVisibility(R.id.text_header, View.VISIBLE);
+                //Setup the columns
+                int HeaderColor = this.getHeaderColor();
+                remoteViews.setTextViewText(R.id.text7, applyFormatting(this.getHeaderColumn1()));
+                remoteViews.setTextColor(R.id.text7, HeaderColor);
+
+                remoteViews.setTextViewText(R.id.text8, applyFormatting(this.getHeaderColumn2()));
+                remoteViews.setTextColor(R.id.text8, HeaderColor);
+
+                remoteViews.setTextViewText(R.id.text9, applyFormatting(this.getHeaderColumn3()));
+                remoteViews.setTextColor(R.id.text9, HeaderColor);
+
+                break;
+            case "invisible":
+                remoteViews.setViewVisibility(R.id.text_header, View.GONE);
+                break;
+
+
+        }
+
+
+
+
         // Set footer display
         switch (this.widget.getFooterVisibility()) {
             case "remove":
@@ -569,10 +596,29 @@ class WidgetView {
         }
     }
 
+
+    private int getHeaderColor(){
+        int color = this.widget.getHeaderColor();
+        return color;
+    }
+
+
     private int getFooterColor() {
         int color = this.widget.getFooterColor();
         return color;
     }
+
+    private String getHeaderColumn1(){
+        return "Stock";
+    }
+
+    private String getHeaderColumn2(){
+           return "Price";
+    }
+    private String getHeaderColumn3(){
+       return "DailyChange";
+    }
+
 
     private String getLabel(int widgetDisplay) {
         // Set the widget view text in the footer
@@ -665,6 +711,7 @@ class WidgetView {
 
         return label;
     }
+
 
     private String getTimeStamp() {
         String timeStamp = this.quotesTimeStamp;
