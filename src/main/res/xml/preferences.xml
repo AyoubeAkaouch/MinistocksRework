@@ -337,6 +337,15 @@
                     android:summaryOff="Allow updates only when using a wifi connection."
                     android:summaryOn="Allow updates only when using a wifi connection."
                     android:title="Update only on Wifi" />
+
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="unlock_after_refresh"
+                    android:summaryOff="Touch to update stock prices when you unlock your device."
+                    android:summaryOn="Touch to turn off stock price updates when you unlock your device."
+                    android:title="Update Prices when you unlock your Device"
+                    />
+
             </PreferenceScreen>
             <PreferenceCategory
                 android:key="cat_experimental"
