@@ -75,19 +75,23 @@
 
             <TextView
                 android:id="@+id/text7"
-                style="@style/Header_column11" />
+                style="@style/Header_column1_5" />
 
             <TextView
-                android:id="@+id/text99"
-                style="@style/Header_column12" />
+                android:id="@+id/text8"
+                style="@style/Header_column2_3" />
 
             <TextView
-                android:id="@+id/text98"
-                style="@style/Header_column13" />
+                android:id="@+id/text10"
+                style="@style/Header_column2_3" />
 
+            <TextView
+                android:id="@+id/text110"
+                style="@style/Header_column4" />
             <TextView
                 android:id="@+id/text9"
-                style="@style/Header_column14" />
+                style="@style/Header_column5" />
+
         </LinearLayout>
 
         <LinearLayout

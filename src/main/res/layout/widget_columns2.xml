@@ -78,15 +78,15 @@
 
             <TextView
                 android:id="@+id/text7"
-                style="@style/Header_column1" />
+                style="@style/Header_column13" />
 
             <TextView
                 android:id="@+id/text8"
-                style="@style/Header_column2" />
+                style="@style/Header_column23" />
 
             <TextView
                 android:id="@+id/text9"
-                style="@style/Header_column3" />
+                style="@style/Header_column33" />
 
         </LinearLayout>
 
