@@ -22,7 +22,7 @@ script:
 notifications:
   email:
     recipients:
-      - one@example.com
-      - other@example.com
+      - mohamed_2_27@hotmail.com
+     
     on_success: never # default: change
     on_failure: always # default: always
