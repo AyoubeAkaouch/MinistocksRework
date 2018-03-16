@@ -22,7 +22,7 @@ import static junit.framework.Assert.assertTrue;
 public class UITests {
 
     private UiDevice mDevice;
-    
+
     @Before
     public void setUp() throws UiObjectNotFoundException {
         mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
