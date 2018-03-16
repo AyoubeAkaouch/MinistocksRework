@@ -20,16 +20,9 @@ script:
 
 
 notifications:
-    slack: soen390cryingcorner:8N7qTrseWQDgh7PPw3T2mjKY
-
-    notifications:
-      email:
-        - mohamed_2_27@hotmail.com
-        - pcabro@gmail.com
-        - gprattico95@gmail.com
-        - aghiles_1@hotmail.com
-        - ayoube.akaouch@gmail.com
-        - momo_lebest@hotmail.com
-
-on_success: always # default: change
+  email:
+    recipients:
+      - one@example.com
+      - other@example.com
+    on_success: never # default: change
     on_failure: always # default: always
