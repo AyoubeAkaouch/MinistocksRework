@@ -551,20 +551,30 @@ class WidgetView {
                 remoteViews.setViewVisibility(R.id.text_header, View.VISIBLE);
                 //Setup the columns
                 int HeaderColor = this.getHeaderColor();
-                remoteViews.setTextViewText(R.id.text7, applyFormatting(this.getHeaderColumn1()));
+
+
+                // Values
+                remoteViews.setTextViewText(R.id.text7, applyFormatting("Stock"));
                 remoteViews.setTextColor(R.id.text7, HeaderColor);
 
-                remoteViews.setTextViewText(R.id.text8, applyFormatting(this.getHeaderColumn2()));
+                remoteViews.setTextViewText(R.id.text8, applyFormatting("Price"));
                 remoteViews.setTextColor(R.id.text8, HeaderColor);
 
-                remoteViews.setTextViewText(R.id.text9, applyFormatting(this.getHeaderColumn3()));
-                remoteViews.setTextColor(R.id.text9, HeaderColor);
+                if (widget.isNarrow()) {
+                    remoteViews.setTextViewText(R.id.text9, applyFormatting("DailyChange"));
+                    remoteViews.setTextColor(R.id.text9, HeaderColor);
+                } else {
 
-                remoteViews.setTextViewText(R.id.text98, applyFormatting(this.getHeaderColumn4()));
-                remoteViews.setTextColor(R.id.text98, HeaderColor);
+                    remoteViews.setTextViewText(R.id.text10, applyFormatting("Volume"));
+                    remoteViews.setTextColor(R.id.text10, HeaderColor);
 
-                remoteViews.setTextViewText(R.id.text99, applyFormatting(this.getHeaderColumn5()));
-                remoteViews.setTextColor(R.id.text99, HeaderColor);
+                    remoteViews.setTextViewText(R.id.text110, applyFormatting("DC%  "));
+                    remoteViews.setTextColor(R.id.text110, HeaderColor);
+
+                    remoteViews.setTextViewText(R.id.text9, applyFormatting("DailyChange"));
+                    remoteViews.setTextColor(R.id.text9, HeaderColor);
+
+                }
 
                 break;
             case "invisible":
@@ -612,23 +622,6 @@ class WidgetView {
     private int getFooterColor() {
         int color = this.widget.getFooterColor();
         return color;
-    }
-
-    private String getHeaderColumn1(){
-        return "Stock";
-    }
-
-    private String getHeaderColumn2(){
-           return "Price";
-    }
-    private String getHeaderColumn3(){
-       return "DailyChange";
-    }
-    private String getHeaderColumn4(){
-        return "    Volume  DC%";
-    }
-    private String getHeaderColumn5(){
-        return "               Price";
     }
 
 
