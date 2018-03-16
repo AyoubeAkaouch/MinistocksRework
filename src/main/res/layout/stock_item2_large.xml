@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/line1"
+    style="@style/StockLine"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/text11"
+        style="@style/StockSymbol_large" />
+
+    <TextView
+        android:id="@+id/text12"
+        style="@style/StockPrice_large" />
+
+    <TextView
+        android:id="@+id/text13"
+        style="@style/StockChange_large" />
+
+</LinearLayout>

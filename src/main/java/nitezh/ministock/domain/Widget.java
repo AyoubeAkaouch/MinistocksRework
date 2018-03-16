@@ -103,4 +103,8 @@ public interface Widget {
     boolean shouldUpdateOnRightTouch();
 
     String getFont();
+
+    int getUpdateTypeInt();
+
+    void putUpdateTypeInt(int value);
 }

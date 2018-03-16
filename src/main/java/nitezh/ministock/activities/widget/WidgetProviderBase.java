@@ -82,6 +82,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
 
     private static void applyUpdate(Context context, int appWidgetId, UpdateType updateMode,
                                     HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
+        storeUpdateTypeAsInt(updateMode, context, appWidgetId);
         WidgetView widgetView = new WidgetView(context, appWidgetId, updateMode,
                 quotes, quotesTimeStamp);
         widgetView.setOnClickPendingIntents();
@@ -261,6 +262,22 @@ public class WidgetProviderBase extends AppWidgetProvider {
         super.onEnabled(context);
 
         new CustomAlarmManager(context).reinitialize();
+    }
+
+    static void storeUpdateTypeAsInt(UpdateType updateType, Context context, int appWidgetId){
+        WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
+        Widget widget = widgetRepository.getWidget(appWidgetId);
+        switch(updateType){
+            case VIEW_UPDATE:
+                widget.putUpdateTypeInt(0);
+                break;
+            case VIEW_NO_UPDATE:
+                widget.putUpdateTypeInt(1);
+                break;
+            case VIEW_CHANGE:
+                widget.putUpdateTypeInt(2);
+                break;
+        }
     }
 
     @Override

@@ -28,7 +28,6 @@ package nitezh.ministock.domain;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -158,7 +157,7 @@ class AndroidWidget implements Widget {
 
     @Override
     public boolean isNarrow() {
-        return (size == 0 || size == 2 || size == 6 );
+        return (size == 0 || size == 2);
     }
 
     private int _getSize() {
@@ -209,11 +208,7 @@ class AndroidWidget implements Widget {
         if (size == 0 || size == 1) {
             count = 4;
         } else if (size == 2 || size == 3) {
-            count = 10;
-        } else if (size == 4){
-            count = 1;
-        }else if(size == 5 || size == 6){
-            count= 15;
+            count = 12;
         }
         return count;
     }
@@ -371,5 +366,15 @@ class AndroidWidget implements Widget {
     @Override
     public String getFont(){
         return this.storage.getString("font", "Sans-serif");
+    }
+
+    @Override
+    public int getUpdateTypeInt(){
+        return this.storage.getInt("updateType",0);
+    }
+
+    @Override
+    public void putUpdateTypeInt(int value){
+        this.storage.putInt("updateType",value);
     }
 }

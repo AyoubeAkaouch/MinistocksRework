@@ -30,6 +30,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
@@ -59,6 +60,7 @@ class WidgetView {
 
     private final RemoteViews remoteViews;
     private final Widget widget;
+    private final int appWidgetId;
     private final boolean hasPortfolioData;
     private final List<String> symbols;
     private final HashMap<String, PortfolioStock> portfolioStocks;
@@ -68,12 +70,17 @@ class WidgetView {
     private final Context context;
     private final HashMap<ViewType, Boolean> enabledViews;
 
+    public Widget getWidget() {
+        return widget;
+    }
+
     public WidgetView(Context context, int appWidgetId, UpdateType updateMode,
                       HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
         WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
 
         this.context = context;
         this.widget = widgetRepository.getWidget(appWidgetId);
+        this.appWidgetId=appWidgetId;
         this.quotes = quotes;
         this.quotesTimeStamp = quotesTimeStamp;
         this.updateMode = updateMode;
@@ -82,6 +89,7 @@ class WidgetView {
         this.portfolioStocks = new PortfolioStockRepository(
                 PreferenceStorage.getInstance(context), widgetRepository).getStocksForSymbols(symbols);
         this.hasPortfolioData = !portfolioStocks.isEmpty();
+        Log.d("ss", "getViewAt: widgetviewconstrucottdab");
 
         this.remoteViews = this.getBlankRemoteViews(this.widget, context.getPackageName());
         this.enabledViews = this.calculateEnabledViews(this.widget);
@@ -116,7 +124,7 @@ class WidgetView {
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_2x4);
             }
-        } else if(widget.getSize()==0){
+        } else {
             if (fontSize.equals("large")) {
                 views = new RemoteViews(packageName, R.layout.widget_1x2_large);
             } else if (fontSize.equals("small")){
@@ -124,28 +132,10 @@ class WidgetView {
             } else {
                 views = new RemoteViews(packageName, R.layout.widget_1x2);
             }
-        }else if(widget.getSize()==4){
-            views = new RemoteViews(packageName, R.layout.widget_4x4_graph);
-        }else if (widget.getSize()==5) {
-            if (fontSize.equals("large")) {
-                views = new RemoteViews(packageName, R.layout.widget_3x4_large);
-            } else if (fontSize.equals("small")) {
-                views = new RemoteViews(packageName, R.layout.widget_3x4_small);
-            } else {
-                views = new RemoteViews(packageName, R.layout.widget_3x4);
-            }
-        } else {
-            if (fontSize.equals("large")) {
-                views = new RemoteViews(packageName, R.layout.widget_3x2_large);
-            } else if (fontSize.equals("small")) {
-                views = new RemoteViews(packageName, R.layout.widget_3x2_small);
-            } else {
-                views = new RemoteViews(packageName, R.layout.widget_3x2);
-            }
         }
         views.setImageViewResource(R.id.widget_bg,
                 getImageViewSrcId(backgroundStyle, fontSize));
-        this.hideUnusedRows(views, widget.getSymbolCount());
+        //this.hideUnusedRows(views, widget.getSymbolCount());
         return views;
     }
 
@@ -172,7 +162,7 @@ class WidgetView {
         }
         return imageViewSrcId;
     }
-
+//delete?
     // Global formatter so we can perform global text formatting in one place
     private SpannableString applyFormatting(String s) {
         SpannableString span = new SpannableString(s);
@@ -220,7 +210,7 @@ class WidgetView {
         this.remoteViews.setOnClickPendingIntent(R.id.widget_right,
                 PendingIntent.getBroadcast(this.context, this.widget.getId(), rightTouchIntent, 0));
     }
-
+//delete?
     private HashMap<WidgetProviderBase.ViewType, Boolean> getEnabledViews() {
         return this.enabledViews;
     }
@@ -240,6 +230,7 @@ class WidgetView {
         return enabledViews;
     }
 
+//delete?
     private WidgetRow getRowInfo(String symbol, ViewType widgetView) {
         WidgetRow widgetRow = new WidgetRow(this.widget);
         StockQuote quote = this.quotes.get(symbol);
@@ -335,7 +326,7 @@ class WidgetView {
 
         return widgetRow;
     }
-
+//delete?
     private void SetStockInfoExtraTextAndColourForWideWidget(String symbol, WidgetRow widgetRow, String stockInfoExtra, Boolean stockInfoExtraIsCurrency) {
         if (!widget.isNarrow()) {
             if (stockInfoExtra != null) {
@@ -350,7 +341,7 @@ class WidgetView {
 
         }
     }
-
+    //delete?
     private void SetStockInfoTextAndColour(String symbol, WidgetRow widgetRow, String stockInfo, Boolean stockInfoIsCurrency) {
         if (stockInfo != null) {
             String infoText = stockInfo;
@@ -362,19 +353,19 @@ class WidgetView {
             widgetRow.setStockInfoColor(getColourForChange(stockInfo));
         }
     }
-
+    //delete?
     private void AddCurrencySymbolToPriceColumnIfHaveHoldings(String symbol, WidgetRow widgetRow, String priceColumn) {
         if (priceColumn != null) {
             widgetRow.setPrice(CurrencyTools.addCurrencyToSymbol(priceColumn, symbol));
         }
     }
-
+    //delete?
     private void SetPriceColumnColourIfNoHoldings(WidgetRow widgetRow, Boolean plView, String priceColumn) {
         if (plView && priceColumn == null) {
             widgetRow.setPriceColor(WidgetColors.NA);
         }
     }
-
+    //delete?
     private void SetPriceColumnColourIfLimitTriggered(WidgetRow widgetRow, WidgetStock widgetStock, Boolean plView) {
         if (widgetStock.getLimitHighTriggered() && !plView) {
             widgetRow.setPriceColor(this.widget.getHighAlertColor());
@@ -383,7 +374,7 @@ class WidgetView {
             widgetRow.setPriceColor(this.widget.getLowAlertColor());
         }
     }
-
+//delete?
     private void updateWidgetRowWithDefaults(WidgetRow widgetRow, WidgetStock widgetStock) {
         widgetRow.setPrice(widgetStock.getPrice());
         widgetRow.setStockInfo(widgetStock.getDailyPercent());
@@ -402,7 +393,7 @@ class WidgetView {
             widgetRow.setStockInfoExtraColor(WidgetColors.NA);
         }
     }
-
+//delete?
     private void updateWidgetRowWithNoData(WidgetRow widgetRow) {
         if (this.widget.isNarrow()) {
             widgetRow.setPrice("—");
@@ -416,11 +407,11 @@ class WidgetView {
             widgetRow.setStockInfoColor(Color.GRAY);
         }
     }
-
+//delete??
     private boolean isQuoteMissingPriceOrChange(StockQuote quote) {
         return quote == null || quote.getPrice() == null || quote.getPercent() == null;
     }
-
+//delete?
     private int getColourForChange(String value) {
         double parsedValue = NumberTools.tryParseDouble(value, 0d);
         int colour;
@@ -444,7 +435,7 @@ class WidgetView {
     }
 
     private void hideUnusedRows(RemoteViews views, int count) {
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 11; i++) {
             int viewId = ReflectionTools.getField("line" + i);
             if (viewId > 0) {
                 views.setViewVisibility(ReflectionTools.getField("line" + i), View.GONE);
@@ -494,10 +485,44 @@ class WidgetView {
 
     public void applyPendingChanges() {
         int widgetDisplay = this.getNextView(this.updateMode);
-        this.clear();
+       // this.clear();
+        Log.d("s", "getViewAt: sdfhjgfg");
 
-        int lineNo = 0;
+        //RemoteViews Service needed to provide adapter for ListView
+        Intent svcIntent = new Intent(context, WidgetService.class);
+        //passing app widget id to that RemoteViews Service
+        svcIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        //setting a unique Uri to the intent
+        //don't know its purpose to me right now
+        svcIntent.setData(Uri.parse(svcIntent.toUri(Intent.URI_INTENT_SCHEME)));
+        //setting adapter to listview of the widget
+        remoteViews.setRemoteAdapter(R.id.stock_list_view, svcIntent);
 
+        // Set footer display
+        switch (this.widget.getFooterVisibility()) {
+            case "remove":
+                remoteViews.setViewVisibility(R.id.text_footer, View.GONE);
+                break;
+
+            case "invisible":
+                remoteViews.setViewVisibility(R.id.text_footer, View.INVISIBLE);
+                break;
+
+            default:
+                remoteViews.setViewVisibility(R.id.text_footer, View.VISIBLE);
+
+                // Set time stamp
+                int footerColor = this.getFooterColor();
+                remoteViews.setTextViewText(R.id.text5, applyFormatting(this.getTimeStamp()));
+                remoteViews.setTextColor(R.id.text5, footerColor);
+
+                // Set the view label
+                remoteViews.setTextViewText(R.id.text6, applyFormatting(this.getLabel(widgetDisplay)));
+                remoteViews.setTextColor(R.id.text6, footerColor);
+                break;
+        }
+
+ /*       int lineNo = 0;
         for (String symbol : this.symbols) {
             if (symbol.equals("")) {
                 continue;
@@ -542,31 +567,9 @@ class WidgetView {
                     setStockRowItemColor(lineNo, 5, rowInfo.getPriceColor());
                 }
             }
-        }
+        }*/
 
-        // Set footer display
-        switch (this.widget.getFooterVisibility()) {
-            case "remove":
-                remoteViews.setViewVisibility(R.id.text_footer, View.GONE);
-                break;
 
-            case "invisible":
-                remoteViews.setViewVisibility(R.id.text_footer, View.INVISIBLE);
-                break;
-
-            default:
-                remoteViews.setViewVisibility(R.id.text_footer, View.VISIBLE);
-
-                // Set time stamp
-                int footerColor = this.getFooterColor();
-                remoteViews.setTextViewText(R.id.text5, applyFormatting(this.getTimeStamp()));
-                remoteViews.setTextColor(R.id.text5, footerColor);
-
-                // Set the view label
-                remoteViews.setTextViewText(R.id.text6, applyFormatting(this.getLabel(widgetDisplay)));
-                remoteViews.setTextColor(R.id.text6, footerColor);
-                break;
-        }
     }
 
     private int getFooterColor() {
