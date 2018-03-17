@@ -35,10 +35,17 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+import nitezh.ministock.activities.widget.WidgetProviderBase;
 import nitezh.ministock.mocks.MockCache;
 import nitezh.ministock.mocks.MockStorage;
+import nitezh.ministock.mocks.MockWidget;
 import nitezh.ministock.mocks.MockWidgetRepository;
 
+import static android.test.MoreAsserts.assertEmpty;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
+import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 
@@ -49,19 +56,27 @@ public class StockQuoteRepositoryTests {
     @Before
     public void setUp() {
         MockWidgetRepository mockWidgetRepository = new MockWidgetRepository();
-        mockWidgetRepository.setWidgetsStockSymbols(new HashSet<>(Arrays.asList(
+         mockWidgetRepository.setWidgetsStockSymbols(new HashSet<>(Arrays.asList(
                 "AAPL",
                 "GOOG",
                 "^DJI",
                 "^IXIC")));
         stockRepository = new StockQuoteRepository(
                 new MockStorage(), new MockCache(), mockWidgetRepository);
+
     }
 
     @After
     public void tearDown() {
-        PortfolioStockRepository.setDirtyPortfolioStockMap(true);
+         PortfolioStockRepository.setDirtyPortfolioStockMap(true);
+
+         //Clears the mCachedQuotes to remove the dependency between the getQuotes test and
+        //the updateOnlyOnWifiWhenOptionSet test. getQuotes saves quotes in the mCachedQuotes variable.
+        // The updateOnlyOnWifiWhenOptionSet test needs mCachedQuotes to be empty.
+         stockRepository.setmCachedQuotes(null);
     }
+
+
 
     @Test
     public void getLiveQuotes() {
@@ -107,6 +122,7 @@ public class StockQuoteRepositoryTests {
         // Act
         HashMap<String, StockQuote> quotes = stockRepository.getQuotes(symbols, true);
 
+
         // Assert
         assertEquals(4, quotes.size());
 
@@ -128,4 +144,61 @@ public class StockQuoteRepositoryTests {
         assertEquals("^IXIC", ixicQuote.getSymbol());
         assertEquals("NASDAQ", ixicQuote.getExchange());
     }
+
+    @Test
+    public void updateOnlyOnWifiWhenOptionSet(){
+        //no quotes in cache (mCachedQuotes) at the beginning of this test
+        // Skipif
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
+
+        //Simulate wifi
+        boolean usingWifi;
+
+        WidgetProviderBase.UpdateType updateType;
+        MockStorage mockStorage = new MockStorage();
+        MockWidget widget = new MockWidget();
+        //Only update on wifi
+        mockStorage.putBoolean("update_only_on_wifi", true);
+
+
+        List<String> symbols = Arrays.asList( "GOOG", "^DJI");
+
+
+        //Turn wifi "off"
+        usingWifi = false;
+        if (widget.updateOnWifi() && (!usingWifi)) {
+            updateType = WidgetProviderBase.UpdateType.VIEW_NO_UPDATE;
+        }else
+            updateType = WidgetProviderBase.UpdateType.VIEW_UPDATE;
+
+
+        HashMap<String, StockQuote> quotes = stockRepository.getQuotes(symbols,
+                updateType == WidgetProviderBase.UpdateType.VIEW_UPDATE);
+
+
+        //Assert values were not retrieved via getQuotes method (ie no update)
+        assertFalse(quotes.containsKey("GOOG"));
+        assertFalse(quotes.containsKey("^DJI"));
+
+        //Turn wifi "on"
+        usingWifi = true;
+
+        if (widget.updateOnWifi() && (!usingWifi)) {
+            updateType = WidgetProviderBase.UpdateType.VIEW_NO_UPDATE;
+        }else
+            updateType = WidgetProviderBase.UpdateType.VIEW_UPDATE;
+
+        //Try again
+        quotes = stockRepository.getQuotes(symbols,
+                updateType == WidgetProviderBase.UpdateType.VIEW_UPDATE);
+        //Assert values were retrieved via getQuotes method (ie update occurred)
+        assertTrue(quotes.containsKey("GOOG"));
+        assertTrue(quotes.containsKey("^DJI"));
+
+        //Assert that stock info is available (ie prices)
+        assertNotNull(quotes.get("GOOG").getPrice());
+        assertNotNull(quotes.get("^DJI").getPrice());
+
+    }
+
 }
