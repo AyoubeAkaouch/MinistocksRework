@@ -208,4 +208,7 @@
                 android:resource="@xml/widget_4x4" />
         </receiver>
     </application>
+
+    <!-- user permissions -->
+    <uses-permission  android:name="android.permission.ACCESS_NETWORK_STATE"/>
 </manifest>

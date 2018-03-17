@@ -207,6 +207,16 @@ public class MockWidget implements Widget {
     }
 
     @Override
+    public boolean updateOnWifi() {
+        return true;
+    }
+
+    @Override
+    public boolean isUsingWifi() {
+        return true;
+    }
+
+    @Override
     public void enablePercentChangeView() {
     }
 
