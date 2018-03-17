@@ -34,6 +34,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.androidplot.ui.Anchor;
@@ -219,6 +220,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
         minWidth = getCellsForSize(minWidth);
         minHeight = getCellsForSize(minHeight);
 
+
     if(widget.getSize() != 4) {
         if (minHeight > 1 && minHeight < 3) {
             if (minWidth > 3) {
@@ -321,13 +323,19 @@ public class WidgetProviderBase extends AppWidgetProvider {
                     PreferenceStorage.getInstance(this.context), new StorageCache(storage),
                     widgetRepository);
 
+            Widget widget = widgetRepository.getWidget(this.appWidgetId);
+            //Only update on wifi if option is set
+            if (widget.updateOnWifi() && !(widget.isUsingWifi())) {
+                updateType = UpdateType.VIEW_NO_UPDATE;
+            }
+
             this.quotes = quoteRepository.getQuotes(
                     widgetRepository.getWidget(this.appWidgetId).getSymbols(),
                     updateType == UpdateType.VIEW_UPDATE);
             this.timeStamp = quoteRepository.getTimeStamp();
 
 
-            Widget widget = widgetRepository.getWidget(this.appWidgetId);
+
             if (widget.getSize() == 4) {
                 List<String> symbols = widget.getSymbols();
                 String symbol = symbols.get(0);

@@ -106,5 +106,9 @@ public interface Widget {
 
     boolean shouldUpdateOnRightTouch();
 
+    boolean updateOnWifi();
+
+    boolean isUsingWifi();
+
     String getFont();
 }

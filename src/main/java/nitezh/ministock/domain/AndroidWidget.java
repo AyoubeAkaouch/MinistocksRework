@@ -28,6 +28,8 @@ package nitezh.ministock.domain;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -376,6 +378,18 @@ class AndroidWidget implements Widget {
 
     public boolean shouldUpdateOnRightTouch() {
         return this.storage.getBoolean("update_from_widget", false);
+    }
+
+    public boolean updateOnWifi() {
+        return this.storage.getBoolean("update_only_on_wifi", true);
+    }
+
+    public boolean isUsingWifi() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
+NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+    boolean isWifiConn = networkInfo.isConnected();
+    return isWifiConn;
     }
 
     @Override
