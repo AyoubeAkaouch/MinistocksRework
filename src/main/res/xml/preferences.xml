@@ -330,6 +330,22 @@
                     android:summaryOff="Touch the right side of the widget to update.  Note: You cannot change view when using this option."
                     android:summaryOn="Touch the right side of the widget to update.  Note: You cannot change view when using this option."
                     android:title="Tap widget to update" />
+
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="update_only_on_wifi"
+                    android:summaryOff="Allow updates only when using a wifi connection."
+                    android:summaryOn="Allow updates only when using a wifi connection."
+                    android:title="Update only on Wifi" />
+
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="unlock_after_refresh"
+                    android:summaryOff="Touch to update stock prices when you unlock your device."
+                    android:summaryOn="Touch to turn off stock price updates when you unlock your device."
+                    android:title="Update Prices when you unlock your Device"
+                    />
+
             </PreferenceScreen>
             <PreferenceCategory
                 android:key="cat_experimental"

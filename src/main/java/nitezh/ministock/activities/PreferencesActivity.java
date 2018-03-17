@@ -254,6 +254,8 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             updateGlobalPref(sharedPreferences, key, STRING_TYPE);
         } else if (key.equals("update_weekend")) {
             updateGlobalPref(sharedPreferences, key, CHECKBOX_TYPE);
+        } else if(key.equals("unlock_after_refresh")){
+            updateGlobalPref(sharedPreferences, key, CHECKBOX_TYPE);
         }
         // Update the summary whenever the preference is changed
         updateSummaries(sharedPreferences, key);

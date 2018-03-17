@@ -193,6 +193,11 @@ public class StockQuoteRepository {
         return mTimeStamp;
     }
 
+    //To be used for testing only
+    public void setmCachedQuotes(HashMap<String, StockQuote> cachedQuotes){
+        mCachedQuotes = cachedQuotes;
+    }
+
     private void saveQuotes(HashMap<String, StockQuote> quotes, String timeStamp) {
         mCachedQuotes = quotes;
         mTimeStamp = timeStamp;
