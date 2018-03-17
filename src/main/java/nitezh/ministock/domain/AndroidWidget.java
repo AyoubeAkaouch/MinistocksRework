@@ -264,7 +264,7 @@ class AndroidWidget implements Widget {
     public String getFooterVisibility() {
         return this.storage.getString("updated_display", "visible");
     }
-    //ari
+    
     @Override
     public String getHeaderVisibility() {
         return this.storage.getString("updated_header", "visible");
