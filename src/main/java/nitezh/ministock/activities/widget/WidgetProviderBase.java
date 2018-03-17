@@ -220,30 +220,28 @@ public class WidgetProviderBase extends AppWidgetProvider {
         minWidth = getCellsForSize(minWidth);
         minHeight = getCellsForSize(minHeight);
 
-        
-        if(minHeight>1 && minHeight<3){
-            if (minWidth>3){
+
+    if(widget.getSize() != 4) {
+        if (minHeight > 1 && minHeight < 3) {
+            if (minWidth > 3) {
                 widget.setSize(3);
-            }
-            else {
+            } else {
                 widget.setSize(2);
             }
-        }else if (minHeight >= 3) {
+        } else if (minHeight >= 3) {
             if (minWidth > 3) {
                 widget.setSize(5);
             } else {
                 widget.setSize(6);
             }
-        }
-        else {
-            if (minWidth>3){
+        } else {
+            if (minWidth > 3) {
                 widget.setSize(1);
-            }
-            else{
+            } else {
                 widget.setSize(0);
             }
         }
-
+    }
 
         new CustomAlarmManager(context).reinitialize();
         updateWidgetsFromCache(context);

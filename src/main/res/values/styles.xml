@@ -32,6 +32,55 @@
         <item name="android:visibility">gone</item>
     </style>
 
+    <!-- styles for portrait view (header) -->
+    <style name="Header_column1_5" parent="StockDatum">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="Header_column2_3" parent="StockDatum">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="Header_column4" parent="StockDatum">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="Header_column5" parent="StockDatum">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">7sp</item>
+    </style>
+    <!--style for the 3 columns dimensions-->
+    <style name="Header_column13" parent="StockDatum">
+        <item name="android:layout_width">5dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="Header_column23" parent="StockDatum">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="Header_column33" parent="StockDatum">
+        <item name="android:layout_width">9dp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">7sp</item>
+    </style>
+
+
+
+
+
+
+
     <!-- styles for portrait view (footer) -->
     <style name="StockTime">
         <item name="android:layout_weight">1</item>
@@ -75,6 +124,7 @@
         <item name="android:gravity">right</item>
         <item name="android:textSize">9sp</item>
     </style>
+
     <!-- styles for portrait view (stocks) -->
     <style name="StockDatum">
         <item name="android:layout_weight">1</item>

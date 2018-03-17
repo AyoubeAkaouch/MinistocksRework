@@ -69,6 +69,25 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/text_header"
+            style="@style/StockLine"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text7"
+                style="@style/Header_column13" />
+
+            <TextView
+                android:id="@+id/text8"
+                style="@style/Header_column23" />
+
+            <TextView
+                android:id="@+id/text9"
+                style="@style/Header_column33" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/line1"
             style="@style/StockLine"
             android:orientation="horizontal">

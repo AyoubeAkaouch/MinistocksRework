@@ -62,7 +62,11 @@ public interface Widget {
 
     String getFooterVisibility();
 
+    String getHeaderVisibility();
+
     int getFooterColor();
+
+    int getHeaderColor();
 
     int getStockNameColor();
 

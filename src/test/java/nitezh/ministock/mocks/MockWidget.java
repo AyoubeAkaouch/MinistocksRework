@@ -83,7 +83,6 @@ public class MockWidget implements Widget {
     }
 
 
-
     @Override
     public boolean getHideSuffix() {
         return false;
@@ -95,13 +94,19 @@ public class MockWidget implements Widget {
     }*/
 
     @Override
-    public boolean useBold(){ return false;}
+    public boolean useBold() {
+        return false;
+    }
 
     @Override
-    public boolean useUnderlined(){ return false; }
+    public boolean useUnderlined() {
+        return false;
+    }
 
     @Override
-    public boolean useItalic(){return false;}
+    public boolean useItalic() {
+        return false;
+    }
 
     @Override
     public boolean getColorsOnPrices() {
@@ -114,30 +119,47 @@ public class MockWidget implements Widget {
     }
 
     @Override
-    public String getFontSize(){ return null; }
-     
+    public String getHeaderVisibility() {
+        return null;
+    }
+
+    @Override
+    public String getFontSize() {
+        return null;
+    }
+
     @Override
     public int getFooterColor() {
         return 0;
     }
 
     @Override
-    public int getStockNameColor() { return 0; }
+    public int getStockNameColor() {
+        return 0;
+    }
 
     @Override
-    public int getStockPriceColor() { return 0; }
+    public int getStockPriceColor() {
+        return 0;
+    }
 
     @Override
-    public int getPriceIncreaseColor(){ return 0; }
+    public int getPriceIncreaseColor() {
+        return 0;
+    }
 
     @Override
-    public int getPriceDecreaseColor(){ return 0; }
+    public int getPriceDecreaseColor() {
+        return 0;
+    }
 
     @Override
-    public int getHighAlertColor(){ return 0; }
+    public int getHighAlertColor() {
+        return 0;
+    }
 
     @Override
-    public int getLowAlertColor(){
+    public int getLowAlertColor() {
         return 0;
     }
 
@@ -253,6 +275,12 @@ public class MockWidget implements Widget {
     }
 
     @Override
-    public String getFont() {return null;}
+    public int getHeaderColor() {
+        return 0;
     }
 
+    @Override
+    public String getFont() {
+        return null;
+    }
+    }

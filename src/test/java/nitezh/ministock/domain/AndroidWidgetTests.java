@@ -210,6 +210,10 @@ public class AndroidWidgetTests {
 
         assertEquals(true,widget.useItalic());
     }
+    @Test
+    public void testHeaderColor(){
+        assertEquals(0xffff00ff , widget.getHeaderColor());
+    }
 
 }
 

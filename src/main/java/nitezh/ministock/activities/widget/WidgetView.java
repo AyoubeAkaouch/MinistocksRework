@@ -544,6 +544,49 @@ class WidgetView {
             }
         }
 
+         //set Header display
+
+        switch(this.widget.getHeaderVisibility()){
+            case "visible":
+                remoteViews.setViewVisibility(R.id.text_header, View.VISIBLE);
+                //Setup the columns
+                int HeaderColor = this.getHeaderColor();
+
+
+                // Values
+                remoteViews.setTextViewText(R.id.text7, applyFormatting("Stock"));
+                remoteViews.setTextColor(R.id.text7, HeaderColor);
+
+                remoteViews.setTextViewText(R.id.text8, applyFormatting("Price"));
+                remoteViews.setTextColor(R.id.text8, HeaderColor);
+
+                if (widget.isNarrow()) {
+                    remoteViews.setTextViewText(R.id.text9, applyFormatting("DailyChange"));
+                    remoteViews.setTextColor(R.id.text9, HeaderColor);
+                } else {
+
+                    remoteViews.setTextViewText(R.id.text10, applyFormatting("Volume"));
+                    remoteViews.setTextColor(R.id.text10, HeaderColor);
+
+                    remoteViews.setTextViewText(R.id.text110, applyFormatting("DC%  "));
+                    remoteViews.setTextColor(R.id.text110, HeaderColor);
+
+                    remoteViews.setTextViewText(R.id.text9, applyFormatting("DailyChange"));
+                    remoteViews.setTextColor(R.id.text9, HeaderColor);
+
+                }
+
+                break;
+            case "invisible":
+                remoteViews.setViewVisibility(R.id.text_header, View.GONE);
+                break;
+
+
+        }
+
+
+
+
         // Set footer display
         switch (this.widget.getFooterVisibility()) {
             case "remove":
@@ -569,10 +612,18 @@ class WidgetView {
         }
     }
 
+
+    private int getHeaderColor(){
+        int color = this.widget.getHeaderColor();
+        return color;
+    }
+
+
     private int getFooterColor() {
         int color = this.widget.getFooterColor();
         return color;
     }
+
 
     private String getLabel(int widgetDisplay) {
         // Set the widget view text in the footer
@@ -665,6 +716,7 @@ class WidgetView {
 
         return label;
     }
+
 
     private String getTimeStamp() {
         String timeStamp = this.quotesTimeStamp;

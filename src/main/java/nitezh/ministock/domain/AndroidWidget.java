@@ -266,6 +266,16 @@ class AndroidWidget implements Widget {
     public String getFooterVisibility() {
         return this.storage.getString("updated_display", "visible");
     }
+    
+    @Override
+    public String getHeaderVisibility() {
+        return this.storage.getString("updated_header", "visible");
+    }
+
+    @Override
+    public int getHeaderColor() {
+        return this.storage.getInt("updated_header_colour", 0xffff00ff );
+    }
 
     @Override
     public int getFooterColor() {

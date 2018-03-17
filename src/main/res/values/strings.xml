@@ -70,6 +70,15 @@
         <item>remove</item>
     </string-array>
 
+    <string-array name="updated_header_entries">
+        <item>Visible</item>
+        <item>Invisible</item>
+    </string-array>
+    <string-array name="updated_header_entryvalues">
+        <item>visible</item>
+        <item>invisible</item>
+    </string-array>
+
     <string-array name="text_style_entries">
         <item>Normal</item>
         <item>Bold</item>
