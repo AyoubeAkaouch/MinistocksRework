@@ -1,6 +1,7 @@
 package nitezh.ministock;
 
 
+import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SdkSuppress;
 import android.support.test.runner.AndroidJUnit4;
@@ -72,6 +73,31 @@ public class UITests {
         UiObject visibleFooter = mDevice.findObject(new UiSelector().className("android.widget.CheckedTextView")
                 .text("Visible"));
         visibleFooter.click();
+        mDevice.pressHome();
+    }
+
+    @Test
+    public void testAddNewStock() throws UiObjectNotFoundException, InterruptedException, RemoteException{
+
+        UiObject widgetLeft = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").resourceIdMatches("nitezh.ministock:id/widget_left"));
+        widgetLeft.clickAndWaitForNewWindow();
+
+        UiObject stocksSetup = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(1));
+        stocksSetup.clickAndWaitForNewWindow();
+
+        UiObject addStock2 = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(1));
+        addStock2.clickAndWaitForNewWindow();
+
+        UiObject replacetext = mDevice.findObject(new UiSelector().className("android.widget.EditText").resourceId("android:id/search_src_text"));
+        replacetext.setText("AAPL");
+        mDevice.sleep();
+        mDevice.pressSearch();
+
+//        UiObject selectStock = mDevice.findObject(new UiSelector().className("android.widget.ImageView").index(1));
+//        selectStock.clickAndWaitForNewWindow();
+
+        //mDevice.click(632,343);
+
         mDevice.pressHome();
     }
 
