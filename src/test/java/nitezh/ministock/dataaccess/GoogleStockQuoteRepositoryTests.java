@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Assume;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -53,6 +54,9 @@ public class GoogleStockQuoteRepositoryTests {
 
     @Test
     public void retrieveDJIQuoteAsJson() {
+        // Skipif
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
+
         // Arrange
         List<String> symbols = Collections.singletonList(".DJI");
         JSONArray json = null;
@@ -74,6 +78,9 @@ public class GoogleStockQuoteRepositoryTests {
 
     @Test
     public void retrieveIXICQuoteAsJson() {
+        // Skipif
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
+
         // Arrange
         List<String> symbols = Collections.singletonList(".IXIC");
         JSONArray json = null;
@@ -95,6 +102,9 @@ public class GoogleStockQuoteRepositoryTests {
 
     @Test
     public void getQuotes() {
+        // Skipif
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
+
         // Arrange
         List<String> symbols = Arrays.asList(".DJI", ".IXIC");
 
