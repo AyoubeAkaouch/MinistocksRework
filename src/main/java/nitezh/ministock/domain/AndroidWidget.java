@@ -247,20 +247,25 @@ class AndroidWidget implements Widget{
     public boolean useBold(){
 
 
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.context)
+        return this.storage.getBoolean("show_bold",false);
+    }
+
+    public void sendNotification(Context context, String title, String text){
+
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.icon)
-                .setContentTitle("Test notification")
-                .setContentText("You changed the text to bold!")
+                .setContentTitle(title)
+                .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this.context);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
         int notificationId =1;
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, mBuilder.build());
 
-        return this.storage.getBoolean("show_bold",false);
     }
 
     @Override
