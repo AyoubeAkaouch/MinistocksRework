@@ -15,8 +15,14 @@ jdk:
 before_install:
 - chmod +x gradlew
 
-script:
-- ./gradlew build test
+#Stages are not run in parallel 
+#First app is built then unit tests are run
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew assemble 
+    - stage: test
+      script: ./gradlew test
 
 
 notifications:
