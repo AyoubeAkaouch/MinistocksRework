@@ -150,7 +150,7 @@ public class StockQuoteRepositoryTests {
     public void updateOnlyOnWifiWhenOptionSet(){
         //no quotes in cache (mCachedQuotes) at the beginning of this test
         // Skipif
-    //    Assume.assumeTrue(System.getenv("TRAVIS") == null);
+        Assume.assumeTrue(System.getenv("TRAVIS") == null);
 
         //Simulate wifi
         boolean usingWifi;
