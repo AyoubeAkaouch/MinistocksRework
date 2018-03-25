@@ -55,6 +55,7 @@ public class StockQuoteRepositoryTests {
 
     @Before
     public void setUp() {
+
         MockWidgetRepository mockWidgetRepository = new MockWidgetRepository();
          mockWidgetRepository.setWidgetsStockSymbols(new HashSet<>(Arrays.asList(
                 "AAPL",
@@ -149,7 +150,7 @@ public class StockQuoteRepositoryTests {
     public void updateOnlyOnWifiWhenOptionSet(){
         //no quotes in cache (mCachedQuotes) at the beginning of this test
         // Skipif
-        Assume.assumeTrue(System.getenv("TRAVIS") == null);
+    //    Assume.assumeTrue(System.getenv("TRAVIS") == null);
 
         //Simulate wifi
         boolean usingWifi;
