@@ -25,11 +25,15 @@
 package nitezh.ministock.domain;
 
 
+import android.app.NotificationChannel;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -45,7 +49,9 @@ import nitezh.ministock.PreferenceStorage;
 import nitezh.ministock.R;
 import nitezh.ministock.Storage;
 
-class AndroidWidget implements Widget {
+import static yahoofinance.Utils.getString;
+
+class AndroidWidget implements Widget{
 
     private final Storage storage;
     private final Context context;
@@ -239,7 +245,27 @@ class AndroidWidget implements Widget {
 */
     @Override
     public boolean useBold(){
+
+
         return this.storage.getBoolean("show_bold",false);
+    }
+
+    public void sendNotification(Context context, String title, String text){
+
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+
+        int notificationId =1;
+        // notificationId is a unique int for each notification that you must define
+        notificationManager.notify(notificationId, mBuilder.build());
+
     }
 
     @Override

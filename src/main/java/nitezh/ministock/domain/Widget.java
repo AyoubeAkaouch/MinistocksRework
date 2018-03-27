@@ -1,5 +1,7 @@
 package nitezh.ministock.domain;
 
+import android.content.Context;
+
 import org.json.JSONObject;
 
 import java.util.List;
@@ -109,6 +111,8 @@ public interface Widget {
     boolean updateOnWifi();
 
     boolean isUsingWifi();
+
+    void sendNotification(Context context, String title, String text);
 
     String getFont();
 }
