@@ -52,6 +52,7 @@ dependencies {
     compile 'com.google.guava:guava:20.0'
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile "com.androidplot:androidplot-core:1.5.3"
+    compile 'org.jsoup:jsoup:1.11.2'
     compile group: 'com.yahoofinance-api', name: 'YahooFinanceAPI', version: '3.12.3'
     testCompile 'junit:junit:4.12'
     testCompile 'org.json:json:20160810'
