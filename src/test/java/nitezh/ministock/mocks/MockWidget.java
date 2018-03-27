@@ -24,6 +24,8 @@
 
 package nitezh.ministock.mocks;
 
+import android.content.Context;
+
 import org.json.JSONObject;
 
 import java.util.List;
@@ -283,4 +285,10 @@ public class MockWidget implements Widget {
     public String getFont() {
         return null;
     }
+
+
+    @Override
+    public void sendNotification(Context context, String title, String text) {
+
     }
+}
