@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.List;
 
 import nitezh.ministock.Storage;
@@ -112,7 +113,9 @@ public interface Widget {
 
     boolean isUsingWifi();
 
-    void sendNotification(Context context, String title, String text);
+    void sendNotification(Context context, String title, String text, int notificationId);
 
     String getFont();
+
+    List<String> checkSPStock() throws IOException;
 }

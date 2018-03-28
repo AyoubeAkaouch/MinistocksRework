@@ -39,6 +39,7 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -48,6 +49,7 @@ import java.util.Map;
 import nitezh.ministock.PreferenceStorage;
 import nitezh.ministock.R;
 import nitezh.ministock.Storage;
+import nitezh.ministock.dataaccess.SPList;
 
 import static yahoofinance.Utils.getString;
 
@@ -250,7 +252,7 @@ class AndroidWidget implements Widget{
         return this.storage.getBoolean("show_bold",false);
     }
 
-    public void sendNotification(Context context, String title, String text){
+    public void sendNotification(Context context, String title, String text, int notificationId){
 
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
@@ -262,7 +264,7 @@ class AndroidWidget implements Widget{
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
-        int notificationId =1;
+
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, mBuilder.build());
 
@@ -416,6 +418,19 @@ class AndroidWidget implements Widget{
 NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
     boolean isWifiConn = networkInfo.isConnected();
     return isWifiConn;
+    }
+
+    //method that checks if stocks from the S&P list are in
+    // the widget
+    public  List<String> checkSPStock() throws IOException{
+        List <String> spList = new SPList().getSPList();
+        List <String> symbols = this.getSymbols();
+        List <String> spListInWidget = new ArrayList<String>();
+        for (String spSymbol : spList){
+            if (symbols.contains(spSymbol))
+                spListInWidget.add(spSymbol);
+        }
+        return spListInWidget;
     }
 
     @Override
