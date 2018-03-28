@@ -50,11 +50,12 @@ import com.androidplot.xy.XYSeries;
 import com.androidplot.xy.StepMode;
 
 
-
+import java.io.IOException;
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Arrays;
@@ -77,6 +78,8 @@ import nitezh.ministock.domain.StockQuote;
 import nitezh.ministock.domain.StockQuoteRepository;
 import nitezh.ministock.domain.WidgetRepository;
 import nitezh.ministock.utils.DateTools;
+
+import static nitezh.ministock.utils.NumberTools.tryParseDouble;
 
 
 public class WidgetProviderBase extends AppWidgetProvider {
@@ -323,18 +326,40 @@ public class WidgetProviderBase extends AppWidgetProvider {
                     PreferenceStorage.getInstance(this.context), new StorageCache(storage),
                     widgetRepository);
 
+            List<String> spListInWidget = new ArrayList<String>();
             Widget widget = widgetRepository.getWidget(this.appWidgetId);
             //Only update on wifi if option is set
             if (widget.updateOnWifi() && !(widget.isUsingWifi())) {
                 updateType = UpdateType.VIEW_NO_UPDATE;
             }
 
+            try {
+                spListInWidget = widget.checkSPStock();
+            } catch (IOException ignored){
+
+            }
+
+
             this.quotes = quoteRepository.getQuotes(
                     widgetRepository.getWidget(this.appWidgetId).getSymbols(),
                     updateType == UpdateType.VIEW_UPDATE);
             this.timeStamp = quoteRepository.getTimeStamp();
 
-
+            if ((widget.getSize() != 4) && (!spListInWidget.isEmpty())){
+                int i = 1;
+                List<StockQuote> quoteList = new ArrayList<>();
+                for (String symbol : spListInWidget){
+                    if (this.quotes.containsKey(symbol)){
+                        quoteList.add(this.quotes.get(symbol));
+                    }
+                }
+                for (StockQuote stockQuote : quoteList){
+                    if (tryParseDouble(stockQuote.getPercent()) < 5)
+                        widget.sendNotification(context, stockQuote.getSymbol(),
+                                stockQuote.getName()+" has changed more than 5%", i);
+                    i++;
+                }
+            }
 
             if (widget.getSize() == 4) {
                 List<String> symbols = widget.getSymbols();
