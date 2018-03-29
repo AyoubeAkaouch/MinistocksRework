@@ -1,6 +1,7 @@
 package nitezh.ministock;
 
 
+import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SdkSuppress;
 import android.support.test.runner.AndroidJUnit4;
@@ -8,6 +9,7 @@ import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
+import android.util.Log;
 
 
 import org.junit.Before;
@@ -73,6 +75,50 @@ public class UITests {
                 .text("Visible"));
         visibleFooter.click();
         mDevice.pressHome();
+    }
+
+    @Test
+    public void WidgetMonkeyTest() throws UiObjectNotFoundException, InterruptedException, RemoteException{
+
+        mDevice.pressHome();
+
+        //open menu
+        UiObject widgetLeft = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").resourceIdMatches("nitezh.ministock:id/widget_left"));
+        widgetLeft.clickAndWaitForNewWindow();
+
+
+        UiObject swipeWidget = mDevice.findObject(new UiSelector().className("android.widget.ListView").resourceId("android:id/list"));
+        UiObject swipeOS = mDevice.findObject(new UiSelector().className("android.widget.FrameLayout").index(0));
+
+        //swipe Widget on widget
+        swipeWidget.swipeUp(4);
+
+        //swipe down in OS
+        swipeOS.swipeDown(4);
+
+        //swipe up in OS
+        swipeOS.swipeUp(4);
+
+        //swipe left and right in widget
+        swipeWidget.swipeRight(2);
+        swipeWidget.swipeLeft(3);
+
+        UiObject stockSetup = mDevice.findObject(new UiSelector().className("android.widget.RelativeLayout").index(0));
+        UiObject portfolioSetup = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(3));
+
+        stockSetup.clickAndWaitForNewWindow();
+
+        mDevice.pressBack();
+
+        stockSetup.click();
+        mDevice.pressBack();
+
+        stockSetup.click();
+        mDevice.pressBack();
+
+        stockSetup.click();
+        portfolioSetup.click();
+
     }
 
 }
