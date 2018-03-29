@@ -797,10 +797,10 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         if (mPendingUpdate) {
             mPendingUpdate = false;
             WidgetProviderBase.updateWidgets(getApplicationContext(),
-                    WidgetProviderBase.UpdateType.VIEW_UPDATE);
+                    WidgetProviderBase.UpdateType.VIEW_UPDATE, WidgetProviderBase.Notification.DONT_CHECK);
         } else {
             WidgetProviderBase.updateWidgetAsync(getApplicationContext(), mAppWidgetId,
-                    WidgetProviderBase.UpdateType.VIEW_NO_UPDATE);
+                    WidgetProviderBase.UpdateType.VIEW_NO_UPDATE, WidgetProviderBase.Notification.DONT_CHECK);
         }
         finish();
     }

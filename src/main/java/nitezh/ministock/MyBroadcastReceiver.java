@@ -21,7 +21,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         if (intent.getAction().equals(Intent.ACTION_USER_PRESENT) && prefs.getBoolean("unlock_after_refresh",false)) {
             //update the widget
-            WidgetProviderBase.updateWidgets(context, WidgetProviderBase.UpdateType.VIEW_UPDATE);
+            WidgetProviderBase.updateWidgets(context, WidgetProviderBase.UpdateType.VIEW_UPDATE, WidgetProviderBase.Notification.DONT_CHECK);
         }
 
     }
