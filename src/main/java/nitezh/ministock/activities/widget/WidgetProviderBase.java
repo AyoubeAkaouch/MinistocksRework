@@ -399,7 +399,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
                     }
                 }
                 for (StockQuote stockQuote : quoteList) {
-                    if (tryParseDouble(stockQuote.getPercent()) < -5)
+                    if (tryParseDouble(stockQuote.getPercent()) <= -5)
                         widget.sendNotification(context, stockQuote.getSymbol() + " " + stockQuote.getPercent(),
                                 stockQuote.getName()+" has dropped! ", i);
                     i++;
