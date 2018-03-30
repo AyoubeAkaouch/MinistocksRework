@@ -95,21 +95,38 @@ public class StockQuoteRepositoryTests {
 
         StockQuote aaplQuote = quotes.get("AAPL");
         assertEquals("AAPL", aaplQuote.getSymbol());
-        Assert.assertTrue(Arrays.asList("NasdaqNM", "NMS", "Nasdaq Global Select", "NasdaqGS").contains(aaplQuote.getExchange()));
+
+        Assert.assertTrue(Arrays.asList(
+                         "NasdaqNM",
+                "NMS",
+                "Nasdaq Global Select",
+                "NasdaqGS").contains(aaplQuote.getExchange()));
+
+
         assertEquals("Apple Inc.", aaplQuote.getName());
 
         StockQuote googQuote = quotes.get("GOOG");
         assertEquals("GOOG", googQuote.getSymbol());
-        Assert.assertTrue(Arrays.asList("NasdaqNM", "NMS", "Nasdaq Global Select", "NasdaqGS").contains(googQuote.getExchange()));
+
+        Assert.assertTrue(Arrays.asList(
+                       "NasdaqNM",
+                        "NMS",
+                    "Nasdaq Global Select",
+                   "NasdaqGS").contains(googQuote.getExchange()));
+
+
+
         assertEquals("Alphabet Inc.", googQuote.getName());
+
+
 
         StockQuote djiQuote = quotes.get("^DJI");
         assertEquals("^DJI", djiQuote.getSymbol());
-        assertEquals("DJX", djiQuote.getExchange());
+        assertEquals("DJI", djiQuote.getExchange());
 
         StockQuote ixicQuote = quotes.get("^IXIC");
         assertEquals("^IXIC", ixicQuote.getSymbol());
-        assertEquals("NASDAQ", ixicQuote.getExchange());
+        assertEquals("Nasdaq GIDS", ixicQuote.getExchange());
     }
 
     @Test
@@ -129,21 +146,36 @@ public class StockQuoteRepositoryTests {
 
         StockQuote aaplQuote = quotes.get("AAPL");
         assertEquals("AAPL", aaplQuote.getSymbol());
-        Assert.assertTrue(Arrays.asList("NasdaqNM", "NMS", "Nasdaq Global Select", "NasdaqGS").contains(aaplQuote.getExchange()));
+        Assert.assertTrue(Arrays.asList(
+                      "NasdaqNM",
+                           "NMS",
+                        "Nasdaq Global Select",
+                          "NasdaqGS").contains(aaplQuote.getExchange()));
+
+
         assertEquals("Apple Inc.", aaplQuote.getName());
+
+
 
         StockQuote googQuote = quotes.get("GOOG");
         assertEquals("GOOG", googQuote.getSymbol());
-        Assert.assertTrue(Arrays.asList("NasdaqNM", "NMS", "Nasdaq Global Select", "NasdaqGS").contains(googQuote.getExchange()));
+
+        Assert.assertTrue(Arrays.asList(
+                         "NasdaqNM",
+                           "NMS",
+                          "Nasdaq Global Select",
+                           "NasdaqGS").contains(googQuote.getExchange()));
+
+
         assertEquals("Alphabet Inc.", googQuote.getName());
 
         StockQuote djiQuote = quotes.get("^DJI");
         assertEquals("^DJI", djiQuote.getSymbol());
-        assertEquals("DJX", djiQuote.getExchange());
+        assertEquals("DJI", djiQuote.getExchange());
 
         StockQuote ixicQuote = quotes.get("^IXIC");
         assertEquals("^IXIC", ixicQuote.getSymbol());
-        assertEquals("NASDAQ", ixicQuote.getExchange());
+        assertEquals("Nasdaq GIDS", ixicQuote.getExchange());
     }
 
     @Test
