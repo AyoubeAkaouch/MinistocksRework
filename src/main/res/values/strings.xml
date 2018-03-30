@@ -124,6 +124,19 @@
         <item>86400000</item>
     </string-array>
 
+    <string-array name="change_currency_entries">
+        <item>Normal</item>
+        <item>All to CAD</item>
+        <item>All to EURO</item>
+    </string-array>
+
+    <string-array name="change_currency_entryvalues">
+    <item>Normal</item>
+    <item>All to cad</item>
+    <item>All to euro</item>
+    </string-array>
+
+
     <string name="_1x4_widget_background">1x4 widget background</string>
     <string name="_1x4_landscape_widget_background">1x4 landscape widget background</string>
     <string name="_1x4_large_widget_background">1x4 large widget background</string>
