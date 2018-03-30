@@ -24,15 +24,12 @@
 
 package nitezh.ministock.domain;
 
-import android.app.Notification;
+
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
-import android.content.Intent;
+
 import android.service.notification.StatusBarNotification;
-import android.test.mock.MockContext;
-import android.util.Log;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,12 +41,12 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.mockito.Mock;
+
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowApplication;
 
-import nitezh.ministock.activities.widget.WidgetProviderBase;
+
 import nitezh.ministock.Storage;
 
 @RunWith(RobolectricTestRunner.class)
