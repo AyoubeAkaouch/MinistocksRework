@@ -135,7 +135,7 @@ public class YahooStockQuoteRepository2Tests {
         ).contains(googQuote.getExchange()));
         assertEquals("Alphabet Inc.", googQuote.getName());
 
-
+//TEST
         StockQuote djiQuote = stockQuotes.get("^DJI");
              assertEquals("^DJI", djiQuote.getSymbol());
             assertEquals("DJI", djiQuote.getExchange());
