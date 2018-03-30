@@ -179,6 +179,8 @@ class AndroidWidget implements Widget{
     }
 
     @Override
+    public String getCurrencyChange(){return this.storage.getString("change_currency","normal");}
+    @Override
     public int getPreviousView() {
         return this.storage.getInt("widgetView", 0);
     }

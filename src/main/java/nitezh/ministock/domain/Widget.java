@@ -46,7 +46,7 @@ public interface Widget {
 
     String getBackgroundStyle();
 
-
+    String getCurrencyChange();
 
     boolean useBold();
 

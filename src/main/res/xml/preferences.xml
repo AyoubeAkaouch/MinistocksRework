@@ -393,12 +393,12 @@
             android:summary="Update prices and return to home screen"
             android:title="Update prices now" />
         <ListPreference
-            android:defaultValue="Normal"
+            android:defaultValue="normal"
             android:entries="@array/change_currency_entries"
             android:entryValues="@array/change_currency_entryvalues"
             android:key="change_currency"
-            android:title="Which currency do you want!?" />
-
+            android:summary="Convert all prices to a single currency."
+            android:title="Select widget currency" />
     </PreferenceCategory>
     <PreferenceCategory android:title="General">
         <PreferenceScreen

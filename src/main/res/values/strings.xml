@@ -131,11 +131,10 @@
     </string-array>
 
     <string-array name="change_currency_entryvalues">
-    <item>Normal</item>
-    <item>All to cad</item>
-    <item>All to euro</item>
+        <item>normal</item>
+        <item>CAD</item>
+        <item>EUR</item>
     </string-array>
-
 
     <string name="_1x4_widget_background">1x4 widget background</string>
     <string name="_1x4_landscape_widget_background">1x4 landscape widget background</string>
