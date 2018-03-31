@@ -144,7 +144,7 @@ public class StockQuoteRepository {
         filteredQuotes.keySet().retainAll(symbols);
         return filteredQuotes;
     }
-
+//testing
     private HashMap<String, StockQuote> loadQuotes() {
         if (mCachedQuotes != null && !mCachedQuotes.isEmpty()) {
             return mCachedQuotes;
