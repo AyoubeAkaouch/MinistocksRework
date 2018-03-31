@@ -1,18 +1,18 @@
 /*
  The MIT License
- 
+
  Copyright (c) 2013 Nitesh Patel http://niteshpatel.github.io/ministocks
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -67,8 +67,9 @@ class WidgetView {
     private final String quotesTimeStamp;
     private final Context context;
     private final HashMap<ViewType, Boolean> enabledViews;
+    private final String currencies;
 
-    public WidgetView(Context context, int appWidgetId, UpdateType updateMode,
+    public WidgetView(Context context, int appWidgetId, UpdateType updateMode, String currencies,
                       HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
         WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
 
@@ -82,7 +83,7 @@ class WidgetView {
         this.portfolioStocks = new PortfolioStockRepository(
                 PreferenceStorage.getInstance(context), widgetRepository).getStocksForSymbols(symbols);
         this.hasPortfolioData = !portfolioStocks.isEmpty();
-
+        this.currencies = currencies;
         this.remoteViews = this.getBlankRemoteViews(this.widget, context.getPackageName());
         this.enabledViews = this.calculateEnabledViews(this.widget);
     }
@@ -176,7 +177,7 @@ class WidgetView {
     // Global formatter so we can perform global text formatting in one place
     private SpannableString applyFormatting(String s) {
         SpannableString span = new SpannableString(s);
-  //Code to change update the widgets text style
+        //Code to change update the widgets text style
         String FontTypeValue =this.widget.getFont();
         switch(FontTypeValue){
             case "Monospace":
@@ -189,20 +190,20 @@ class WidgetView {
                 span.setSpan(new TypefaceSpan("sans-serif"), 0,s.length(),0);
                 break;
         }
-        // Code to change the widgets font weight 
-           boolean bold = this.widget.useBold();
-           boolean italic = this.widget.useItalic();
-           boolean underlined = this.widget.useUnderlined();
+        // Code to change the widgets font weight
+        boolean bold = this.widget.useBold();
+        boolean italic = this.widget.useItalic();
+        boolean underlined = this.widget.useUnderlined();
 
-           if(bold){
-               span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
-           }
-           if(italic){
-               span.setSpan(new StyleSpan(Typeface.ITALIC), 0, s.length(), 0);
-           }
-           if (underlined){
-               span.setSpan(new UnderlineSpan(), 0, s.length(), 0);
-           }
+        if(bold){
+            span.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), 0);
+        }
+        if(italic){
+            span.setSpan(new StyleSpan(Typeface.ITALIC), 0, s.length(), 0);
+        }
+        if (underlined){
+            span.setSpan(new UnderlineSpan(), 0, s.length(), 0);
+        }
 
         return span;
     }
@@ -243,7 +244,6 @@ class WidgetView {
     private WidgetRow getRowInfo(String symbol, ViewType widgetView) {
         WidgetRow widgetRow = new WidgetRow(this.widget);
         StockQuote quote = this.quotes.get(symbol);
-
         widgetRow.setSymbol(symbol);
 
         if (isQuoteMissingPriceOrChange(quote)) {
@@ -385,7 +385,17 @@ class WidgetView {
     }
 
     private void updateWidgetRowWithDefaults(WidgetRow widgetRow, WidgetStock widgetStock) {
-        widgetRow.setPrice(widgetStock.getPrice());
+        String currencyChange=widget.getCurrencyChange();
+        Log.d("sss", "updateWidgetRowWithDefaults: "+this.currencies);
+        if(!currencyChange.equals("normal"))
+        {
+            String price=CurrencyTools.changeCurrency(currencies,widgetStock.getShortName(),currencyChange,widgetStock.getPrice());
+            widgetRow.setPrice(price);
+        }
+        else{
+            widgetRow.setPrice(widgetStock.getPrice());
+        }
+
         widgetRow.setStockInfo(widgetStock.getDailyPercent());
         widgetRow.setStockInfoColor(WidgetColors.NA);
 
@@ -398,7 +408,14 @@ class WidgetView {
         if (!widget.isNarrow()) {
             widgetRow.setVolume(widgetStock.getVolume());
             widgetRow.setVolumeColor(WidgetColors.VOLUME);
-            widgetRow.setStockInfoExtra(widgetStock.getDailyChange());
+            if(!currencyChange.equals("normal"))
+            {
+                String dailyChange=CurrencyTools.changeCurrency(currencies,widgetStock.getShortName(),currencyChange,widgetStock.getDailyChange());
+                widgetRow.setStockInfoExtra(dailyChange);
+            }
+            else{
+                widgetRow.setStockInfoExtra(widgetStock.getDailyChange());
+            }
             widgetRow.setStockInfoExtraColor(WidgetColors.NA);
         }
     }
@@ -496,8 +513,9 @@ class WidgetView {
         int widgetDisplay = this.getNextView(this.updateMode);
         this.clear();
 
+//       String rates = CurrencyRepository.getRates();
+//        Log.d("XXX", rates);
         int lineNo = 0;
-
         for (String symbol : this.symbols) {
             if (symbol.equals("")) {
                 continue;
@@ -544,7 +562,7 @@ class WidgetView {
             }
         }
 
-         //set Header display
+        //set Header display
 
         switch(this.widget.getHeaderVisibility()){
             case "visible":
