@@ -116,7 +116,6 @@ public interface Widget {
 
     void sendNotification(Context context, String title, String text, int notificationId);
 
-    void sendNotification(Context context, String title, String text);
     boolean updateOnCurrency();
 
 
