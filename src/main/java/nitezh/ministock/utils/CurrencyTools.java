@@ -24,6 +24,8 @@
 
 package nitezh.ministock.utils;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -88,6 +90,7 @@ public class CurrencyTools {
         codeMap.put(".TWO", "TWD");
         codeMap.put(".V", "CAD");
         codeMap.put(".VI", "EUR");
+        codeMap.put(".TI", "EUR");
 
         charMap.put("EUR", "€");
         charMap.put("AUD", "$");
@@ -126,6 +129,61 @@ public class CurrencyTools {
         return currencyChar;
     }
 
+
+    public static String changeCurrency(String rates, String symbol, String selectedCurrency, String price) {
+        double priceD=Double.parseDouble(price);
+        String currencySymbol= getCurrencyCode(symbol);
+        int tempIndex = rates.indexOf(currencySymbol);
+        int tempIndex2= rates.indexOf(selectedCurrency);
+
+        double currencyRateSelected;
+        double currencyRateEur;
+
+        if(currencySymbol.equalsIgnoreCase("EUR")&&selectedCurrency.equalsIgnoreCase("EUR")){
+            currencyRateSelected= 1;
+            currencyRateEur= 1;
+        }
+        else if(selectedCurrency.equalsIgnoreCase("EUR")){
+            currencyRateSelected= 1;
+            currencyRateEur= Double.parseDouble(rates.substring(tempIndex+5, tempIndex+12));
+        }
+        else if(currencySymbol.equalsIgnoreCase("EUR")){
+            currencyRateSelected= Double.parseDouble(rates.substring(tempIndex2+5, tempIndex2+12));
+            currencyRateEur= 1;
+        }
+
+        else{
+            currencyRateSelected= Double.parseDouble(rates.substring(tempIndex2+5, tempIndex2+12));
+            currencyRateEur= Double.parseDouble(rates.substring(tempIndex+5, tempIndex+12));
+        }
+
+
+        double priceEur=priceD/currencyRateEur;
+        double priceSelected=priceEur*currencyRateSelected;
+
+        return String.format("%.2f", priceSelected);
+
+
+    }
+
+
+    public static String getCurrencyCode(String symbol){
+
+        String currencyCode;
+        int index = symbol.indexOf(".");
+        if (index > -1) {
+            currencyCode = codeMap.get(symbol.substring(index));
+
+        }else{
+            currencyCode = "USD";
+        }
+
+        return currencyCode;
+
+    }
+
+
+
     public static String addCurrencyToSymbol(String value, String symbol) {
         String currencySymbol = getCurrencyForSymbol(symbol);
 
@@ -135,7 +193,6 @@ public class CurrencyTools {
                 value = String.format(Locale.getDefault(), "%.0f", NumberTools.tryParseDouble(value) / 100);
             } catch (Exception ignored) {
             }
-
         // Move minus sign to front if present
         String prefix = "";
         if (value.contains("-")) {

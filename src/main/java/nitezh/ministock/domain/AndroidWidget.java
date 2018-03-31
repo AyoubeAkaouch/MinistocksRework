@@ -181,6 +181,8 @@ class AndroidWidget implements Widget{
     }
 
     @Override
+    public String getCurrencyChange(){return this.storage.getString("change_currency","normal");}
+    @Override
     public int getPreviousView() {
         return this.storage.getInt("widgetView", 0);
     }
@@ -411,6 +413,12 @@ class AndroidWidget implements Widget{
     public boolean updateOnWifi() {
         return this.storage.getBoolean("update_only_on_wifi", true);
     }
+
+    @Override
+    public boolean updateOnCurrency() {
+        return this.storage.getBoolean("update_currencies", false);
+    }
+
 
     public boolean isUsingWifi() {
         ConnectivityManager connMgr = (ConnectivityManager)

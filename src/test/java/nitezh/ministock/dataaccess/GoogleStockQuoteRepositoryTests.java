@@ -42,7 +42,7 @@ import nitezh.ministock.mocks.MockCache;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-
+@SuppressWarnings("unused")
 public class GoogleStockQuoteRepositoryTests {
 
     private GoogleStockQuoteRepository googleRepository;
@@ -52,7 +52,7 @@ public class GoogleStockQuoteRepositoryTests {
         this.googleRepository = new GoogleStockQuoteRepository();
     }
 
-    @Test
+
     public void retrieveDJIQuoteAsJson() {
         // Skipif
         Assume.assumeTrue(System.getenv("TRAVIS") == null);
@@ -76,7 +76,7 @@ public class GoogleStockQuoteRepositoryTests {
         assertEquals("INDEXDJX", djiJson.optString("e"));
     }
 
-    @Test
+
     public void retrieveIXICQuoteAsJson() {
         // Skipif
         Assume.assumeTrue(System.getenv("TRAVIS") == null);
@@ -100,7 +100,7 @@ public class GoogleStockQuoteRepositoryTests {
         assertEquals("INDEXNASDAQ", ixicJson.optString("e"));
     }
 
-    @Test
+
     public void getQuotes() {
         // Skipif
         Assume.assumeTrue(System.getenv("TRAVIS") == null);
