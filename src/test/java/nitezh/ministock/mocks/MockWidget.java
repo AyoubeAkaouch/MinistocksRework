@@ -28,6 +28,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nitezh.ministock.Storage;
@@ -288,8 +289,16 @@ public class MockWidget implements Widget {
 
 
     @Override
-    public void sendNotification(Context context, String title, String text) {
+    public void sendNotification(Context context, String title, String text, int notificationId) {
 
+    }
+
+
+    @Override
+    public  List<String> checkSPStock(){
+        List <String> spListInWidget = new ArrayList<String>();
+
+        return spListInWidget;
     }
     @Override
     public boolean updateOnCurrency() {
@@ -298,5 +307,6 @@ public class MockWidget implements Widget {
     @Override
     public String getCurrencyChange() {
         return null;
+
     }
 }

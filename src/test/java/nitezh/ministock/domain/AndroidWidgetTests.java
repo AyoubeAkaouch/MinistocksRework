@@ -24,18 +24,29 @@
 
 package nitezh.ministock.domain;
 
-import android.util.Log;
+
+import android.app.NotificationManager;
+import android.content.Context;
+
+import android.service.notification.StatusBarNotification;
+
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static nitezh.ministock.utils.NumberTools.tryParseDouble;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadows.ShadowApplication;
 
-import nitezh.ministock.activities.widget.WidgetProviderBase;
+
 import nitezh.ministock.Storage;
 
 @RunWith(RobolectricTestRunner.class)
@@ -213,6 +224,49 @@ public class AndroidWidgetTests {
     @Test
     public void testHeaderColor(){
         assertEquals(0xffff00ff , widget.getHeaderColor());
+    }
+
+    @Test
+    public void testAndroidNotifications(){
+        //test to make sure stock quotes with a daily percent of -5 or more fire notifications
+
+        //mock a stock quote
+        StockQuote stockQuote = mock(StockQuote.class);
+
+        //get a new application instance
+        ShadowApplication shadowApplication = ShadowApplication.getInstance();
+
+        //stub
+        stockQuote.setSymbol("goog");
+        when(stockQuote.getPercent()).thenReturn("-5.5");
+        when(stockQuote.getName()).thenReturn("goog");
+
+        //test getPercent and sendNotification method for consistency
+        if (tryParseDouble(stockQuote.getPercent()) <= -5) {
+            widget.sendNotification(shadowApplication.getApplicationContext(), stockQuote.getSymbol() + " " + stockQuote.getPercent(),
+                    stockQuote.getName() + " has dropped! ", 1);
+        }
+
+
+        //get a notification manager for the system
+        NotificationManager mNotificationManager = (NotificationManager) shadowApplication.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        //fill up an array of notifications from this widget
+        StatusBarNotification [] notifications = mNotificationManager.getActiveNotifications();
+
+        //check that a notification exists
+        assertTrue(notifications.length>0);
+
+        boolean hasID1 =false;
+
+        for(StatusBarNotification notification: notifications) {
+            if (notification.getId() == 1) {
+                hasID1 =true;
+            }
+
+        }
+        //check if there is a notification whose ID is 1
+        assertTrue(hasID1);
     }
 
 }
