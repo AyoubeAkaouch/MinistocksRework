@@ -295,11 +295,11 @@ public class MockWidget implements Widget {
 
 
     @Override
-    public  List<String> checkSPStock(){
-        List <String> spListInWidget = new ArrayList<String>();
+    public  List<String> checkSPStock() {
+        List<String> spListInWidget = new ArrayList<String>();
 
         return spListInWidget;
-
+    }
     @Override
     public boolean updateOnCurrency() {
         return false;
