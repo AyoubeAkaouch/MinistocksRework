@@ -28,9 +28,37 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.support.annotation.NonNull;
+import android.util.Log;
+import android.widget.RemoteViews;
+
+import com.androidplot.ui.Anchor;
+import com.androidplot.ui.HorizontalPositioning;
+import com.androidplot.ui.Size;
+import com.androidplot.ui.VerticalPositioning;
+import com.androidplot.util.PixelUtils;
+import com.androidplot.xy.LineAndPointFormatter;
+import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.XYGraphWidget;
+import com.androidplot.xy.XYPlot;
+import com.androidplot.xy.XYSeries;
+import com.androidplot.xy.StepMode;
+
+
+
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Arrays;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -39,6 +67,7 @@ import java.util.concurrent.RejectedExecutionException;
 
 import nitezh.ministock.CustomAlarmManager;
 import nitezh.ministock.PreferenceStorage;
+import nitezh.ministock.R;
 import nitezh.ministock.Storage;
 import nitezh.ministock.domain.CurrencyRepository;
 import nitezh.ministock.domain.Widget;
@@ -195,27 +224,27 @@ public class WidgetProviderBase extends AppWidgetProvider {
         minHeight = getCellsForSize(minHeight);
 
 
-    if(widget.getSize() != 4) {
-        if (minHeight > 1 && minHeight < 3) {
-            if (minWidth > 3) {
-                widget.setSize(3);
+        if(widget.getSize() != 4) {
+            if (minHeight > 1 && minHeight < 3) {
+                if (minWidth > 3) {
+                    widget.setSize(3);
+                } else {
+                    widget.setSize(2);
+                }
+            } else if (minHeight >= 3) {
+                if (minWidth > 3) {
+                    widget.setSize(5);
+                } else {
+                    widget.setSize(6);
+                }
             } else {
-                widget.setSize(2);
-            }
-        } else if (minHeight >= 3) {
-            if (minWidth > 3) {
-                widget.setSize(5);
-            } else {
-                widget.setSize(6);
-            }
-        } else {
-            if (minWidth > 3) {
-                widget.setSize(1);
-            } else {
-                widget.setSize(0);
+                if (minWidth > 3) {
+                    widget.setSize(1);
+                } else {
+                    widget.setSize(0);
+                }
             }
         }
-    }
 
         new CustomAlarmManager(context).reinitialize();
         updateWidgetsFromCache(context);
