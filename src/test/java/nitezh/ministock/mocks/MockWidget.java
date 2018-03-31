@@ -298,6 +298,7 @@ public class MockWidget implements Widget {
     public  List<String> checkSPStock(){
         List <String> spListInWidget = new ArrayList<String>();
 
+
         return spListInWidget;
     }
     @Override

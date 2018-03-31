@@ -113,11 +113,9 @@ public interface Widget {
 
     boolean isUsingWifi();
 
-
     void sendNotification(Context context, String title, String text, int notificationId);
 
     boolean updateOnCurrency();
-
 
     String getFont();
 

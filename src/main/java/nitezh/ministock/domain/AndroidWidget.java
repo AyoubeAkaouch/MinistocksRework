@@ -56,7 +56,7 @@ import static yahoofinance.Utils.getString;
 class AndroidWidget implements Widget{
 
     private final Storage storage;
-    private final Context context;
+    public static Context context;
     private final int id;
 
     private final List<String> preferencesToNotRestore = Arrays.asList("widgetSize", "widgetView");

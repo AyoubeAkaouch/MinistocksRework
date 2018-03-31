@@ -25,12 +25,17 @@
 package nitezh.ministock.domain;
 
 import android.content.Context;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 
+import nitezh.ministock.R;
+import nitezh.ministock.activities.widget.WidgetProviderBase;
 import nitezh.ministock.utils.StorageCache;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
@@ -42,10 +47,10 @@ import nitezh.ministock.UserData;
 import nitezh.ministock.utils.CurrencyTools;
 import nitezh.ministock.utils.NumberTools;
 
+
 public class PortfolioStockRepository {
     public static final String PORTFOLIO_JSON = "portfolioJson";
     public static final String WIDGET_JSON = "widgetJson";
-
     public HashMap<String, StockQuote> stocksQuotes = new HashMap<>();
     HashMap<String, PortfolioStock> portfolioStocksInfo = new HashMap<>();
     private Set<String> widgetsStockSymbols = new HashSet<>();
@@ -55,6 +60,7 @@ public class PortfolioStockRepository {
 
     private final WidgetRepository widgetRepository;
     private final Storage mAppStorage;
+
 
     public PortfolioStockRepository(Storage appStorage, WidgetRepository widgetRepository) {
         this.mAppStorage = appStorage;
@@ -183,6 +189,20 @@ public class PortfolioStockRepository {
             Double price = numberFormat.parse(currentPrice).doubleValue();
             Double buy = NumberTools.parseDouble(buyPrice);
             Double totalPercentChange = price - buy;
+            Double change = 100 * totalPercentChange / buy;
+            //random int to be computed so multiple notifications can be sent
+            Random random = new Random();
+            WidgetRepository widgetRepository = new AndroidWidgetRepository(AndroidWidget.context.getApplicationContext());
+            Widget widget = widgetRepository.getWidget(1);
+            int notificationId = random.nextInt(9999 - 1000) + 1000;
+                if((100 * totalPercentChange / buy) >= 5){
+                    widget.sendNotification(AndroidWidget.context.getApplicationContext(), "Portfolio alert", symbol + " % PL is +" + new DecimalFormat("#.##").format(change) +"%",notificationId);
+                }
+                else if((100 * totalPercentChange / buy) <= -5){
+                    widget.sendNotification(AndroidWidget.context.getApplicationContext(), "Portfolio alert", symbol + " % PL is " + new DecimalFormat("#.##").format(change) + '%',notificationId);
+
+                }
+
             totalChange = String.format(Locale.getDefault(), "%.0f", 100 * totalPercentChange / buy) + "%";
 
             // Calculate change
