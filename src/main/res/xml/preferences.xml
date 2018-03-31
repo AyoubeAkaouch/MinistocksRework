@@ -339,6 +339,13 @@
 
                 <CheckBoxPreference
                     android:defaultValue="false"
+                    android:key="update_currencies"
+                    android:summaryOff="Allow the app to update exchange rates online."
+                    android:summaryOn="Allow the app to update exchange rates online."
+                    android:title="Update exchange rates" />
+
+                <CheckBoxPreference
+                    android:defaultValue="false"
                     android:key="update_only_on_wifi"
                     android:summaryOff="Allow updates only when using a wifi connection."
                     android:summaryOn="Allow updates only when using a wifi connection."

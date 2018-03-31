@@ -195,27 +195,27 @@ public class WidgetProviderBase extends AppWidgetProvider {
         minHeight = getCellsForSize(minHeight);
 
 
-        if(widget.getSize() != 4) {
-            if (minHeight > 1 && minHeight < 3) {
-                if (minWidth > 3) {
-                    widget.setSize(3);
-                } else {
-                    widget.setSize(2);
-                }
-            } else if (minHeight >= 3) {
-                if (minWidth > 3) {
-                    widget.setSize(5);
-                } else {
-                    widget.setSize(6);
-                }
+    if(widget.getSize() != 4) {
+        if (minHeight > 1 && minHeight < 3) {
+            if (minWidth > 3) {
+                widget.setSize(3);
             } else {
-                if (minWidth > 3) {
-                    widget.setSize(1);
-                } else {
-                    widget.setSize(0);
-                }
+                widget.setSize(2);
+            }
+        } else if (minHeight >= 3) {
+            if (minWidth > 3) {
+                widget.setSize(5);
+            } else {
+                widget.setSize(6);
+            }
+        } else {
+            if (minWidth > 3) {
+                widget.setSize(1);
+            } else {
+                widget.setSize(0);
             }
         }
+    }
 
         new CustomAlarmManager(context).reinitialize();
         updateWidgetsFromCache(context);
@@ -309,7 +309,8 @@ public class WidgetProviderBase extends AppWidgetProvider {
             this.quotes = quoteRepository.getQuotes(
                     widgetRepository.getWidget(this.appWidgetId).getSymbols(),
                     updateType == UpdateType.VIEW_UPDATE);
-            this.currencies = currencyRepo.getCurrencies(updateType == UpdateType.VIEW_UPDATE);
+
+            this.currencies = currencyRepo.getCurrencies(widget.updateOnCurrency());
             this.timeStamp = quoteRepository.getTimeStamp();
 
 
@@ -320,13 +321,13 @@ public class WidgetProviderBase extends AppWidgetProvider {
                 GraphTools.drawGraph(context, symbol, appWidgetId);
             }
 
-            return null;
+                return null;
 
         }
-        @Override
-        protected void onPostExecute (Void result){
-            applyUpdate(this.context, this.appWidgetId, this.updateType, this.currencies,this.quotes,
-                    this.timeStamp);
+            @Override
+            protected void onPostExecute (Void result){
+                applyUpdate(this.context, this.appWidgetId, this.updateType, this.currencies,this.quotes,
+                        this.timeStamp);
+            }
         }
     }
-}

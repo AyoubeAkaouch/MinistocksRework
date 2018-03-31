@@ -412,6 +412,12 @@ class AndroidWidget implements Widget{
         return this.storage.getBoolean("update_only_on_wifi", true);
     }
 
+    @Override
+    public boolean updateOnCurrency() {
+        return this.storage.getBoolean("update_currencies", false);
+    }
+
+
     public boolean isUsingWifi() {
         ConnectivityManager connMgr = (ConnectivityManager)
                 this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
