@@ -33,7 +33,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -59,7 +58,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Arrays;
-
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +67,6 @@ import nitezh.ministock.CustomAlarmManager;
 import nitezh.ministock.PreferenceStorage;
 import nitezh.ministock.R;
 import nitezh.ministock.Storage;
-import nitezh.ministock.domain.CurrencyRepository;
 import nitezh.ministock.domain.Widget;
 import nitezh.ministock.utils.StorageCache;
 import nitezh.ministock.utils.GraphTools;
@@ -84,9 +81,9 @@ import nitezh.ministock.utils.DateTools;
 
 public class WidgetProviderBase extends AppWidgetProvider {
 
-    private static void applyUpdate(Context context, int appWidgetId, UpdateType updateMode,String currencies,
+    private static void applyUpdate(Context context, int appWidgetId, UpdateType updateMode,
                                     HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
-        WidgetView widgetView = new WidgetView(context, appWidgetId, updateMode, currencies,
+        WidgetView widgetView = new WidgetView(context, appWidgetId, updateMode,
                 quotes, quotesTimeStamp);
         widgetView.setOnClickPendingIntents();
         if (widgetView.hasPendingChanges()) {
@@ -224,27 +221,27 @@ public class WidgetProviderBase extends AppWidgetProvider {
         minHeight = getCellsForSize(minHeight);
 
 
-        if(widget.getSize() != 4) {
-            if (minHeight > 1 && minHeight < 3) {
-                if (minWidth > 3) {
-                    widget.setSize(3);
-                } else {
-                    widget.setSize(2);
-                }
-            } else if (minHeight >= 3) {
-                if (minWidth > 3) {
-                    widget.setSize(5);
-                } else {
-                    widget.setSize(6);
-                }
+    if(widget.getSize() != 4) {
+        if (minHeight > 1 && minHeight < 3) {
+            if (minWidth > 3) {
+                widget.setSize(3);
             } else {
-                if (minWidth > 3) {
-                    widget.setSize(1);
-                } else {
-                    widget.setSize(0);
-                }
+                widget.setSize(2);
+            }
+        } else if (minHeight >= 3) {
+            if (minWidth > 3) {
+                widget.setSize(5);
+            } else {
+                widget.setSize(6);
+            }
+        } else {
+            if (minWidth > 3) {
+                widget.setSize(1);
+            } else {
+                widget.setSize(0);
             }
         }
+    }
 
         new CustomAlarmManager(context).reinitialize();
         updateWidgetsFromCache(context);
@@ -304,7 +301,6 @@ public class WidgetProviderBase extends AppWidgetProvider {
         private Integer appWidgetId;
         private UpdateType updateType;
         private HashMap<String, StockQuote> quotes;
-        private String currencies;
         private String timeStamp;
 
         public GetDataTask build(Context context, Integer appWidgetId, UpdateType updateType) {
@@ -323,12 +319,10 @@ public class WidgetProviderBase extends AppWidgetProvider {
         protected Void doInBackground(Object... params) {
             WidgetRepository widgetRepository = new AndroidWidgetRepository(this.context);
             Storage storage = PreferenceStorage.getInstance(this.context);
-            StorageCache cache = new StorageCache(storage);
-
             StockQuoteRepository quoteRepository = new StockQuoteRepository(
-                    PreferenceStorage.getInstance(this.context), cache,
+                    PreferenceStorage.getInstance(this.context), new StorageCache(storage),
                     widgetRepository);
-            CurrencyRepository currencyRepo = new CurrencyRepository(PreferenceStorage.getInstance(this.context), cache);
+
             Widget widget = widgetRepository.getWidget(this.appWidgetId);
             //Only update on wifi if option is set
             if (widget.updateOnWifi() && !(widget.isUsingWifi())) {
@@ -338,8 +332,6 @@ public class WidgetProviderBase extends AppWidgetProvider {
             this.quotes = quoteRepository.getQuotes(
                     widgetRepository.getWidget(this.appWidgetId).getSymbols(),
                     updateType == UpdateType.VIEW_UPDATE);
-
-            this.currencies = currencyRepo.getCurrencies(widget.updateOnCurrency());
             this.timeStamp = quoteRepository.getTimeStamp();
 
 
@@ -355,7 +347,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
         }
             @Override
             protected void onPostExecute (Void result){
-                applyUpdate(this.context, this.appWidgetId, this.updateType, this.currencies,this.quotes,
+                applyUpdate(this.context, this.appWidgetId, this.updateType, this.quotes,
                         this.timeStamp);
             }
         }

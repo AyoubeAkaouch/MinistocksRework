@@ -291,12 +291,4 @@ public class MockWidget implements Widget {
     public void sendNotification(Context context, String title, String text) {
 
     }
-    @Override
-    public boolean updateOnCurrency() {
-        return false;
-    }
-    @Override
-    public String getCurrencyChange() {
-        return null;
-    }
 }
