@@ -310,4 +310,10 @@ public class MockWidget implements Widget {
         return null;
 
     }
+
+    @Override
+    public String historicalData() {
+        return null;
+
+    }
 }
