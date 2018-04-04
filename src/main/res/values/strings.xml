@@ -140,13 +140,15 @@
         <item>Past Year</item>
         <item>Past 6 Months</item>
         <item>Past Month</item>
-        <item>Week</item>
+        <item>Past 2 Weeks</item>
+        <item>Past Week</item>
     </string-array>
 
     <string-array name="historical_data_beginningvalues">
         <item>past_year</item>
         <item>past_six_months</item>
         <item>past_month</item>
+        <item>past_two_weeks</item>
         <item>past_week</item>
     </string-array>
 
