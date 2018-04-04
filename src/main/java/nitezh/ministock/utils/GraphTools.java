@@ -1,10 +1,6 @@
 
 package nitezh.ministock.utils;
 
-/**
- * Created by mohamed on 2018-03-01.
- */
-
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -44,11 +40,12 @@ import nitezh.ministock.R;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
+import yahoofinance.histquotes.Interval;
 
 
 public class GraphTools {
 
-    public static void drawGraph(Context context,String symbol, Integer appWidgetId){
+    public static void drawGraph(Context context,String symbol, Integer appWidgetId, String beginning){
         XYPlot plot = new XYPlot(context, symbol);
         final int h = (int) context.getResources().getDimension(R.dimen.sample_widget_height);
         final int w = (int) context.getResources().getDimension(R.dimen.sample_widget_width);
@@ -77,10 +74,40 @@ public class GraphTools {
 
         plot.measure(w, h);
         plot.layout(0, 0, w, h);
+
+        Calendar from = Calendar.getInstance();
+        Calendar to = Calendar.getInstance();
+
+
+
         List<Date> calendars = new ArrayList();
         List<BigDecimal> close = new ArrayList();
         try {
-            Stock stock = YahooFinance.get(symbol, true);
+
+            Stock stock;
+            switch(beginning) {
+                case "past_six_months":
+                    from.add(Calendar.MONTH, -6);
+                    stock = YahooFinance.get(symbol, from, to, Interval.MONTHLY);
+                    break;
+                case "past_month":
+                    from.add(Calendar.MONTH, -1);
+                    stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+                    break;
+                case "past_two_weeks":
+                    from.add(Calendar.WEEK_OF_MONTH, -2);
+                    stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+                    break;
+                case "past_week":
+                    from.add(Calendar.WEEK_OF_MONTH, -1);
+                    stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+                    break;
+                default:
+                    stock = YahooFinance.get(symbol, true);
+
+
+            }
+
             List<HistoricalQuote> historicalQuotes = stock.getHistory();
 
             for (HistoricalQuote historicalQuote : historicalQuotes) {
@@ -91,6 +118,7 @@ public class GraphTools {
                 calendars.add(historicalQuote.getDate().getTime());
 
             }
+            
         }catch (IOException ignored){
 
         }
@@ -116,10 +144,9 @@ public class GraphTools {
 
         
         final Date[] stockDates = calendars.toArray(new Date[calendars.size()]);
-        
 
         plot.setDomainStep(StepMode.SUBDIVIDE, stockDates.length);
-        plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).getPaint().setTextSize(30);
+        plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).getPaint().setTextSize(20);
         plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.LEFT).getPaint().setTextSize(35);
         plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).
                 setFormat(new Format() {
@@ -128,7 +155,8 @@ public class GraphTools {
                     // see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
                     // for a full description of SimpleDateFormat.
 
-                    private final SimpleDateFormat dateFormat = new SimpleDateFormat("y/MM");
+
+                    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
                     @Override
                     public StringBuffer format(Object obj,
