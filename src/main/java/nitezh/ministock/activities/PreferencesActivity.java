@@ -187,6 +187,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             for (int i = 5; i < 16; i++)
                 removePref(stock_setup, "Stock" + i);
 
+
         //Remove extra stocks for 4x4 widget and unnecessary preferences
         if (widgetSize == 4) {
 
@@ -194,12 +195,20 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             removePrefScreen(widgetSettings, "advanced");
             removePrefScreen(widgetSettings, "portfolio");
             removePrefScreen(widgetSettings, "update_now");
+            removePrefScreen(widgetSettings, "change_currency");
+
 
             for (int i = 2; i < 5; i++)
                 removePref(stock_setup, "Stock" + i);
         }
 
         }
+
+        if (widgetSize != 4) {
+            PreferenceCategory widgetSettings = (PreferenceCategory) findPreference("widget_settings");
+            removePrefScreen(widgetSettings, "historical_data");
+        }
+
         // Remove extra widget views
         if (widgetSize == 1 || widgetSize == 3) {
             PreferenceScreen widget_views = (PreferenceScreen) findPreference("widget_views");
