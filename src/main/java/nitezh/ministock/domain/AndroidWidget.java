@@ -25,20 +25,27 @@
 package nitezh.ministock.domain;
 
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,11 +56,12 @@ import java.util.Map;
 import nitezh.ministock.PreferenceStorage;
 import nitezh.ministock.R;
 import nitezh.ministock.Storage;
+import nitezh.ministock.activities.Permissions;
 import nitezh.ministock.dataaccess.SPList;
 
 import static yahoofinance.Utils.getString;
 
-class AndroidWidget implements Widget{
+class AndroidWidget implements Widget {
 
     private final Storage storage;
     public static Context context;
@@ -168,7 +176,7 @@ class AndroidWidget implements Widget{
 
     @Override
     public boolean isNarrow() {
-        return (size == 0 || size == 2 || size == 6 );
+        return (size == 0 || size == 2 || size == 6);
     }
 
     private int _getSize() {
@@ -181,7 +189,10 @@ class AndroidWidget implements Widget{
     }
 
     @Override
-    public String getCurrencyChange(){return this.storage.getString("change_currency","normal");}
+    public String getCurrencyChange() {
+        return this.storage.getString("change_currency", "normal");
+    }
+
     @Override
     public int getPreviousView() {
         return this.storage.getInt("widgetView", 0);
@@ -222,10 +233,10 @@ class AndroidWidget implements Widget{
             count = 4;
         } else if (size == 2 || size == 3) {
             count = 10;
-        } else if (size == 4){
+        } else if (size == 4) {
             count = 1;
-        }else if(size == 5 || size == 6){
-            count= 15;
+        } else if (size == 5 || size == 6) {
+            count = 15;
         }
         return count;
     }
@@ -236,25 +247,24 @@ class AndroidWidget implements Widget{
     }
 
 
-
     @Override
     public boolean getHideSuffix() {
         return this.storage.getBoolean("hide_suffix", false);
     }
 
-   /*@Override
-    public String getTextStyle() {
-        return this.storage.getString("text_style", "normal");
-    }
-*/
+    /*@Override
+     public String getTextStyle() {
+         return this.storage.getString("text_style", "normal");
+     }
+ */
     @Override
-    public boolean useBold(){
+    public boolean useBold() {
 
-
-        return this.storage.getBoolean("show_bold",false);
+        getFileStorageDir();
+        return this.storage.getBoolean("show_bold", false);
     }
 
-    public void sendNotification(Context context, String title, String text, int notificationId){
+    public void sendNotification(Context context, String title, String text, int notificationId) {
 
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
@@ -273,17 +283,17 @@ class AndroidWidget implements Widget{
     }
 
     @Override
-    public boolean useUnderlined(){
-        return this.storage.getBoolean("show_underlined",false);
+    public boolean useUnderlined() {
+        return this.storage.getBoolean("show_underlined", false);
     }
 
     @Override
-    public boolean useItalic(){
-        return this.storage.getBoolean("show_italic",false);
+    public boolean useItalic() {
+        return this.storage.getBoolean("show_italic", false);
     }
 
     @Override
-    public String getFontSize(){
+    public String getFontSize() {
         return this.storage.getString("font_size_custom", "medium");
     }
 
@@ -296,7 +306,7 @@ class AndroidWidget implements Widget{
     public String getFooterVisibility() {
         return this.storage.getString("updated_display", "visible");
     }
-    
+
     @Override
     public String getHeaderVisibility() {
         return this.storage.getString("updated_header", "visible");
@@ -304,41 +314,41 @@ class AndroidWidget implements Widget{
 
     @Override
     public int getHeaderColor() {
-        return this.storage.getInt("updated_header_colour", 0xffff00ff );
+        return this.storage.getInt("updated_header_colour", 0xffff00ff);
     }
 
     @Override
     public int getFooterColor() {
-        return this.storage.getInt("updated_footer_colour", 0xFF888888 );
+        return this.storage.getInt("updated_footer_colour", 0xFF888888);
     }
 
     @Override
     public int getStockNameColor() {
-        return this.storage.getInt("stock_name_colour", 0xFFFFFFFF );
+        return this.storage.getInt("stock_name_colour", 0xFFFFFFFF);
     }
 
     @Override
     public int getStockPriceColor() {
-        return this.storage.getInt("stock_price_colour", 0xFFFFFFFF );
+        return this.storage.getInt("stock_price_colour", 0xFFFFFFFF);
     }
 
     @Override
-    public int getPriceIncreaseColor(){
+    public int getPriceIncreaseColor() {
         return this.storage.getInt("increase_alert_colour", 0xFFCCFF66);
     }
 
     @Override
-    public int getPriceDecreaseColor(){
-        return this.storage.getInt("decrease_alert_colour",0xFFff6666);
+    public int getPriceDecreaseColor() {
+        return this.storage.getInt("decrease_alert_colour", 0xFFff6666);
     }
 
     @Override
-    public int getHighAlertColor(){
+    public int getHighAlertColor() {
         return this.storage.getInt("high_alert_colour", 0xFFFFEE33);
     }
 
     @Override
-    public int getLowAlertColor(){
+    public int getLowAlertColor() {
         return this.storage.getInt("low_alert_colour", 0xFFFF66FF);
     }
 
@@ -423,18 +433,18 @@ class AndroidWidget implements Widget{
     public boolean isUsingWifi() {
         ConnectivityManager connMgr = (ConnectivityManager)
                 this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
-NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-    boolean isWifiConn = networkInfo.isConnected();
-    return isWifiConn;
+        NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        boolean isWifiConn = networkInfo.isConnected();
+        return isWifiConn;
     }
 
     //method that checks if stocks from the S&P list are in
     // the widget
-    public  List<String> checkSPStock() throws IOException{
-        List <String> spList = new SPList().getSPList();
-        List <String> symbols = this.getSymbols();
-        List <String> spListInWidget = new ArrayList<String>();
-        for (String spSymbol : spList){
+    public List<String> checkSPStock() throws IOException {
+        List<String> spList = new SPList().getSPList();
+        List<String> symbols = this.getSymbols();
+        List<String> spListInWidget = new ArrayList<String>();
+        for (String spSymbol : spList) {
             if (symbols.contains(spSymbol))
                 spListInWidget.add(spSymbol);
         }
@@ -442,7 +452,39 @@ NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
     }
 
     @Override
-    public String getFont(){
+    public String getFont() {
         return this.storage.getString("font", "Sans-serif");
     }
+
+
+    private static final int REQUEST_WRITE_STORAGE = 112;
+
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void getFileStorageDir() {
+
+        if (isExternalStorageWritable() && hasPermission()) {
+            File file = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_DOCUMENTS), "stocks");
+            if (!file.mkdirs()) {
+                Log.e("Directory status", "Directory not created");
+            }
+
+        }
+    }
+
+    public boolean hasPermission() {
+
+        Permissions permissions = new Permissions(context);
+        permissions.checkWriteExternalStoragePermission();
+
+
+    }
+
 }

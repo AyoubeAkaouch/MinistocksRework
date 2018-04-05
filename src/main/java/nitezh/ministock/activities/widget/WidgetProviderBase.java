@@ -24,19 +24,25 @@
 
 package nitezh.ministock.activities.widget;
 
+import android.Manifest;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import com.androidplot.ui.Anchor;
 import com.androidplot.ui.HorizontalPositioning;
@@ -51,6 +57,7 @@ import com.androidplot.xy.XYSeries;
 import com.androidplot.xy.StepMode;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.text.FieldPosition;
 import java.text.Format;
@@ -85,7 +92,7 @@ import nitezh.ministock.utils.DateTools;
 import static nitezh.ministock.utils.NumberTools.tryParseDouble;
 
 
-public class WidgetProviderBase extends AppWidgetProvider {
+public class WidgetProviderBase extends AppWidgetProvider{
 
     private static void applyUpdate(Context context, int appWidgetId, UpdateType updateMode,String currencies,
                                     HashMap<String, StockQuote> quotes, String quotesTimeStamp) {

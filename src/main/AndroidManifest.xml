@@ -92,6 +92,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activities.Permissions"
+            android:theme="@android:style/Theme.Dialog">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activities.configure.ConfigureActivity2x2"
             android:theme="@android:style/Theme.Dialog">
 
@@ -211,5 +219,9 @@
 
     <!-- user permissions -->
     <uses-permission  android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 </manifest>
 
