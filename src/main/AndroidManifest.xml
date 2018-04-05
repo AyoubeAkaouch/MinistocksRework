@@ -95,9 +95,6 @@
             android:name=".activities.Permissions"
             android:theme="@android:style/Theme.Dialog">
 
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.configure.ConfigureActivity2x2"

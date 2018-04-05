@@ -17,6 +17,10 @@ public class Permissions extends Activity {
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 1;
     private Context context;
 
+    public Permission(){
+
+    }
+
     public Permissions(Context context) {
         this.context = context;
     }
