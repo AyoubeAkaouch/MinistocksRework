@@ -23,12 +23,12 @@ before_install:
 #First app is built then unit tests are run
 jobs:
   include:
-    - stage: Static_Analysis
-      script: sonar-scanner -Dsonar.java.binaries=.
     - stage: build
       script: ./gradlew assemble
     - stage: test
       script: ./gradlew test
+    - stage: Static_Analysis
+      script: sonar-scanner -Dsonar.java.binaries=.
     
 
 
