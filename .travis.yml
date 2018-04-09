@@ -10,7 +10,11 @@ android:
 jdk:
 - oraclejdk8
 
-
+addons:
+  sonarcloud:
+    organization: "ayoubeakaouch-github" # the key of the org you chose at step #3
+    token:
+      secure: $SONAR_TOKEN # encrypted value of your token
 
 before_install:
 - chmod +x gradlew
@@ -19,10 +23,13 @@ before_install:
 #First app is built then unit tests are run
 jobs:
   include:
+    - stage: Static_Analysis
+      script: sonar-scanner -Dsonar.java.binaries=.
     - stage: build
-      script: ./gradlew assemble 
+      script: ./gradlew assemble
     - stage: test
       script: ./gradlew test
+    
 
 
 notifications:

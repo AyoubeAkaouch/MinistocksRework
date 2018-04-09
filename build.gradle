@@ -6,10 +6,13 @@ buildscript {
         // Check supported Gradle version at the URL below before changing the below
         // https://repo1.maven.org/maven2/com/android/tools/build/gradle/
         classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
     }
 }
 
 apply plugin: 'com.android.application'
+apply plugin: "org.sonarqube"
+
 
 android {
     compileSdkVersion 26
