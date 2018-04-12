@@ -419,6 +419,9 @@ class AndroidWidget implements Widget{
         return this.storage.getBoolean("update_currencies", false);
     }
 
+    public String historicalData() {
+        return this.storage.getString("historical_data", "past_year");
+    }
 
     public boolean isUsingWifi() {
         ConnectivityManager connMgr = (ConnectivityManager)

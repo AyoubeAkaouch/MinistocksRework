@@ -120,4 +120,6 @@ public interface Widget {
     String getFont();
 
     List<String> checkSPStock() throws IOException;
+
+    String historicalData();
 }

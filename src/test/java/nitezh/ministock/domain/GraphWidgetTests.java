@@ -11,9 +11,18 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.List;
+
 import nitezh.ministock.Storage;
 import nitezh.ministock.activities.PreferencesActivity;
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
+import yahoofinance.histquotes.HistoricalQuote;
+import yahoofinance.histquotes.Interval;
 
+import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -112,5 +121,54 @@ public class GraphWidgetTests {
 
     }
 
+    @Test
+    public void TestHistoricalDataIntervals() throws IOException{
 
+        //Check that the number of data points retrieved is correct
+        // for the given time interval
+
+        Calendar from = Calendar.getInstance();
+        Calendar to = Calendar.getInstance();
+        String symbol = "GOOG";
+
+            Stock stock;
+        List<HistoricalQuote> historicalQuotes ;
+
+                    // past six months (at least 5 data points)
+                    from.add(Calendar.MONTH, -6);
+                    stock = YahooFinance.get(symbol, from, to, Interval.MONTHLY);
+                    historicalQuotes = stock.getHistory();
+
+                    assertTrue(historicalQuotes.size() >= 5);
+
+                    // past month (at least 20 data points)
+                    from.add(Calendar.MONTH, -1);
+                    stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+                    historicalQuotes = stock.getHistory();
+
+                     assertTrue(historicalQuotes.size() >= 20);
+
+                    // past two weeks (at least 7 data points)
+                    from.add(Calendar.WEEK_OF_MONTH, -2);
+                    stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+                     historicalQuotes = stock.getHistory();
+
+                     assertTrue(historicalQuotes.size() >= 7);
+
+                    // past week (at least 4 data points)
+                    from.add(Calendar.WEEK_OF_MONTH, -1);
+                    stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+                      historicalQuotes = stock.getHistory();
+
+                      assertTrue(historicalQuotes.size() >= 4);
+
+                    //past year (at least 11 data points)
+                    stock = YahooFinance.get(symbol, true);
+                     historicalQuotes = stock.getHistory();
+
+                      assertTrue(historicalQuotes.size() >= 11);
+
+
+
+    }
 }

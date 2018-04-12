@@ -97,6 +97,13 @@
                 android:summary="Set symbol"
                 android:title="Stock 15" />
         </PreferenceScreen>
+        <ListPreference
+            android:defaultValue="past_year"
+            android:entries="@array/historical_data_beginning"
+            android:entryValues="@array/historical_data_beginningvalues"
+            android:key="historical_data"
+            android:summary="Choose when to start retrieving historical data for the stock"
+            android:title="Options for graph historical data" />
         <PreferenceScreen
             android:key="advanced"
             android:summary="Advanced widget settings"

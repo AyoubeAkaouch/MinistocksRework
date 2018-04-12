@@ -376,7 +376,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
             if (widget.getSize() == 4) {
                 List<String> symbols = widget.getSymbols();
                 String symbol = symbols.get(0);
-                GraphTools.drawGraph(context, symbol, appWidgetId);
+                GraphTools.drawGraph(context, symbol, appWidgetId, widget.historicalData());
             }
 
                 return null;
