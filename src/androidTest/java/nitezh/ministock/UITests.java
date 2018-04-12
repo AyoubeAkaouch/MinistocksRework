@@ -31,6 +31,7 @@ public class UITests {
     //UI tests have to be run on a 1080p screen
     //If not the widget will be stuck on loading data...
     //*************************
+    //These tests will run on an empty default configuration of the stock widget!!!
     @Before
     public void setUp() throws UiObjectNotFoundException {
         mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
