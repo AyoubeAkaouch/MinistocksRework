@@ -39,6 +39,7 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -48,13 +49,14 @@ import java.util.Map;
 import nitezh.ministock.PreferenceStorage;
 import nitezh.ministock.R;
 import nitezh.ministock.Storage;
+import nitezh.ministock.dataaccess.SPList;
 
 import static yahoofinance.Utils.getString;
 
 class AndroidWidget implements Widget{
 
     private final Storage storage;
-    private final Context context;
+    public static Context context;
     private final int id;
 
     private final List<String> preferencesToNotRestore = Arrays.asList("widgetSize", "widgetView");
@@ -179,6 +181,8 @@ class AndroidWidget implements Widget{
     }
 
     @Override
+    public String getCurrencyChange(){return this.storage.getString("change_currency","normal");}
+    @Override
     public int getPreviousView() {
         return this.storage.getInt("widgetView", 0);
     }
@@ -250,7 +254,7 @@ class AndroidWidget implements Widget{
         return this.storage.getBoolean("show_bold",false);
     }
 
-    public void sendNotification(Context context, String title, String text){
+    public void sendNotification(Context context, String title, String text, int notificationId){
 
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
@@ -262,7 +266,7 @@ class AndroidWidget implements Widget{
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
-        int notificationId =1;
+
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, mBuilder.build());
 
@@ -410,12 +414,34 @@ class AndroidWidget implements Widget{
         return this.storage.getBoolean("update_only_on_wifi", true);
     }
 
+    @Override
+    public boolean updateOnCurrency() {
+        return this.storage.getBoolean("update_currencies", false);
+    }
+
+    public String historicalData() {
+        return this.storage.getString("historical_data", "past_year");
+    }
+
     public boolean isUsingWifi() {
         ConnectivityManager connMgr = (ConnectivityManager)
                 this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
 NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
     boolean isWifiConn = networkInfo.isConnected();
     return isWifiConn;
+    }
+
+    //method that checks if stocks from the S&P list are in
+    // the widget
+    public  List<String> checkSPStock() throws IOException{
+        List <String> spList = new SPList().getSPList();
+        List <String> symbols = this.getSymbols();
+        List <String> spListInWidget = new ArrayList<String>();
+        for (String spSymbol : spList){
+            if (symbols.contains(spSymbol))
+                spListInWidget.add(spSymbol);
+        }
+        return spListInWidget;
     }
 
     @Override

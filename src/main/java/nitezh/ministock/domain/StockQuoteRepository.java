@@ -88,6 +88,7 @@ public class StockQuoteRepository {
         allQuotes = this.convertResponseQuotes(allQuotes);
 
         return allQuotes;
+
     }
 
     private HashMap<String, StockQuote> convertResponseQuotes(HashMap<String, StockQuote> quotes) {
@@ -143,7 +144,7 @@ public class StockQuoteRepository {
         filteredQuotes.keySet().retainAll(symbols);
         return filteredQuotes;
     }
-
+//testing
     private HashMap<String, StockQuote> loadQuotes() {
         if (mCachedQuotes != null && !mCachedQuotes.isEmpty()) {
             return mCachedQuotes;
@@ -192,6 +193,8 @@ public class StockQuoteRepository {
     public String getTimeStamp() {
         return mTimeStamp;
     }
+
+
 
     //To be used for testing only
     public void setmCachedQuotes(HashMap<String, StockQuote> cachedQuotes){

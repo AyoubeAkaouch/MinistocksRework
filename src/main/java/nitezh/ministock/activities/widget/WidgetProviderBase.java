@@ -33,6 +33,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -50,14 +51,16 @@ import com.androidplot.xy.XYSeries;
 import com.androidplot.xy.StepMode;
 
 
-
+import java.io.IOException;
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Arrays;
+
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +70,7 @@ import nitezh.ministock.CustomAlarmManager;
 import nitezh.ministock.PreferenceStorage;
 import nitezh.ministock.R;
 import nitezh.ministock.Storage;
+import nitezh.ministock.domain.CurrencyRepository;
 import nitezh.ministock.domain.Widget;
 import nitezh.ministock.utils.StorageCache;
 import nitezh.ministock.utils.GraphTools;
@@ -78,12 +82,14 @@ import nitezh.ministock.domain.StockQuoteRepository;
 import nitezh.ministock.domain.WidgetRepository;
 import nitezh.ministock.utils.DateTools;
 
+import static nitezh.ministock.utils.NumberTools.tryParseDouble;
+
 
 public class WidgetProviderBase extends AppWidgetProvider {
 
-    private static void applyUpdate(Context context, int appWidgetId, UpdateType updateMode,
+    private static void applyUpdate(Context context, int appWidgetId, UpdateType updateMode,String currencies,
                                     HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
-        WidgetView widgetView = new WidgetView(context, appWidgetId, updateMode,
+        WidgetView widgetView = new WidgetView(context, appWidgetId, updateMode, currencies,
                 quotes, quotesTimeStamp);
         widgetView.setOnClickPendingIntents();
         if (widgetView.hasPendingChanges()) {
@@ -92,19 +98,20 @@ public class WidgetProviderBase extends AppWidgetProvider {
         }
     }
 
-    public static void updateWidgetAsync(Context context, int appWidgetId, UpdateType updateType) {
+    public static void updateWidgetAsync(Context context, int appWidgetId, UpdateType updateType,
+                                         Notification notification) {
         try {
-            new GetDataTask().build(context, appWidgetId, updateType).execute();
+            new GetDataTask().build(context, appWidgetId, updateType, notification).execute();
         }
         // usually occurs when queued tasks = 128
         catch (RejectedExecutionException ignored) {
         }
     }
 
-    public static void updateWidgets(Context context, UpdateType updateType) {
+    public static void updateWidgets(Context context, UpdateType updateType, Notification notification) {
         WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
         for (int appWidgetId : widgetRepository.getIds()) {
-            WidgetProviderBase.updateWidgetAsync(context, appWidgetId, updateType);
+            WidgetProviderBase.updateWidgetAsync(context, appWidgetId, updateType, notification);
         }
 
         CustomAlarmManager alarmManager = new CustomAlarmManager(context);
@@ -112,7 +119,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
         alarmManager.reinitialize();
     }
 
-    private static void doScheduledUpdates(Context context) {
+    private static void doScheduledUpdates(Context context, Notification notification) {
         boolean doUpdates = true;
         Storage prefs = PreferenceStorage.getInstance(context);
 
@@ -141,7 +148,8 @@ public class WidgetProviderBase extends AppWidgetProvider {
             }
         }
 
-        updateWidgets(context, doUpdates ? UpdateType.VIEW_UPDATE : UpdateType.VIEW_NO_UPDATE);
+        updateWidgets(context, doUpdates ? UpdateType.VIEW_UPDATE : UpdateType.VIEW_NO_UPDATE
+        , Notification.CHECK_FOR_NOTIFICATIONS);
     }
 
     private void handleTouch(Context context, int appWidgetId, String action) {
@@ -149,7 +157,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
             startPreferencesActivity(context, appWidgetId);
         } else if (action.equals("RIGHT")) {
             UpdateType updateType = getUpdateTypeForTouchRight(context, appWidgetId);
-            updateWidgetAsync(context, appWidgetId, updateType);
+            updateWidgetAsync(context, appWidgetId, updateType, Notification.DONT_CHECK);
         }
     }
 
@@ -179,7 +187,9 @@ public class WidgetProviderBase extends AppWidgetProvider {
         if (action != null) {
             switch (action) {
                 case CustomAlarmManager.ALARM_UPDATE:
-                    doScheduledUpdates(context);
+                    //Only check for notifications when update
+                    //interval is reached
+                    doScheduledUpdates(context, Notification.CHECK_FOR_NOTIFICATIONS);
                     break;
 
                 case "LEFT":
@@ -202,7 +212,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
 
     private void updateWidgetsFromCache(Context context) {
         for (int id : new AndroidWidgetRepository(context).getIds()) {
-            updateWidgetAsync(context, id, UpdateType.VIEW_NO_UPDATE);
+            updateWidgetAsync(context, id, UpdateType.VIEW_NO_UPDATE, Notification.DONT_CHECK);
         }
     }
     private int getCellsForSize(int size){
@@ -221,27 +231,27 @@ public class WidgetProviderBase extends AppWidgetProvider {
         minHeight = getCellsForSize(minHeight);
 
 
-    if(widget.getSize() != 4) {
-        if (minHeight > 1 && minHeight < 3) {
-            if (minWidth > 3) {
-                widget.setSize(3);
+        if(widget.getSize() != 4) {
+            if (minHeight > 1 && minHeight < 3) {
+                if (minWidth > 3) {
+                    widget.setSize(3);
+                } else {
+                    widget.setSize(2);
+                }
+            } else if (minHeight >= 3) {
+                if (minWidth > 3) {
+                    widget.setSize(5);
+                } else {
+                    widget.setSize(6);
+                }
             } else {
-                widget.setSize(2);
-            }
-        } else if (minHeight >= 3) {
-            if (minWidth > 3) {
-                widget.setSize(5);
-            } else {
-                widget.setSize(6);
-            }
-        } else {
-            if (minWidth > 3) {
-                widget.setSize(1);
-            } else {
-                widget.setSize(0);
+                if (minWidth > 3) {
+                    widget.setSize(1);
+                } else {
+                    widget.setSize(0);
+                }
             }
         }
-    }
 
         new CustomAlarmManager(context).reinitialize();
         updateWidgetsFromCache(context);
@@ -296,17 +306,27 @@ public class WidgetProviderBase extends AppWidgetProvider {
         VIEW_CHANGE
     }
 
+    public enum Notification {
+        DONT_CHECK,
+        CHECK_FOR_NOTIFICATIONS
+    }
+
     private static class GetDataTask extends AsyncTask<Object, Void, Void> {
         private Context context;
         private Integer appWidgetId;
         private UpdateType updateType;
         private HashMap<String, StockQuote> quotes;
+        private String currencies;
         private String timeStamp;
+        private Notification notification;
 
-        public GetDataTask build(Context context, Integer appWidgetId, UpdateType updateType) {
+
+        public GetDataTask build(Context context, Integer appWidgetId, UpdateType updateType, Notification notification) {
             this.context = context;
             this.appWidgetId = appWidgetId;
             this.updateType = updateType;
+            this.notification = notification;
+
 
             WidgetRepository repository = new AndroidWidgetRepository(context);
 
@@ -319,9 +339,16 @@ public class WidgetProviderBase extends AppWidgetProvider {
         protected Void doInBackground(Object... params) {
             WidgetRepository widgetRepository = new AndroidWidgetRepository(this.context);
             Storage storage = PreferenceStorage.getInstance(this.context);
+            StorageCache cache = new StorageCache(storage);
+
             StockQuoteRepository quoteRepository = new StockQuoteRepository(
-                    PreferenceStorage.getInstance(this.context), new StorageCache(storage),
+                    PreferenceStorage.getInstance(this.context), cache,
                     widgetRepository);
+
+
+            List<String> spListInWidget = new ArrayList<String>();
+
+            CurrencyRepository currencyRepo = new CurrencyRepository(PreferenceStorage.getInstance(this.context), cache);
 
             Widget widget = widgetRepository.getWidget(this.appWidgetId);
             //Only update on wifi if option is set
@@ -329,26 +356,69 @@ public class WidgetProviderBase extends AppWidgetProvider {
                 updateType = UpdateType.VIEW_NO_UPDATE;
             }
 
+            try {
+                spListInWidget = widget.checkSPStock();
+            } catch (IOException ignored){
+
+            }
+
+
             this.quotes = quoteRepository.getQuotes(
                     widgetRepository.getWidget(this.appWidgetId).getSymbols(),
                     updateType == UpdateType.VIEW_UPDATE);
+
+            this.currencies = currencyRepo.getCurrencies(widget.updateOnCurrency());
             this.timeStamp = quoteRepository.getTimeStamp();
 
-
+            if (this.notification == Notification.CHECK_FOR_NOTIFICATIONS)
+                check5PercentDrop(context, widget.getId(), this.quotes);
 
             if (widget.getSize() == 4) {
                 List<String> symbols = widget.getSymbols();
                 String symbol = symbols.get(0);
-                GraphTools.drawGraph(context, symbol, appWidgetId);
+                GraphTools.drawGraph(context, symbol, appWidgetId, widget.historicalData());
             }
 
                 return null;
 
+
         }
             @Override
             protected void onPostExecute (Void result){
-                applyUpdate(this.context, this.appWidgetId, this.updateType, this.quotes,
+                applyUpdate(this.context, this.appWidgetId, this.updateType, this.currencies,this.quotes,
                         this.timeStamp);
             }
+
+        public  void check5PercentDrop(Context context, int appWidgetId, HashMap<String, StockQuote> quotes){
+
+            WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
+            Widget widget = widgetRepository.getWidget(appWidgetId);
+            List<String> spListInWidget = new ArrayList<>();
+
+
+            try {
+                spListInWidget = widget.checkSPStock();
+            } catch (IOException ignored){
+
+            }
+
+            if ((widget.getSize() != 4) && (!spListInWidget.isEmpty())) {
+                int i = 1;
+                List<StockQuote> quoteList = new ArrayList<>();
+                for (String symbol : spListInWidget) {
+                    if (quotes.containsKey(symbol)) {
+                        quoteList.add(quotes.get(symbol));
+                    }
+                }
+                for (StockQuote stockQuote : quoteList) {
+                    if (tryParseDouble(stockQuote.getPercent()) <= -5)
+                        widget.sendNotification(context, stockQuote.getSymbol() + " " + stockQuote.getPercent(),
+                                stockQuote.getName()+" has dropped! ", i);
+                    i++;
+                }
+
+            }
+        }
+
         }
     }
