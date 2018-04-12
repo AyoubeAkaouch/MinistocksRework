@@ -109,9 +109,12 @@ public class UITests {
         stockSearch.setText("amzn");
         Thread.sleep(5000);
 
+        //Select Amazon stock by selecting pixel since dropdown menu not recognized as XML element.
         mDevice.click(514,271);
         Thread.sleep(2000);
 
+
+        //Need this for widget to update
         mDevice.pressHome();
         widgetLeft.clickAndWaitForNewWindow();
         mDevice.pressHome();
@@ -121,6 +124,57 @@ public class UITests {
         //Check if row has been set with a stock
         assertTrue(!stockRow.getText().equals(""));
     }
+
+    @Test
+    public void testRemoveHeaderOption() throws UiObjectNotFoundException, InterruptedException{
+
+        UiObject header = mDevice.findObject(new UiSelector().className("android.widget.TextView")
+                .resourceId("nitezh.ministock:id/text7"));
+        //assert header is present
+        assertTrue(header.exists());
+
+        //Remove footer
+        UiObject widgetLeft = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout")
+                .resourceIdMatches("nitezh.ministock:id/widget_left"));
+        widgetLeft.clickAndWaitForNewWindow();
+
+        UiObject advanced = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(2));
+        advanced.clickAndWaitForNewWindow();
+
+        UiObject appearance = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(1));
+        appearance.clickAndWaitForNewWindow();
+
+        UiObject footerDisplay = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(3));
+        footerDisplay.clickAndWaitForNewWindow();
+
+        //Remove header
+        UiObject removeHeader = mDevice.findObject(new UiSelector().className("android.widget.CheckedTextView")
+                .text("Invisible"));
+        removeHeader.click();
+
+        //Need this for widget to update
+        mDevice.pressHome();
+        widgetLeft.clickAndWaitForNewWindow();
+        mDevice.pressHome();
+
+
+        //Header should be gone
+        Thread.sleep(5000);
+        assertFalse(header.exists());
+
+        //Set footer back to visible
+        widgetLeft.clickAndWaitForNewWindow();
+        advanced.clickAndWaitForNewWindow();
+        appearance.clickAndWaitForNewWindow();
+        footerDisplay.clickAndWaitForNewWindow();
+
+        UiObject visibleHeader = mDevice.findObject(new UiSelector().className("android.widget.CheckedTextView")
+                .text("Visible"));
+        visibleHeader.click();
+        mDevice.pressHome();
+    }
+    
+
 
 }
 
