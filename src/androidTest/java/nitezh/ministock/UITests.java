@@ -10,6 +10,7 @@ import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObject2;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
 
@@ -133,7 +134,7 @@ public class UITests {
         //assert header is present
         assertTrue(header.exists());
 
-        //Remove footer
+        //Remove header
         UiObject widgetLeft = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout")
                 .resourceIdMatches("nitezh.ministock:id/widget_left"));
         widgetLeft.clickAndWaitForNewWindow();
@@ -144,8 +145,8 @@ public class UITests {
         UiObject appearance = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(1));
         appearance.clickAndWaitForNewWindow();
 
-        UiObject footerDisplay = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(3));
-        footerDisplay.clickAndWaitForNewWindow();
+        UiObject headerDisplay = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(3));
+        headerDisplay.clickAndWaitForNewWindow();
 
         //Remove header
         UiObject removeHeader = mDevice.findObject(new UiSelector().className("android.widget.CheckedTextView")
@@ -166,14 +167,91 @@ public class UITests {
         widgetLeft.clickAndWaitForNewWindow();
         advanced.clickAndWaitForNewWindow();
         appearance.clickAndWaitForNewWindow();
-        footerDisplay.clickAndWaitForNewWindow();
+        headerDisplay.clickAndWaitForNewWindow();
 
         UiObject visibleHeader = mDevice.findObject(new UiSelector().className("android.widget.CheckedTextView")
                 .text("Visible"));
         visibleHeader.click();
         mDevice.pressHome();
     }
-    
+    @Test
+    public void testStockNameToSymbolOption() throws UiObjectNotFoundException, InterruptedException{
+        //Verify that a stock has been setup in that section(Should be setup by previous test)
+        //If test fail or stock was not setup it is taken care of in next if statement
+        UiObject stockRow = mDevice.findObject(new UiSelector().className("android.widget.TextView")
+                .resourceId("nitezh.ministock:id/text21"));
+        //Setup left click
+        UiObject widgetLeft = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout")
+                .resourceIdMatches("nitezh.ministock:id/widget_left"));
+
+        if(stockRow.getText().equals("")){
+            widgetLeft.clickAndWaitForNewWindow();
+
+            UiObject advanced = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(1));
+            advanced.clickAndWaitForNewWindow();
+
+            UiObject stockSlot3 = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(1));
+            stockSlot3.clickAndWaitForNewWindow(1000);
+
+            UiObject stockSearch = mDevice.findObject(new UiSelector().className("android.widget.EditText").resourceId("android:id/search_src_text"));
+            Thread.sleep(2000);
+
+            stockSearch.setText("amzn");
+            Thread.sleep(5000);
+
+            //Select Amazon stock by selecting pixel since dropdown menu not recognized as XML element.
+            mDevice.click(514,271);
+            Thread.sleep(2000);
+
+
+            //Need this for widget to update
+            mDevice.pressHome();
+            widgetLeft.clickAndWaitForNewWindow();
+            mDevice.pressHome();
+
+            Thread.sleep(10000);
+        }
+        //Getting the original length of the string
+        int originalStringLength= stockRow.getText().length();
+
+        widgetLeft.clickAndWaitForNewWindow();
+
+        UiObject advanced = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(2));
+        advanced.clickAndWaitForNewWindow();
+
+        UiObject appearance = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(1));
+        appearance.clickAndWaitForNewWindow();
+
+        //Scroll to end of list
+        UiScrollable appearanceScroll = new UiScrollable(new UiSelector().scrollable(true));
+        appearanceScroll.scrollToEnd(10);
+
+        UiObject symbolDisplay = mDevice.findObject(new UiSelector().className("android.widget.LinearLayout").index(8));
+        symbolDisplay.click();
+
+        //Need this for widget to update
+        mDevice.pressHome();
+        widgetLeft.clickAndWaitForNewWindow();
+        mDevice.pressHome();
+
+
+        //If symbole is now displayed the length should be shorter than the original stock name.
+        Thread.sleep(10000);
+        int modifiedStringLength= stockRow.getText().length();
+        assertTrue(modifiedStringLength<originalStringLength);
+
+        //reset widget back to full name stocks
+        widgetLeft.clickAndWaitForNewWindow();
+        advanced.clickAndWaitForNewWindow();
+        appearance.clickAndWaitForNewWindow();
+        appearanceScroll.scrollToEnd(10);
+        symbolDisplay.click();
+        mDevice.pressHome();
+        widgetLeft.clickAndWaitForNewWindow();
+        mDevice.pressHome();
+
+
+    }
 
 
 }
