@@ -406,6 +406,11 @@
             android:key="update_now"
             android:summary="Update prices and return to home screen"
             android:title="Update prices now" />
+        <Preference
+            android:key="import_stocks"
+            android:summary="Import your own stocks from a .csv file."
+            android:title="Import stock list." />
+
         <ListPreference
             android:defaultValue="normal"
             android:entries="@array/change_currency_entries"

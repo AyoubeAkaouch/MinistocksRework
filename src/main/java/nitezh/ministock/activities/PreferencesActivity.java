@@ -78,6 +78,8 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     private String mTimePickerKey = null;
     private int mHour = 0;
     private int mMinute = 0;
+    private static final int CHOOSE_FILE_REQUESTCODE = 8777;
+    private static final int PICKFILE_RESULT_CODE = 8778;
 
     private String getChangeLog() {
         return CHANGE_LOG;
@@ -490,6 +492,18 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             public boolean onPreferenceClick(Preference preference) {
                 mPendingUpdate = true;
                 finish();
+                return true;
+            }
+        });
+        // Hook the Update preference to the Help activity
+        Preference importStocks = findPreference("import_stocks");
+        importStocks.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                chooseFile.setType("*/*");
+                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+                startActivityForResult(chooseFile, PICKFILE_RESULT_CODE);
                 return true;
             }
         });
