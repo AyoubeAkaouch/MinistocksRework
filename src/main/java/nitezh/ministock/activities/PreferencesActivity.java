@@ -24,12 +24,14 @@
 
 package nitezh.ministock.activities;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -38,8 +40,10 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.util.Log;
 import android.widget.TimePicker;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -64,6 +68,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     private static final int CHECKBOX_TYPE = 2;
     // Public variables
     public static int mAppWidgetId = 0;
+    public boolean wait=false;
     // Private
     private static boolean mPendingUpdate = false;
     private static String mSymbolSearchKey = "";
@@ -385,6 +390,16 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         if (requestCode != 1) {
             super.onActivityResult(requestCode, resultCode, data);
         }
+        if (requestCode == PICKFILE_RESULT_CODE &&data!=null ){
+            Uri uri = data.getData();
+            String src = uri.getPath();
+            System.out.print(src);
+            //Lets the preference finish now that we got the file
+            wait=false;
+        }
+        else if (requestCode == PICKFILE_RESULT_CODE && data==null){
+            wait=false;
+        }
     }
 
     private void setTimePickerPreference(int hourOfDay, int minute) {
@@ -504,6 +519,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
                 chooseFile.setType("*/*");
                 chooseFile = Intent.createChooser(chooseFile, "Choose a file");
                 startActivityForResult(chooseFile, PICKFILE_RESULT_CODE);
+                wait=true;
                 return true;
             }
         });
@@ -814,7 +830,6 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     @Override
     protected void onStop() {
         super.onStop();
-
         // Update the widget when we quit the preferences, and if the dirty,
         // flag is true then do a web update, otherwise do a regular update
         if (mPendingUpdate) {
@@ -825,7 +840,10 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             WidgetProviderBase.updateWidgetAsync(getApplicationContext(), mAppWidgetId,
                     WidgetProviderBase.UpdateType.VIEW_NO_UPDATE, WidgetProviderBase.Notification.DONT_CHECK);
         }
-        finish();
+        //Checks if we need to wait on file chooser result before closing.
+        if(!wait)
+            finish();
+
     }
 
     private void showHelpUsage() {
