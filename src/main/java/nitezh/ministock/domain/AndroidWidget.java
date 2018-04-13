@@ -181,6 +181,11 @@ class AndroidWidget implements Widget{
     }
 
     @Override
+    public void setStock(int i,String stock) {
+        this.storage.putString("Stock" + (i + 1), stock);
+    }
+
+    @Override
     public String getCurrencyChange(){return this.storage.getString("change_currency","normal");}
     @Override
     public int getPreviousView() {
