@@ -55,6 +55,7 @@ import nitezh.ministock.UserData;
 import nitezh.ministock.activities.widget.WidgetProviderBase;
 import nitezh.ministock.utils.DateTools;
 import nitezh.ministock.utils.VersionTools;
+import nitezh.ministock.utils.importStocksTools;
 
 import static android.content.SharedPreferences.Editor;
 import static android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -392,8 +393,11 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         }
         if (requestCode == PICKFILE_RESULT_CODE &&data!=null ){
             Uri uri = data.getData();
-            String src = uri.getPath();
-            System.out.print(src);
+            importStocksTools.startImportFromCSV(uri,getApplicationContext(),mAppWidgetId);
+
+            //To get the prices for our new symbols
+            mPendingUpdate = true;
+
             //Lets the preference finish now that we got the file
             wait=false;
         }

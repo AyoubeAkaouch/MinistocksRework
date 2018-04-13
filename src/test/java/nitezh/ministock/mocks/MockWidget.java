@@ -61,6 +61,11 @@ public class MockWidget implements Widget {
     }
 
     @Override
+    public void setStock(int i,String key) {
+
+    }
+
+    @Override
     public int getPreviousView() {
         return 0;
     }

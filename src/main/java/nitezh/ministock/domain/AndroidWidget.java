@@ -183,6 +183,7 @@ class AndroidWidget implements Widget{
     @Override
     public void setStock(int i,String stock) {
         this.storage.putString("Stock" + (i + 1), stock);
+        this.save();
     }
 
     @Override
