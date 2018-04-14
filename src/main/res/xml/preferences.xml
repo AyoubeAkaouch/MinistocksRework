@@ -360,6 +360,25 @@
                     />
 
             </PreferenceScreen>
+
+            <PreferenceScreen
+                android:summary="Import a csv file"
+                android:title="IMPORT"
+                android:key="Import"
+                >
+                <!--<CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="Import"
+                    android:title="import this brother" />- -->
+            </PreferenceScreen>
+
+           <!-- <Button
+                android:id="@+id/pick_from_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pick_from_activity"
+                />-->
+
             <PreferenceCategory
                 android:key="cat_experimental"
                 android:title="Experimental settings">

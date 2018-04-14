@@ -25,6 +25,8 @@ public interface Widget {
 
     void setStock1Summary();
 
+    void setImport(int i , String x);
+
     void save();
 
     int getId();
@@ -120,4 +122,8 @@ public interface Widget {
     String getFont();
 
     List<String> checkSPStock() throws IOException;
+
+    String getStringFromFile();
+
+    boolean getImport();
 }

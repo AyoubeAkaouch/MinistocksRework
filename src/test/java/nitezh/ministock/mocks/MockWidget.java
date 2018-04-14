@@ -71,6 +71,16 @@ public class MockWidget implements Widget {
     }
 
     @Override
+    public void setImport(int i , String x){
+
+    }
+
+    @Override
+    public boolean getImport(){
+        return false;
+    }
+
+    @Override
     public List<String> getSymbols() {
         return null;
     }
@@ -309,5 +319,9 @@ public class MockWidget implements Widget {
     public String getCurrencyChange() {
         return null;
 
+    }
+
+    public String getStringFromFile(){
+        return null;
     }
 }

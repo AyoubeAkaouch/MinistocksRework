@@ -176,4 +176,5 @@
     <string name="portfolio_list_item_holding_value_label">Holding:</string>
     <string name="portfolio_list_item_buy_price_label">Buy price:</string>
     <string name="widget_loading_text">loading data…</string>
+    <string name="pick_from_activity">Pick file from activity</string>
 </resources>

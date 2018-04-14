@@ -39,7 +39,10 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -181,7 +184,17 @@ class AndroidWidget implements Widget{
     }
 
     @Override
+    public void setImport(int i,String x) {
+
+        this.storage.putString("Stock" + (i + 1), x);
+    }
+
+
+
+    @Override
     public String getCurrencyChange(){return this.storage.getString("change_currency","normal");}
+    @Override
+    public boolean getImport(){return this.storage.getBoolean("Import",false);}
     @Override
     public int getPreviousView() {
         return this.storage.getInt("widgetView", 0);
@@ -200,6 +213,20 @@ class AndroidWidget implements Widget{
         boolean found = false;
         List<String> symbols = new ArrayList<>();
         String s;
+
+        if(getImport()) {
+            String StringFromFile = getStringFromFile();
+            String[] StocksNames =StringFromFile.split("\n");
+            List<String> Stock = Arrays.asList(StocksNames);
+
+            int i=0;
+            for(String st: Stock) {
+                setImport(i,st);
+                this.save();
+                i++;
+            }
+        }
+
         for (int i = 0; i < this.getSymbolCount(); i++) {
             s = this.getStock(i);
             symbols.add(s);
@@ -208,9 +235,13 @@ class AndroidWidget implements Widget{
             }
         }
 
-        if (!found) {
+      /* if (!found) {
             symbols.add("^DJI");
-        }
+        }*/
+
+
+
+      Log.d("Step1","symbols" + symbols);
         return symbols;
     }
 
@@ -445,4 +476,32 @@ NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
     public String getFont(){
         return this.storage.getString("font", "Sans-serif");
     }
+
+    public String getStringFromFile () {
+        Resources resources = context.getResources();
+        InputStream inputstream = resources.openRawResource(R.raw.stocks);
+        String ret = null;
+        try {
+            ret = convertStreamToString(inputstream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+    public static String convertStreamToString(InputStream is) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        reader.close();
+        return sb.toString();
+    }
+
+
+
+
+
 }

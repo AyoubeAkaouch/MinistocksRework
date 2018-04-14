@@ -24,12 +24,15 @@
 
 package nitezh.ministock.activities;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.app.TimePickerDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -38,7 +41,12 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TimePicker;
+
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,6 +60,7 @@ import nitezh.ministock.activities.widget.WidgetProviderBase;
 import nitezh.ministock.utils.DateTools;
 import nitezh.ministock.utils.VersionTools;
 
+import static android.content.ContentValues.TAG;
 import static android.content.SharedPreferences.Editor;
 import static android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
@@ -82,6 +91,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     private String getChangeLog() {
         return CHANGE_LOG;
     }
+
 
     @Override
     public void onNewIntent(Intent intent) {
@@ -326,6 +336,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     }
 
     private void showDisclaimer() {
+        //Log.d("svp", "ddddd" );
         String title = "License";
         String body = "The MIT License (MIT)<br/><br/>Copyright © 2013 Nitesh Patel<br/><br />Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br /><br />The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br/><br/>THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
         DialogTools.showSimpleDialog(this, title, body);
@@ -369,13 +380,6 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         new TimePickerDialog(this, mTimeSetListener, mHour, mMinute, true).show();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode != 1) {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
     private void setTimePickerPreference(int hourOfDay, int minute) {
         // Set the preference value
         SharedPreferences preferences = getPreferenceScreen().getSharedPreferences();
@@ -409,10 +413,61 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
         editor.apply();
     }
 
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(data!= null){
+            final Uri uri = data.getData();
+            super.onActivityResult(requestCode, resultCode, data);
+            Log.d("data", "" + uri );
+
+
+        }
+
+       /* if (requestCode != 1  ) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }*/
+
+    }
+
+    private static final int READ_REQUEST_CODE = 3;
+
+    public void performFileSearch() {
+
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        intent.setType("*/*");
+
+        startActivityForResult(intent, READ_REQUEST_CODE);
+
+        try {
+
+            startActivityForResult(intent, READ_REQUEST_CODE);
+
+        }catch(ActivityNotFoundException e){
+
+        }
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
+
+
+        Preference getfile = findPreference("Import");
+        getfile.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                performFileSearch();
+                return true;
+            }
+        });
 
         // Hook the About preference to the About (MinistocksActivity) activity
         Preference about = findPreference("about");
