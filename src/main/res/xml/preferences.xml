@@ -28,6 +28,8 @@
     android:summary="Preferences"
     android:title="Preferences">
 
+
+
     <PreferenceCategory
         android:key="widget_settings"
         android:title="Widget settings">
@@ -303,6 +305,9 @@
                     android:title="Display stock symbol" />
             </PreferenceScreen>
             <PreferenceScreen
+
+
+
                 android:key="update_options"
                 android:summary="Set widget update options"
                 android:title="Update options">
@@ -359,6 +364,9 @@
                     android:title="Update Prices when you unlock your Device"
                     />
 
+
+
+
             </PreferenceScreen>
             <PreferenceCategory
                 android:key="cat_experimental"
@@ -391,10 +399,21 @@
                 </PreferenceScreen>
             </PreferenceCategory>
         </PreferenceScreen>
+
+
         <Preference
             android:key="portfolio"
             android:summary="Setup your stock purchase details"
             android:title="Portfolio" />
+        <Button
+            android:id="@+id/buttonLoadPicture"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:onClick="loadImagefromGallery"
+            android:text="Load Picture" >
+        </Button>
         <Preference
             android:key="update_now"
             android:summary="Update prices and return to home screen"
@@ -407,6 +426,10 @@
             android:summary="Convert all prices to a single currency."
             android:title="Select widget currency" />
     </PreferenceCategory>
+
+
+
+
     <PreferenceCategory android:title="General">
         <PreferenceScreen
             android:key="help_menu"

@@ -41,6 +41,7 @@
         <item>Solid</item>
         <item>Transparent</item>
         <item>None</item>
+        <item>Custom (choose from gallery)</item>
     </string-array>
     <string-array name="background_entryvalues">
         <item>solid</item>

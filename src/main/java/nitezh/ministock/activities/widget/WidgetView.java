@@ -738,7 +738,7 @@ class WidgetView {
 
     private String getTimeStamp() {
         String timeStamp = this.quotesTimeStamp;
-        if (!this.widget.showShortTime()) {
+       /* if (!this.widget.showShortTime()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
             String date = dateFormat.format(new Date()).toUpperCase();
 
@@ -750,7 +750,7 @@ class WidgetView {
             } else {
                 timeStamp = fullDate;
             }
-        }
+        }*/
 
         return timeStamp;
     }
