@@ -30,21 +30,10 @@ import nitezh.ministock.domain.WidgetRepository;
 
 public class importStocksTools {
 
-    static public boolean startImportFromCSV(Uri uri, Context context, int widgetId, SharedPreferences sharedPreferences){
+    public static boolean startImportFromCSV(Uri uri, Context context, int widgetId, SharedPreferences sharedPreferences){
         List<String> stockSymbols= new ArrayList<String>();
 
-        //Find file name to make sure it is a csv format
-        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);;
-        String displayName="";
-        if (cursor != null && cursor.moveToFirst())
-            displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-
-        cursor.close();
-
-        int from=displayName.lastIndexOf(".");
-        int end=displayName.length();
-
-        String type=displayName.substring(from,end);
+        String type = getFileExtension(context,uri);
 
         //If file was not csv return false to tell preferenceActivity we did not do the import.
         if(!type.equalsIgnoreCase(".csv"))
@@ -53,8 +42,7 @@ public class importStocksTools {
         //Read stock symbols from csv file
         try {
            InputStream inputStream = context.getContentResolver().openInputStream(uri);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    inputStream));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -66,6 +54,28 @@ public class importStocksTools {
         catch (IOException e) {
             Log.d("Exception", "startImportFromCSV: Error opening file");
         }
+        setNewListOfStocks (stockSymbols, widgetId, sharedPreferences,context);
+
+        return true;
+
+    }
+
+    public static String getFileExtension(Context context, Uri uri){
+        //Find file name to make sure it is a csv format
+        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        String displayName="";
+        if (cursor != null && cursor.moveToFirst())
+            displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+
+        cursor.close();
+
+        int from=displayName.lastIndexOf(".");
+        int end=displayName.length();
+
+        return displayName.substring(from,end);
+    }
+
+    public static void setNewListOfStocks (List<String> stockSymbols, int widgetId, SharedPreferences sharedPreferences,Context context){
 
         WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
         Widget widget = widgetRepository.getWidget(widgetId);
@@ -83,7 +93,6 @@ public class importStocksTools {
         for (int i=stockSymbols.size();i<16;i++)
             widget.setStock(i,"");
 
-        return true;
-
     }
+
 }
