@@ -42,6 +42,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -392,8 +393,13 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             super.onActivityResult(requestCode, resultCode, data);
         }
         if (requestCode == PICKFILE_RESULT_CODE &&data!=null ){
+           boolean successful;
             Uri uri = data.getData();
-            importStocksTools.startImportFromCSV(uri,getApplicationContext(),mAppWidgetId);
+            successful=importStocksTools.startImportFromCSV(uri,getApplicationContext(),mAppWidgetId, getPreferenceScreen().getSharedPreferences());
+
+            //To tell the user he did not select right file.
+            if(!successful)
+                Toast.makeText(getApplicationContext(), "Not a csv file, no changes were made.",Toast.LENGTH_SHORT).show();
 
             //To get the prices for our new symbols
             mPendingUpdate = true;

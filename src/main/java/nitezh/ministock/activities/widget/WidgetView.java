@@ -386,7 +386,6 @@ class WidgetView {
 
     private void updateWidgetRowWithDefaults(WidgetRow widgetRow, WidgetStock widgetStock) {
         String currencyChange=widget.getCurrencyChange();
-        Log.d("sss", "updateWidgetRowWithDefaults: "+this.currencies);
         if(!currencyChange.equals("normal"))
         {
             String price=CurrencyTools.changeCurrency(currencies,widgetStock.getShortName(),currencyChange,widgetStock.getPrice());
@@ -513,8 +512,7 @@ class WidgetView {
         int widgetDisplay = this.getNextView(this.updateMode);
         this.clear();
 
-//       String rates = CurrencyRepository.getRates();
-//        Log.d("XXX", rates);
+
         int lineNo = 0;
         for (String symbol : this.symbols) {
             if (symbol.equals("")) {
