@@ -85,7 +85,6 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     private String mTimePickerKey = null;
     private int mHour = 0;
     private int mMinute = 0;
-    private static final int CHOOSE_FILE_REQUESTCODE = 8777;
     private static final int PICKFILE_RESULT_CODE = 8778;
 
     private String getChangeLog() {
