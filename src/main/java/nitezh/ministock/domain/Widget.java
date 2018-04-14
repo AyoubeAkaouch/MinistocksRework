@@ -37,6 +37,8 @@ public interface Widget {
 
     String getStock(int i);
 
+    void setStock(int i, String stock);
+
     int getPreviousView();
 
     void setView(int view);
