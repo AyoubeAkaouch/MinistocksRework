@@ -52,7 +52,7 @@
             android:name=".activities.PortfolioActivity"
             android:configChanges="orientation"
             android:label="Portfolio"
-            android:launchMode="singleInstance">
+            android:launchMode="singleTop">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,7 +64,7 @@
             android:configChanges="orientation"
             android:finishOnTaskLaunch="true"
             android:label="Preferences"
-            android:launchMode="singleInstance">
+            android:launchMode="singleTop">
 
             <intent-filter>
                 <action android:name="android.intent.action.EDIT" />

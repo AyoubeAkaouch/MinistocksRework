@@ -22,11 +22,15 @@
   THE SOFTWARE.
   -->
 
+
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="MainPreferences"
     android:summary="Preferences"
     android:title="Preferences">
+
+
 
 
 
@@ -304,6 +308,8 @@
                     android:summaryOn="Display stock symbol instead of name"
                     android:title="Display stock symbol" />
             </PreferenceScreen>
+
+
             <PreferenceScreen
 
 
@@ -405,19 +411,15 @@
             android:key="portfolio"
             android:summary="Setup your stock purchase details"
             android:title="Portfolio" />
-        <Button
-            android:id="@+id/buttonLoadPicture"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0"
-            android:onClick="loadImagefromGallery"
-            android:text="Load Picture" >
-        </Button>
         <Preference
             android:key="update_now"
             android:summary="Update prices and return to home screen"
             android:title="Update prices now" />
+        <Preference
+            android:key="import_background"
+            android:summary="choose your custom background image."
+            android:onClick="loadImagefromGallery"
+            android:title="Import background image." />
         <ListPreference
             android:defaultValue="normal"
             android:entries="@array/change_currency_entries"
@@ -426,6 +428,8 @@
             android:summary="Convert all prices to a single currency."
             android:title="Select widget currency" />
     </PreferenceCategory>
+
+
 
 
 

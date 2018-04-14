@@ -38,7 +38,20 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.util.Log;
 import android.widget.TimePicker;
+
+
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,6 +74,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     // Constants
     private static final int STRING_TYPE = 0;
     private static final int LIST_TYPE = 1;
+    public boolean wait = false;
     private static final int CHECKBOX_TYPE = 2;
     // Public variables
     public static int mAppWidgetId = 0;
@@ -76,11 +90,22 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     // Fields for time pickers
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
     private String mTimePickerKey = null;
+    private static final int CHOOSEb_FILE_REQUESTCODE = 37;
+     private static final int PICKFILEb_RESULT_CODE = 38;
     private int mHour = 0;
     private int mMinute = 0;
+    private static int RESULT_LOAD_IMG = 1;
+    String imgDecodableString;
+
 
     private String getChangeLog() {
         return CHANGE_LOG;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
     }
 
     @Override
@@ -94,6 +119,13 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             String query = intent.getStringExtra(SearchManager.QUERY);
             startSearch(query, false, null, false);
         }
+    }
+    public void loadImagefromGallery(View view) {
+        // Create intent to Open Image applications like Gallery, Google Photos
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        // Start the Intent
+        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
 
     @Override
@@ -371,9 +403,43 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode != 1) {
-            super.onActivityResult(requestCode, resultCode, data);
+
+
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            // When an Image is picked
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+                    && null != data) {
+                // Get the Image from data
+
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                // Get the cursor
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                // Move to first row
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                ImageView imgView = (ImageView) findViewById(R.id.imgView);
+                // Set the Image in ImageView after decoding the String
+                imgView.setImageBitmap(BitmapFactory
+                        .decodeFile(imgDecodableString));
+
+            } else {
+                Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+                    .show();
         }
+
+
+
     }
 
     private void setTimePickerPreference(int hourOfDay, int minute) {
@@ -423,6 +489,22 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
                 return true;
             }
         });
+
+        //hook up the background
+        Preference importpics = findPreference("import_background");
+        importpics.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                chooseFile.setType("*/*");
+                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+                startActivityForResult(chooseFile, PICKFILEb_RESULT_CODE);
+                Log.d("click","ouff");
+                return true;
+            }
+        });
+
+
         // Hook up the help preferences
         Preference help = findPreference("help");
         help.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -792,6 +874,8 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     protected void onStop() {
         super.onStop();
 
+
+
         // Update the widget when we quit the preferences, and if the dirty,
         // flag is true then do a web update, otherwise do a regular update
         if (mPendingUpdate) {
@@ -802,6 +886,8 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             WidgetProviderBase.updateWidgetAsync(getApplicationContext(), mAppWidgetId,
                     WidgetProviderBase.UpdateType.VIEW_NO_UPDATE, WidgetProviderBase.Notification.DONT_CHECK);
         }
+
+        if(!wait)
         finish();
     }
 
