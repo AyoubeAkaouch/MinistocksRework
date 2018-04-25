@@ -40,7 +40,7 @@ notifications:
       - aghiles_1@hotmail.com
       - gprattico95@gmail.com
       - ayoube.akaouch@gmail.com
-      - momo_lebest@hotmail.fr
+      
 
     on_success: always # default: change
     on_failure: always # default: always
